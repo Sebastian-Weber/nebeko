@@ -66,6 +66,14 @@
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
+    .nav-cta-purple {
+      background: var(--purple-bg); color: var(--purple) !important;
+      padding: 7px 16px; border-radius: 7px;
+      font-size: 13px !important; font-weight: 600 !important;
+      transition: all 0.15s;
+    }
+    .nav-cta-purple:hover { background: var(--purple-border) !important; }
+
     .nav-tag {
       background: var(--purple-bg); color: var(--purple);
       padding: 3px 10px; border-radius: 20px;
@@ -306,7 +314,7 @@
     <li><a href="#setup">Setup</a></li>
     <li><a href="#workflow">Workflow</a></li>
     <li><a href="#prompts">Prompts</a></li>
-    <li><a href="case-study.html">Case Study →</a></li>
+    <li><a href="case-study.html" class="nav-cta-purple">Case Study →</a></li>
   </ul>
 </nav>
 
@@ -530,4 +538,32 @@ für eine Nebenkostenabrechnung:
     </div>
   </section>
 
+  <div style="max-width: 720px; margin: 0 auto; padding: 0 48px 80px;">
+    <div class="cta-block">
+      <h2>Die Geschichte dahinter</h2>
+      <p>Wie dieses Projekt entstand, welche UX-Entscheidungen dahinterstecken und was Contextual Inquiry damit zu tun hat.</p>
+      <a href="case-study.html" class="btn">Case Study lesen →</a>
+    </div>
+  </div>
 
+  <footer>
+    <p>Sebastian Weber · UI Designer · Design-to-Code · Köln 2026</p>
+    <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a></p>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.block').forEach(b => observer.observe(b));
+  </script>
+
+</body>
+</html>
