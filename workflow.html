@@ -56,7 +56,7 @@
       padding: 0 48px; height: 56px;
     }
 
-    .nav-logo {
+.nav-logo {
       font-family: 'Montserrat', sans-serif;
       font-size: 17px; font-weight: 700;
       color: var(--dark); text-decoration: none;
@@ -66,13 +66,22 @@
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta-purple {
-      background: var(--purple-bg); color: var(--purple) !important;
+
+    .nav-tag {
+      background: var(--purple-bg); color: var(--purple);
+      padding: 4px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .nav-cta {
+      background: var(--purple); color: var(--white) !important;
       padding: 7px 16px; border-radius: 7px;
       font-size: 13px !important; font-weight: 600 !important;
-      transition: all 0.15s;
+      transition: background 0.15s;
     }
-    .nav-cta-purple:hover { background: var(--purple-border) !important; }
+    .nav-cta:hover { background: #A574D6 !important; color: var(--white) !important; }
 
     .nav-tag {
       background: var(--purple-bg); color: var(--purple);
@@ -270,7 +279,6 @@
     .cta-block {
       background: var(--purple-bg); border-radius: 16px;
       padding: 48px; text-align: center; margin-top: 80px;
-      border: 1.5px solid var(--purple-border);
     }
 
     .cta-block h2 { color: var(--dark); margin-bottom: 12px; }
@@ -278,12 +286,12 @@
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--purple); color: var(--white);
+      background: #823DC6; color: var(--white);
       padding: 12px 24px; border-radius: 8px;
       font-size: 14px; font-weight: 600;
       text-decoration: none; transition: all 0.15s;
     }
-    .btn:hover { background: var(--purple-mid); }
+    .btn:hover { background: #A574D6; }
 
     /* FOOTER */
     footer {
@@ -293,7 +301,7 @@
     }
     footer p { font-size: 12px; color: var(--muted); margin: 0; }
 
-    @media (max-width: 640px) {
+    @media (max-width: 860px) {
       nav { padding: 0 20px; }
       .hero { padding: 120px 20px 60px; }
       .content { padding: 0 20px 80px; }
@@ -314,7 +322,7 @@
     <li><a href="#setup">Setup</a></li>
     <li><a href="#workflow">Workflow</a></li>
     <li><a href="#prompts">Prompts</a></li>
-    <li><a href="case-study.html" class="nav-cta-purple">Case Study →</a></li>
+    <li><a href="case-study.html" class="nav-cta">Case Study →</a></li>
   </ul>
 </nav>
 
@@ -322,7 +330,7 @@
 <section class="hero">
   <div class="hero-label">Workflow-Dokumentation</div>
   <h1>Nebenkostenabrechnung<br>per Prompt</h1>
-  <p class="hero-sub">Wie ein Prompt eine Stunde Arbeit ersetzt.</p>
+  <p class="hero-sub">Wie KI Prompts viele Stunden redundanter Arbeit ersetzen.</p>
   <div class="meta-row">
     <div class="meta-item">
       <span class="meta-label">Kategorie</span>
@@ -330,7 +338,7 @@
     </div>
     <div class="meta-item">
       <span class="meta-label">Tools</span>
-      <span class="meta-value">Claude MCP · Google Drive · Python · ReportLab</span>
+      <span class="meta-value">Claude MCP · Google Drive · claude.ai</span>
     </div>
     <div class="meta-item">
       <span class="meta-label">Output</span>
@@ -396,7 +404,7 @@
         </div>
         <div class="step-content">
           <div class="step-title">Prompt absetzen</div>
-          <p class="step-body">Ein einziger Satz genügt: „Erstelle die Nebenkostenabrechnungen für alle Mieter in Musterstraße 12." Claude sucht selbstständig alle relevanten Dateien im Drive.</p>
+          <p class="step-body">Der Workflow startet mit einem Kontext-Prompt: Stammdaten, Objekt, Abrechnungszeitraum. Danach folgen Kostenpositionen und pro Mieter ein PDF-Auftrag. Die genauen Prompts sind in Block 03 dokumentiert.</p>
         </div>
       </div>
       <div class="step">
@@ -432,7 +440,7 @@
     </div>
 
     <div class="callout">
-      „4 Versorgerrechnungen rein. 1 Prompt. 3 fertige Abrechnungs-PDFs raus. Alles in einem Durchgang."
+      „Versorgerrechnungen rein. Prompts absetzen. Fertige Abrechnungs-PDFs raus. Der Workflow funktioniert, aber er braucht mehrere Iterationsschritte bis das Ergebnis wirklich versandfertig ist."
     </div>
 
     <h3>Ergebnis</h3>
@@ -457,7 +465,7 @@
   <section class="block" id="prompts">
     <div class="block-label">03 · Prompts</div>
     <h2>Die Prompts die den Workflow steuern</h2>
-    <p>Der gesamte Workflow wird über fünf wiederverwendbare Prompts gesteuert. Einmal eingerichtet, läuft er jedes Jahr in unter 30 Minuten durch.</p>
+    <p>Der gesamte Workflow wird über fünf wiederverwendbare Prompts gesteuert. Einmal eingerichtet, kann er jedes Jahr mit denselben Prompts wiederholt werden.</p>
 
     <div class="code-block">
       <div class="code-label">Prompt 1: Kontext & Stammdaten</div>
@@ -502,7 +510,7 @@ Objekt:
   </section>
   <section class="block" id="iteration">
     <div class="block-label">03c · Iteration</div>
-    <h2>Das erste PDF wird wahrscheinlich nicht gut aussehen</h2>
+    <h2>Iteration gehört zum Prozess</h2>
     <p>Das ist keine Schwäche des Workflows, sondern der Realität geschuldet: KI generiert beim ersten Versuch ein funktionierendes Dokument, aber kein layouttreues. Redundante Angaben, inkonsistente Abstände, Felder die doppelt erscheinen oder Informationen die an der falschen Stelle landen: all das ist beim ersten Durchlauf normal.</p>
     <p>In der Praxis bedeutet das: Nach dem ersten PDF-Output folgt ein Redigier-Schritt. Man schaut sich das Ergebnis an, identifiziert was nicht stimmt, und gibt Claude präzises Feedback per Prompt.</p>
     <div class="code-block">
@@ -539,7 +547,7 @@ für eine Nebenkostenabrechnung:
   <section class="block" id="reflexion">
     <div class="block-label">05 · Reflexion</div>
     <h2>Was dieser Workflow zeigt und was er nicht ist</h2>
-    <p>Das ist kein fertiges Produkt. Es ist ein funktionierender Proof of Concept der demonstriert, dass ein vollständiger Datenfluss, von der Versorgerrechnung bis zum signierfertigen PDF, mit einem einzigen Prompt möglich ist.</p>
+    <p>Das ist kein fertiges Produkt. Es ist ein funktionierender Proof of Concept der demonstriert, dass ein vollständiger Datenfluss von der Versorgerrechnung bis zum generierten PDF möglich ist. Das finale Layout erfordert zusätzliche Iterationsschritte, wie in Block 03c dokumentiert.</p>
     <div style="background: #FFF8E6; border-left: 4px solid #C8962A; border-radius: 8px; padding: 14px 18px; margin: 20px 0;">
       <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;">Hinweis</div>
       <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Alle in dieser Dokumentation verwendeten Daten sind Mockdaten. Vermieter, Mieter, Adressen, Beträge und Zählerstände sind fiktiv und dienen ausschließlich der Demonstration des Workflows.</p>
