@@ -500,6 +500,25 @@ Objekt:
     </div>
 
   </section>
+  <section class="block" id="iteration">
+    <div class="block-label">03c · Iteration</div>
+    <h2>Das erste PDF wird wahrscheinlich nicht gut aussehen</h2>
+    <p>Das ist keine Schwäche des Workflows, sondern der Realität geschuldet: KI generiert beim ersten Versuch ein funktionierendes Dokument, aber kein layouttreues. Redundante Angaben, inkonsistente Abstände, Felder die doppelt erscheinen oder Informationen die an der falschen Stelle landen: all das ist beim ersten Durchlauf normal.</p>
+    <p>In der Praxis bedeutet das: Nach dem ersten PDF-Output folgt ein Redigier-Schritt. Man schaut sich das Ergebnis an, identifiziert was nicht stimmt, und gibt Claude präzises Feedback per Prompt.</p>
+    <div class="code-block">
+      <div class="code-label">Prompt: Layout korrigieren</div>
+      <code><span class="code-purple">Das Layout hat folgende Probleme:</span>
+- Die Vermieteradresse erscheint doppelt
+- Der Abrechnungszeitraum fehlt in der Kopfzeile
+- Die Kostenaufstellung hat zu wenig Abstand
+  zur Zusammenfassung
+- Die Nachzahlung soll optisch hervorgehoben
+  werden
+
+<span class="code-purple">Bitte das PDF mit diesen Korrekturen neu erstellen.</span></code>
+    </div>
+    <p>Je präziser das Feedback, desto schneller konvergiert das Layout. In diesem Projekt waren es mehrere solcher Iterationsschritte bis das PDF das Ergebnis hatte, das man einem Mieter tatsächlich zustellen würde. Das gehört zum Prozess dazu.</p>
+  </section>
   <section class="block" id="alternative">
     <div class="block-label">04 · Alternative Methode</div>
     <h2>Ohne Google Drive: Drag & Drop</h2>
@@ -537,6 +556,8 @@ für eine Nebenkostenabrechnung:
       <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">○</span><span>Rechtliche Prüfung durch Fachanwalt ausstehend</span></div>
     </div>
   </section>
+
+</main>
 
   <div style="max-width: 720px; margin: 0 auto; padding: 0 48px 80px;">
     <div class="cta-block">
