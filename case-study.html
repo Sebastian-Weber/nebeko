@@ -178,14 +178,8 @@
     }
 
     /* ── CALLOUT ── */
-    .callout {
-      background: #F5E5E0; color: var(--dark);
-      padding: 24px 28px; border-radius: 12px;
-      margin: 32px 0; font-style: italic;
-      font-family: 'Montserrat', system-ui, sans-serif;
-      font-size: 18px; line-height: 1.5;
-      font-weight: 300; border-left: 4px solid #C87255;
-    }
+
+    .callout { background: #F5E5E0; color: var(--dark); padding: 24px 28px; border-radius: 12px; margin: 32px 0; font-style: italic; font-size: 18px; line-height: 1.5; font-weight: 300; border-left: 4px solid #C87255; }
 
     /* ── DECISION CARDS ── */
     .decisions {
@@ -406,8 +400,11 @@
         </div>
       </div>
 
-      <div class="callout">
-        „Ein AI-Agent, der autonom entscheidet welcher Betrag übernommen wird, macht den Prozess nicht einfacher, er macht ihn unsichtbar. Und was unsichtbar ist, kann nicht vertraut werden."
+      <div style="border: 1px solid var(--coral-bg); border-radius: 8px; overflow: hidden; margin: 32px 0;">
+        <div style="display: flex; align-items: flex-start; padding: 16px 20px; background: var(--coral-bg); border-left: 3px solid var(--coral);">
+          <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;">Insight 1</div>
+          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Ein AI-Agent, der autonom entscheidet welcher Betrag übernommen wird, macht den Prozess nicht einfacher, er macht ihn unsichtbar. Und was unsichtbar ist, kann nicht vertraut werden.</div>
+        </div>
       </div>
     </section>
 
