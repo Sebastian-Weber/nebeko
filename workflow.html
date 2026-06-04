@@ -1,3 +1,6 @@
+
+raw
+Workflow · HTML
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -27,25 +30,23 @@
       --code-green:    #A6E3A1;
       --code-yellow:   #F9E2AF;
     }
-
+ 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
+ 
     body {
       font-family: 'Montserrat', system-ui, sans-serif;
       background: var(--paper);
       color: var(--text);
       line-height: 1.7;
     }
-
-    /* PROGRESS */
+ 
     #progress {
       position: fixed; top: 0; left: 0;
       height: 3px; background: var(--purple);
       width: 0%; transition: width 0.1s; z-index: 100;
     }
-
-    /* NAV */
+ 
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       background: rgba(250,250,250,0.94);
@@ -55,16 +56,16 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 56px;
     }
-
-.nav-logo {
+ 
+    .nav-logo {
       display: flex; align-items: center;
       text-decoration: none;
     }
-
+ 
     .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
     .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
-
+ 
     .nav-tag {
       background: var(--purple-bg); color: var(--purple);
       padding: 4px 12px; border-radius: 20px;
@@ -72,7 +73,7 @@
       letter-spacing: 0.06em; text-transform: uppercase;
       pointer-events: none;
     }
-
+ 
     .nav-cta {
       background: var(--purple); color: var(--white) !important;
       padding: 7px 16px; border-radius: 7px;
@@ -80,159 +81,152 @@
       transition: background 0.15s;
     }
     .nav-cta:hover { background: #A574D6 !important; color: var(--white) !important; }
-
-    /* HERO */
+ 
     .hero {
       padding: 140px 48px 80px;
       max-width: 720px; margin: 0 auto;
     }
-
+ 
     .hero-label {
       font-size: 11px; font-weight: 600;
       color: var(--purple); letter-spacing: 0.1em;
       text-transform: uppercase; margin-bottom: 20px;
       display: flex; align-items: center; gap: 10px;
     }
-
+ 
     .hero-label::before {
       content: ''; display: block;
       width: 32px; height: 1.5px; background: var(--purple);
     }
-
+ 
     h1 {
       font-size: clamp(28px, 4vw, 48px);
       font-weight: 700; line-height: 1.15;
       color: var(--dark); margin-bottom: 16px;
       letter-spacing: -0.01em;
     }
-
+ 
     .hero-sub {
       font-size: 17px; color: var(--muted);
       font-style: italic; max-width: 580px;
       line-height: 1.65; margin-bottom: 40px;
     }
-
+ 
     .meta-row { display: flex; flex-wrap: wrap; gap: 24px; }
     .meta-item { display: flex; flex-direction: column; gap: 3px; }
     .meta-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
     .meta-value { font-size: 13px; color: var(--text); font-weight: 500; }
-
-    /* CONTENT */
+ 
     .content { max-width: 720px; margin: 0 auto; padding: 0 48px 120px; }
-
-    /* BLOCK */
+ 
     .block {
       padding: 64px 0; border-top: 1px solid var(--border);
       opacity: 1; transform: translateY(0);
     }
     .block.visible { opacity: 1; transform: translateY(0); }
-
+ 
     .block-label {
       font-size: 10px; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.12em;
       color: var(--purple); margin-bottom: 16px;
     }
-
+ 
     h2 {
       font-size: 22px; font-weight: 700;
       color: var(--dark); margin-bottom: 20px;
       letter-spacing: -0.01em; line-height: 1.3;
     }
-
+ 
     h3 { font-size: 15px; font-weight: 600; color: var(--dark); margin: 32px 0 10px; }
-
+ 
     p { font-size: 15px; color: var(--text); margin-bottom: 18px; line-height: 1.75; }
-
-    /* WORKFLOW STEPS */
+ 
     .steps { display: flex; flex-direction: column; gap: 0; margin: 28px 0; }
-
+ 
     .step {
       display: grid; grid-template-columns: 56px 1fr;
       gap: 0; position: relative;
     }
-
+ 
     .step-left {
       display: flex; flex-direction: column; align-items: center;
     }
-
+ 
     .step-num {
       width: 40px; height: 40px; border-radius: 50%;
       background: var(--purple); color: var(--white);
       display: flex; align-items: center; justify-content: center;
       font-size: 14px; font-weight: 700; flex-shrink: 0; z-index: 1;
     }
-
+ 
     .step-line {
       width: 2px; background: var(--purple-border);
       flex: 1; margin: 4px 0;
       min-height: 24px;
     }
-
+ 
     .step:last-child .step-line { display: none; }
-
+ 
     .step-content {
       padding: 4px 0 32px 16px;
     }
-
+ 
     .step-title {
       font-size: 15px; font-weight: 600;
       color: var(--dark); margin-bottom: 8px; line-height: 1.3;
     }
-
+ 
     .step-body {
       font-size: 13px; color: var(--muted);
       line-height: 1.65; margin: 0;
     }
-
-    /* FOLDER STRUCTURE */
+ 
     .folder-tree {
       background: var(--white); border: 1.5px solid var(--border);
       border-radius: 12px; padding: 20px 24px; margin: 24px 0;
       font-family: 'Montserrat', monospace;
     }
-
+ 
     .folder-root {
       font-size: 13px; font-weight: 600; color: var(--purple);
       margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
     }
-
+ 
     .folder-item {
       font-size: 13px; padding: 6px 0;
       border-bottom: 1px solid var(--border-light);
       display: flex; align-items: center; gap: 10px;
       color: var(--text);
     }
-
+ 
     .folder-item:last-child { border-bottom: none; }
-
+ 
     .folder-icon { font-size: 16px; flex-shrink: 0; }
     .folder-desc { font-size: 11px; color: var(--muted); margin-left: auto; }
-
-    /* CODE BLOCK */
+ 
     .code-block {
       background: var(--code-bg); border-radius: 12px;
       padding: 24px; margin: 20px 0; overflow-x: auto;
     }
-
+ 
     .code-label {
       font-size: 10px; color: var(--purple-light);
       text-transform: uppercase; letter-spacing: 0.08em;
       margin-bottom: 12px; font-weight: 600;
     }
-
+ 
     .code-block code {
       font-family: 'Montserrat', monospace;
       font-size: 13px; line-height: 1.8;
       color: var(--code-text); display: block;
       white-space: pre-wrap;
     }
-
+ 
     .code-purple { color: var(--code-purple); }
     .code-green  { color: var(--code-green); }
     .code-yellow { color: var(--code-yellow); }
     .code-muted  { color: #6C7086; }
-
-    /* CALLOUT */
+ 
     .callout {
       background: var(--purple-bg); color: var(--dark);
       padding: 24px 28px; border-radius: 12px;
@@ -240,23 +234,21 @@
       font-size: 17px; line-height: 1.6;
       font-weight: 300; border-left: 4px solid var(--purple);
     }
-
-    /* RESULT CARD */
+ 
     .result-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 14px; margin: 24px 0;
     }
-
+ 
     .result-card {
       background: var(--white); border: 1.5px solid var(--border);
       border-radius: 10px; padding: 16px 18px;
     }
-
+ 
     .result-card-icon { font-size: 20px; margin-bottom: 8px; }
     .result-card-name { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
     .result-card-meta { font-size: 11px; color: var(--muted); }
-
-    /* CHECKLIST */
+ 
     .checklist { margin: 20px 0; }
     .check-item {
       display: flex; gap: 12px; align-items: baseline;
@@ -265,16 +257,15 @@
     }
     .check-item:last-child { border-bottom: none; }
     .check-yes { color: var(--purple); font-weight: 700; flex-shrink: 0; }
-
-    /* CTA */
+ 
     .cta-block {
       background: var(--purple-bg); border-radius: 16px;
       padding: 48px; text-align: center; margin-top: 80px;
     }
-
+ 
     .cta-block h2 { color: var(--dark); margin-bottom: 12px; }
     .cta-block p { color: var(--text); margin-bottom: 28px; max-width: 420px; margin-left: auto; margin-right: auto; }
-
+ 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       background: #823DC6; color: var(--white);
@@ -283,15 +274,14 @@
       text-decoration: none; transition: all 0.15s;
     }
     .btn:hover { background: #A574D6; }
-
-    /* FOOTER */
+ 
     footer {
       border-top: 1px solid var(--border); padding: 32px 48px;
       display: flex; justify-content: space-between; align-items: center;
       max-width: 860px; margin: 0 auto;
     }
     footer p { font-size: 12px; color: var(--muted); margin: 0; }
-
+ 
     @media (max-width: 860px) {
       nav { padding: 0 20px; }
       .hero { padding: 120px 20px 60px; }
@@ -303,9 +293,9 @@
   </style>
 </head>
 <body>
-
+ 
 <div id="progress"></div>
-
+ 
 <nav>
   <a href="https://sebastian-weber.github.io/uxui-portfolio/" class="nav-logo"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"/><path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"/><path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"/><path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"/></svg></a>
   <ul class="nav-links">
@@ -313,11 +303,10 @@
     <li><a href="#setup">Setup</a></li>
     <li><a href="#workflow">Workflow</a></li>
     <li><a href="#prompts">Prompts</a></li>
-    <li><a href="case-study.html" class="nav-cta">Case Study →</a></li>
+    <li><a href="case-study.html" class="nav-cta">Case Study &rarr;</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
+ 
 <section class="hero">
   <div class="hero-label">Workflow-Dokumentation</div>
   <h1>Nebenkostenabrechnung<br>per Prompt</h1>
@@ -325,11 +314,11 @@
   <div class="meta-row">
     <div class="meta-item">
       <span class="meta-label">Kategorie</span>
-      <span class="meta-value">Development · AI Workflow</span>
+      <span class="meta-value">Development &middot; AI Workflow</span>
     </div>
     <div class="meta-item">
       <span class="meta-label">Tools</span>
-      <span class="meta-value">Claude MCP · Google Drive · claude.ai</span>
+      <span class="meta-value">Claude MCP &middot; Google Drive &middot; claude.ai</span>
     </div>
     <div class="meta-item">
       <span class="meta-label">Output</span>
@@ -337,46 +326,45 @@
     </div>
   </div>
 </section>
-
-<!-- CONTENT -->
+ 
 <main class="content">
-
-  <!-- 01 SETUP -->
+ 
   <section class="block" id="setup">
-    <div class="block-label">01 · Setup</div>
+    <div class="block-label">01 &middot; Setup</div>
     <h2>Einmaliges Setup: Google Drive als Datenquelle verbinden</h2>
     <p>Der erste Schritt ist Claude Schreibzugriff auf Google Drive zu erteilen. In claude.ai unter Konnektoren Google Drive verbinden und Schreibrechte autorisieren. Ab diesem Moment kann Claude selbstständig Dateien lesen, verarbeiten und neue Dateien erstellen.</p>
-
+ 
     <div class="folder-tree">
-      <div class="folder-root">📁 Nebenkostenabrechnung/</div>
+      <div class="folder-root">&#128193; Nebenkostenabrechnung/</div>
       <div class="folder-item">
-        <span class="folder-icon">📁</span>
+        <span class="folder-icon">&#128193;</span>
         <span>Stammdaten Mieter</span>
         <span class="folder-desc">CSV mit Mieterdaten, Flächen, Vorauszahlungen</span>
       </div>
       <div class="folder-item">
-        <span class="folder-icon">📁</span>
+        <span class="folder-icon">&#128193;</span>
         <span>Abrechnungen Versorger</span>
         <span class="folder-desc">PDFs aller Versorger</span>
       </div>
       <div class="folder-item">
-        <span class="folder-icon">📁</span>
+        <span class="folder-icon">&#128193;</span>
         <span>Erstellte Nebenkostenabrechnungen</span>
         <span class="folder-desc">Output: fertige PDFs pro Mieter</span>
       </div>
     </div>
-
+ 
     <p>Die Ordnerstruktur ist bewusst einfach gehalten. Drei Ordner, drei Funktionen: Eingabe der Stammdaten, Eingabe der Versorgerrechnungen, Ausgabe der fertigen Abrechnungen. Claude navigiert diese Struktur selbstständig sobald ein Prompt abgesetzt wird.</p>
-
+ 
     <div style="background: #FFF8E6; border-left: 4px solid #C8962A; border-radius: 8px; padding: 14px 18px; margin: 20px 0;">
       <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;">Datenschutzhinweis</div>
       <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Mieterdaten sind personenbezogene Daten gemäß DSGVO. Bevor echte Mieter-, Verbrauchs- oder Zahlungsdaten in einen KI-Dienst eingegeben werden, sollte die Datenschutzkonformität des jeweiligen Anbieters geprüft und gegebenenfalls rechtlicher Rat eingeholt werden.</p>
     </div>
   </section>
+ 
   <section class="block" id="workflow">
-    <div class="block-label">02 · Workflow</div>
+    <div class="block-label">02 &middot; Workflow</div>
     <h2>Von der Versorgerrechnung zum fertigen PDF</h2>
-
+ 
     <div class="steps">
       <div class="step">
         <div class="step-left">
@@ -415,7 +403,7 @@
         </div>
         <div class="step-content">
           <div class="step-title">Berechnung pro Mieter</div>
-          <p class="step-body">Kostenanteil nach Wohnfläche und Verbrauch berechnet. Vorauszahlungen gegengerechnet. Nachzahlung oder Guthaben ermittelt. Alle Pflichtangaben nach § 556 BGB eingebaut.</p>
+          <p class="step-body">Kostenanteil nach Wohnfläche und Verbrauch berechnet. Vorauszahlungen gegengerechnet. Nachzahlung oder Guthaben ermittelt. Alle Pflichtangaben nach &sect; 556 BGB eingebaut.</p>
         </div>
       </div>
       <div class="step">
@@ -429,67 +417,68 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="callout">
       „Versorgerrechnungen rein. Prompts absetzen. Fertige Abrechnungs-PDFs raus. Der Workflow funktioniert, aber er braucht mehrere Iterationsschritte bis das Ergebnis wirklich versandfertig ist."
     </div>
-
+ 
     <h3>Ergebnis</h3>
     <div class="result-grid">
       <div class="result-card">
-        <div class="result-card-icon">📄</div>
+        <div class="result-card-icon">&#128196;</div>
         <div class="result-card-name">NK_2024_Max_Mustermann.pdf</div>
-        <div class="result-card-meta">223,81 € Guthaben</div>
+        <div class="result-card-meta">223,81 &euro; Guthaben</div>
       </div>
       <div class="result-card">
-        <div class="result-card-icon">📄</div>
+        <div class="result-card-icon">&#128196;</div>
         <div class="result-card-name">NK_2024_Erika_Musterfrau.pdf</div>
-        <div class="result-card-meta">238,73 € Guthaben</div>
+        <div class="result-card-meta">238,73 &euro; Guthaben</div>
       </div>
       <div class="result-card">
-        <div class="result-card-icon">📄</div>
+        <div class="result-card-icon">&#128196;</div>
         <div class="result-card-name">NK_2024_Klaus_Schmidt.pdf</div>
-        <div class="result-card-meta">208,88 € Guthaben</div>
+        <div class="result-card-meta">208,88 &euro; Guthaben</div>
       </div>
     </div>
   </section>
+ 
   <section class="block" id="prompts">
-    <div class="block-label">03 · Prompts</div>
+    <div class="block-label">03 &middot; Prompts</div>
     <h2>Die Prompts die den Workflow steuern</h2>
     <p>Der gesamte Workflow wird über fünf wiederverwendbare Prompts gesteuert. Einmal eingerichtet, kann er jedes Jahr mit denselben Prompts wiederholt werden.</p>
-
+ 
     <div class="code-block">
-      <div class="code-label">Prompt 1: Kontext & Stammdaten</div>
+      <div class="code-label">Prompt 1: Kontext &amp; Stammdaten</div>
       <code><span class="code-purple">Ich möchte Nebenkostenabrechnungen erstellen.</span>
 Erstelle für jeden Mieter eine rechtssichere PDF-Abrechnung
 gemäß <span class="code-yellow">§ 556 BGB</span> mit vollständiger Kostenaufstellung,
 Verbrauchsnachweis und Abschlussrechnung.
-
+ 
 Stammdaten Vermieter:
 - Name: <span class="code-green">[Name]</span>
 - Adresse: <span class="code-green">[Straße, PLZ Ort]</span>
 - IBAN: <span class="code-green">[IBAN]</span>
-
+ 
 Objekt:
 - Adresse: <span class="code-green">[Straße, PLZ Ort]</span>
 - Gesamtwohnfläche: <span class="code-green">[xxx]</span> m²
-- Abrechnungszeitraum: 01.01.2025–31.12.2025</code>
+- Abrechnungszeitraum: 01.01.2025-31.12.2025</code>
     </div>
-
+ 
     <div class="code-block">
       <div class="code-label">Prompt 2: Kostenpositionen</div>
       <code><span class="code-purple">Hier sind die Gesamtkosten für das Objekt 2025:</span>
-
+ 
 - Energieversorger Gas: <span class="code-yellow">2.847,32 €</span> / Verbrauch
 - Wasserwerk: <span class="code-yellow">1.091,12 €</span> / Verbrauch
 - Abfallentsorgung: <span class="code-yellow">659,52 €</span> / Wohnfläche
 - Gebäudeversicherung: <span class="code-yellow">1.535,17 €</span> / Wohnfläche</code>
     </div>
-
+ 
     <div class="code-block">
       <div class="code-label">Prompt 3: Abrechnung erstellen</div>
       <code><span class="code-purple">Erstelle die Nebenkostenabrechnung als PDF für:</span>
-
+ 
 - Name: <span class="code-green">Max Mustermann</span>
 - Wohnfläche: <span class="code-yellow">75 m²</span>
 - Personen: 3
@@ -497,12 +486,12 @@ Objekt:
 - Wärme: <span class="code-yellow">11.200 kWh</span>
 - Wasser: <span class="code-yellow">84 m³</span></code>
     </div>
-
+ 
     <p>Das erste PDF ist schnell erstellt. Ob es aussieht, wie es aussehen soll, ist eine andere Frage.</p>
-
   </section>
+ 
   <section class="block" id="iteration">
-    <div class="block-label">03c · Iteration</div>
+    <div class="block-label">03c &middot; Iteration</div>
     <h2>Iteration gehört zum Prozess</h2>
     <p>Das ist keine Schwäche des Workflows, sondern der Realität geschuldet: KI generiert beim ersten Versuch ein funktionierendes Dokument, aber kein layouttreues. Redundante Angaben, inkonsistente Abstände, Felder die doppelt erscheinen oder Informationen die an der falschen Stelle landen: all das ist beim ersten Durchlauf normal.</p>
     <p>In der Praxis bedeutet das: Nach dem ersten PDF-Output folgt ein Redigier-Schritt. Man schaut sich das Ergebnis an, identifiziert was nicht stimmt, und gibt Claude präzises Feedback per Prompt.</p>
@@ -515,18 +504,19 @@ Objekt:
   zur Zusammenfassung
 - Die Nachzahlung soll optisch hervorgehoben
   werden
-
+ 
 <span class="code-purple">Bitte das PDF mit diesen Korrekturen neu erstellen.</span></code>
     </div>
     <p>Je präziser das Feedback, desto schneller konvergiert das Layout. In diesem Projekt waren es mehrere solcher Iterationsschritte bis das PDF das Ergebnis hatte, das man einem Mieter tatsächlich zustellen würde. Das gehört zum Prozess dazu.</p>
   </section>
+ 
   <section class="block" id="alternative">
-    <div class="block-label">04 · Alternative Methode</div>
-    <h2>Ohne Google Drive: Drag & Drop</h2>
-    <p>Wer Google Drive nicht einrichten möchte, kann Versorgerrechnungen auch direkt per Drag & Drop in das Claude Chat-Fenster ziehen. Claude extrahiert dann selbstständig alle relevanten Daten aus dem Dokument und fährt mit dem Workflow fort.</p>
+    <div class="block-label">04 &middot; Alternative Methode</div>
+    <h2>Ohne Google Drive: Drag &amp; Drop</h2>
+    <p>Wer Google Drive nicht einrichten möchte, kann Versorgerrechnungen auch direkt per Drag &amp; Drop in das Claude Chat-Fenster ziehen. Claude extrahiert dann selbstständig alle relevanten Daten aus dem Dokument und fährt mit dem Workflow fort.</p>
     <p>Diese Methode eignet sich besonders wenn die Versorgerrechnungen als Foto oder Scan vorliegen oder wenn der Workflow einmalig und ohne Drive-Anbindung genutzt werden soll.</p>
     <div class="code-block">
-      <div class="code-label">Prompt: Drag & Drop Variante</div>
+      <div class="code-label">Prompt: Drag &amp; Drop Variante</div>
       <code><span class="code-purple">Ich habe dir diese Versorgerrechnung hochgeladen.</span>
 Extrahiere daraus alle relevanten Daten
 für eine Nebenkostenabrechnung:
@@ -537,8 +527,9 @@ für eine Nebenkostenabrechnung:
     </div>
     <p style="font-size: 13px; color: var(--muted);">Danach weiter mit Prompt 1 aus Block 03: Stammdaten setzen und Abrechnung erstellen.</p>
   </section>
+ 
   <section class="block" id="reflexion">
-    <div class="block-label">05 · Reflexion</div>
+    <div class="block-label">05 &middot; Reflexion</div>
     <h2>Was dieser Workflow zeigt und was er nicht ist</h2>
     <p>Das ist kein fertiges Produkt. Es ist ein funktionierender Proof of Concept der demonstriert, dass ein vollständiger Datenfluss von der Versorgerrechnung bis zum generierten PDF möglich ist. Das finale Layout erfordert zusätzliche Iterationsschritte, wie in Block 03c dokumentiert.</p>
     <div style="background: #FFF8E6; border-left: 4px solid #C8962A; border-radius: 8px; padding: 14px 18px; margin: 20px 0;">
@@ -546,46 +537,48 @@ für eine Nebenkostenabrechnung:
       <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Alle in dieser Dokumentation verwendeten Daten sind Mockdaten. Vermieter, Mieter, Adressen, Beträge und Zählerstände sind fiktiv und dienen ausschließlich der Demonstration des Workflows.</p>
     </div>
     <p>In einem echten Einsatz würden echte Zählerstände, echte Mietverträge und eine rechtliche Prüfung hinzukommen.</p>
-
+ 
     <div class="checklist">
-      <div class="check-item"><span class="check-yes">✓</span><span>Vollständiger end-to-end Datenfluss funktioniert</span></div>
-      <div class="check-item"><span class="check-yes">✓</span><span>Claude liest PDFs aus Google Drive ohne manuelle Extraktion</span></div>
-      <div class="check-item"><span class="check-yes">✓</span><span>Berechnung und PDF-Generierung in einem Schritt</span></div>
-      <div class="check-item"><span class="check-yes">✓</span><span>Output direkt zurück in Drive hochgeladen</span></div>
-      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">○</span><span>Echte Nutzerdaten noch nicht integriert</span></div>
-      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">○</span><span>Kein automatischer Trigger, manuell angestossen</span></div>
-      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">○</span><span>Rechtliche Prüfung durch Fachanwalt ausstehend</span></div>
+      <div class="check-item"><span class="check-yes">&#10003;</span><span>Vollständiger end-to-end Datenfluss funktioniert</span></div>
+      <div class="check-item"><span class="check-yes">&#10003;</span><span>Claude liest PDFs aus Google Drive ohne manuelle Extraktion</span></div>
+      <div class="check-item"><span class="check-yes">&#10003;</span><span>Berechnung und PDF-Generierung in einem Schritt</span></div>
+      <div class="check-item"><span class="check-yes">&#10003;</span><span>Output direkt zurück in Drive hochgeladen</span></div>
+      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Echte Nutzerdaten noch nicht integriert</span></div>
+      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Kein automatischer Trigger, bewusste Entscheidung, siehe unten</span></div>
+      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Rechtliche Prüfung durch Fachanwalt ausstehend</span></div>
     </div>
+ 
+    <p>Der fehlende automatische Trigger ist keine technische Lücke. Es ist eine bewusste Entscheidung: Ein Agent, der ohne Prüfschritt Nebenkostenabrechnungen generiert und versendet, nimmt dem Vermieter genau die Kontrolle weg, die ihm Vertrauen gibt. &sect; 556 BGB kennt keine Fehlertoleranz. Das mentale Modell des Nutzers auch nicht. Automatisierung ist das richtige Werkzeug wenn Vertrauen bereits etabliert ist. Nicht um es herzustellen.</p>
   </section>
-
+ 
 </main>
-
+ 
   <div style="max-width: 720px; margin: 0 auto; padding: 0 48px 80px;">
     <div class="cta-block">
       <h2>Die Geschichte dahinter</h2>
       <p>Wie dieses Projekt entstand, welche UX-Entscheidungen dahinterstecken und was Contextual Inquiry damit zu tun hat.</p>
-      <a href="case-study.html" class="btn">Case Study lesen →</a>
+      <a href="case-study.html" class="btn">Case Study lesen &rarr;</a>
     </div>
   </div>
-
+ 
   <footer>
-    <p>Sebastian Weber · UI Designer · Design-to-Code · Köln 2026</p>
+    <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; Köln 2026</p>
     <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a></p>
   </footer>
-
+ 
   <script>
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
       const total = document.body.scrollHeight - window.innerHeight;
       document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
     });
-
+ 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.08 });
-
+ 
     document.querySelectorAll('.block').forEach(b => observer.observe(b));
   </script>
-
+ 
 </body>
 </html>
