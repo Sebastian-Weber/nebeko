@@ -23,7 +23,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -33,7 +32,6 @@
       line-height: 1.7;
     }
 
-    /* ── PROGRESS BAR ── */
     #progress {
       position: fixed; top: 0; left: 0;
       height: 3px; background: var(--coral);
@@ -41,7 +39,6 @@
       z-index: 100;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       background: rgba(250, 250, 250, 0.94);
@@ -53,7 +50,8 @@
     }
 
     .nav-logo {
-      display: flex; align-items: center;
+      display: flex;
+      align-items: center;
       text-decoration: none;
     }
 
@@ -85,7 +83,6 @@
     }
     .nav-cta:hover { background: #E88F71 !important; color: var(--white) !important; }
 
-    /* ── HERO ── */
     .hero {
       padding: 140px 48px 80px;
       max-width: 720px; margin: 0 auto;
@@ -117,31 +114,16 @@
       line-height: 1.65; margin-bottom: 40px;
     }
 
-    .meta-row {
-      display: flex; flex-wrap: wrap; gap: 24px;
-    }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 24px; }
+    .meta-item { display: flex; flex-direction: column; gap: 3px; }
+    .meta-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .meta-value { font-size: 13px; color: var(--text); font-weight: 500; }
 
-    .meta-item {
-      display: flex; flex-direction: column; gap: 3px;
-    }
-
-    .meta-label {
-      font-size: 10px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-
-    .meta-value {
-      font-size: 13px; color: var(--text); font-weight: 500;
-    }
-
-    /* ── MAIN CONTENT ── */
     .content {
       max-width: 720px; margin: 0 auto;
       padding: 0 48px 120px;
     }
 
-    /* ── BLOCK ── */
     .block {
       padding: 64px 0;
       border-top: 1px solid var(--border);
@@ -177,14 +159,9 @@
       margin-bottom: 18px; line-height: 1.75;
     }
 
-    /* ── CALLOUT ── */
-
     .callout { background: #F5E5E0; color: var(--dark); padding: 24px 28px; border-radius: 12px; margin: 32px 0; font-style: italic; font-size: 18px; line-height: 1.5; font-weight: 300; border-left: 4px solid #C87255; }
 
-    /* ── DECISION CARDS ── */
-    .decisions {
-      display: grid; gap: 16px; margin: 28px 0;
-    }
+    .decisions { display: grid; gap: 16px; margin: 28px 0; }
 
     .decision-card {
       background: var(--white); border: 1.5px solid var(--border);
@@ -201,20 +178,10 @@
       font-size: 16px; font-weight: 600; flex-shrink: 0;
     }
 
-    .decision-title {
-      font-size: 14px; font-weight: 600;
-      margin-bottom: 6px; color: var(--forest);
-    }
+    .decision-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--forest); }
+    .decision-body { font-size: 13px; color: var(--muted); line-height: 1.65; margin: 0; }
 
-    .decision-body {
-      font-size: 13px; color: var(--muted);
-      line-height: 1.65; margin: 0;
-    }
-
-    /* ── LIMITATIONS ── */
-    .limit-list {
-      list-style: none; margin: 20px 0;
-    }
+    .limit-list { list-style: none; margin: 20px 0; }
 
     .limit-list li {
       font-size: 14px; color: var(--text);
@@ -224,25 +191,18 @@
     }
 
     .limit-list li::before {
-      content: '—';
+      content: '&mdash;';
       color: var(--coral); font-weight: 600;
       flex-shrink: 0;
     }
 
-    /* ── CTA BLOCK ── */
     .cta-block {
       background: #F2E6E3; border-radius: 16px;
       padding: 48px; text-align: center; margin-top: 80px;
     }
 
-    .cta-block h2 {
-      color: #1A1A1A; margin-bottom: 12px;
-    }
-
-    .cta-block p {
-      color: #1A1A1A; margin-bottom: 28px;
-      max-width: 420px; margin-left: auto; margin-right: auto;
-    }
+    .cta-block h2 { color: #1A1A1A; margin-bottom: 12px; }
+    .cta-block p { color: #1A1A1A; margin-bottom: 28px; max-width: 420px; margin-left: auto; margin-right: auto; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -254,7 +214,6 @@
 
     .btn:hover { background: #E88F71; color: var(--white); }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
@@ -262,11 +221,8 @@
       max-width: 860px; margin: 0 auto;
     }
 
-    footer p {
-      font-size: 12px; color: var(--muted); margin: 0;
-    }
+    footer p { font-size: 12px; color: var(--muted); margin: 0; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 0 20px; }
       .hero { padding: 120px 20px 60px; }
@@ -281,99 +237,100 @@
   <div id="progress"></div>
 
   <nav>
-    <a href="https://sebastian-weber.github.io/uxui-portfolio/" class="nav-logo"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"/><path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"/><path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"/><path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"/></svg></a>
+    <a href="https://sebastian-weber.github.io/uxui-portfolio/" class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 32 32" style="display:block;" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"/>
+        <path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"/>
+        <path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"/>
+        <path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"/>
+      </svg>
+    </a>
     <ul class="nav-links">
       <li><span class="nav-tag-coral">UX RESEARCH</span></li>
       <li><a href="#problem">Problem</a></li>
       <li><a href="#ux">UX-Entscheidungen</a></li>
       <li><a href="#design-to-code">Design-to-Code</a></li>
       <li><a href="#ausblick">Ausblick</a></li>
-      <li><a href="workflow.html" class="nav-cta">KI Workflow →</a></li>
+      <li><a href="workflow.html" class="nav-cta">KI Workflow &rarr;</a></li>
     </ul>
   </nav>
 
-  <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-label">Case Study</div>
-    <h1>Den ganzen Tag der Arbeit für KI und Excel</h1>
+    <h1>Den ganzen Tag der Arbeit f&uuml;r KI und Excel</h1>
     <p class="hero-sub">Mein Vermieter. Ein Feiertag. Sein 20 Jahre alter Excel-Workflow.</p>
     <div class="meta-row">
       <div class="meta-item">
         <span class="meta-label">Rolle</span>
-        <span class="meta-value">UX Research · Design-to-Code · AI Integration</span>
+        <span class="meta-value">UX Research &middot; Design-to-Code &middot; AI Integration</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Kontext</span>
-        <span class="meta-value">Eigeninitiative · In-context Interview</span>
+        <span class="meta-value">Eigeninitiative &middot; In-context Interview</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Output</span>
-        <span class="meta-value">Funktionierender KI-Workflow · Claude Chat · Dokumentierte Web-App</span>
+        <span class="meta-value">Funktionierender KI-Workflow &middot; Claude Chat &middot; Dokumentierte Web-App</span>
       </div>
     </div>
   </section>
 
-  <!-- ── CONTENT ── -->
   <main class="content">
 
-    <!-- 01 PROBLEM -->
     <section class="block" id="problem">
-      <div class="block-label">01 · Problem</div>
-      <h2>„Feiertagsarbeit"</h2>
+      <div class="block-label">01 &middot; Problem</div>
+      <h2>&bdquo;Feiertagsarbeit&ldquo;</h2>
       <p>Der 1. Mai. ist ein Feiertag, zumindest auf dem Papier.</p>
-      <p>Mein Vermieter verbrachte ihn damit, seine Nebenkostenabrechnungen zu erstellen. Den ganzen Tag mit seiner Excel-Vorlage, die er vor etwa 20 Jahren selbst gebaut hatte und seitdem jedes Jahr fortschreibt. Vielleicht war er an diesem Abend nicht der einzige — Kleinvermieter und Feiertage, eine stille Tradition? Dieses Jahr aber arbeitete er zum ersten Mal auch mit KI, als Kontrollinstanz. Er kopierte Seiten seiner Excel-Datei einzeln in einen KI-Chat, ließ die Werte prüfen, verglich die Ergebnisse. Manuell. Schritt für Schritt.</p>
-      
-      <p>Am Abend schrieb er mir, dass er den ersten Teil meiner Abrechnung fertig habe. Wie hoch sie am Ende sein würde, wusste ich noch nicht.</p>
-      <p>Was folgte, war ein längerer Austausch. Ich erfuhr wie sein Prozess aussah, wo er hakte, was er entdeckt hatte. Er war nicht frustriert, er war stolz. Stolz darauf, dass seine eigene Berechnungslogik mit der KI übereinstimmte. Dass seine Vorlage von vor 20 Jahren noch korrekt rechnete.</p>
-      <p><em>„Ganzen Tag schon verwendet für KI und Excel."</em></p>
-      <p>Ich hörte ihm zu. Und gleichzeitig sah ich sofort: hier liegt enorm viel ungenutztes Potenzial. Nicht weil er etwas falsch machte, sondern weil der Weg unnötig lang war. Die Versorgerrechnungen lagen als PDFs vor. Die Stammdaten existierten. Die Berechnungslogik funktionierte. Was fehlte, war ein Workflow der das alles zusammenführt, ohne stundenlangen Feiertag-Einsatz.</p>
+      <p>Mein Vermieter verbrachte ihn damit, seine Nebenkostenabrechnungen zu erstellen. Den ganzen Tag mit seiner Excel-Vorlage, die er vor etwa 20 Jahren selbst gebaut hatte und seitdem jedes Jahr fortschreibt. Vielleicht war er an diesem Abend nicht der einzige &mdash; Kleinvermieter und Feiertage, eine stille Tradition? Dieses Jahr aber arbeitete er zum ersten Mal auch mit KI, als Kontrollinstanz. Er kopierte Seiten seiner Excel-Datei einzeln in einen KI-Chat, lie&szlig; die Werte pr&uuml;fen, verglich die Ergebnisse. Manuell. Schritt f&uuml;r Schritt.</p>
+      <p>Am Abend schrieb er mir, dass er den ersten Teil meiner Abrechnung fertig habe. Wie hoch sie am Ende sein w&uuml;rde, wusste ich noch nicht.</p>
+      <p>Was folgte, war ein l&auml;ngerer Austausch. Ich erfuhr wie sein Prozess aussah, wo er hakte, was er entdeckt hatte. Er war nicht frustriert, er war stolz. Stolz darauf, dass seine eigene Berechnungslogik mit der KI &uuml;bereinstimmte. Dass seine Vorlage von vor 20 Jahren noch korrekt rechnete.</p>
+      <p><em>&bdquo;Ganzen Tag schon verwendet f&uuml;r KI und Excel.&ldquo;</em></p>
+      <p>Ich h&ouml;rte ihm zu. Und gleichzeitig sah ich sofort: hier liegt enorm viel ungenutztes Potenzial. Nicht weil er etwas falsch machte, sondern weil der Weg unn&ouml;tig lang war. Die Versorgerrechnungen lagen als PDFs vor. Die Stammdaten existierten. Die Berechnungslogik funktionierte. Was fehlte, war ein Workflow der das alles zusammenf&uuml;hrt, ohne stundenlangen Feiertag-Einsatz.</p>
       <p>Noch am selben Abend fing ich an, genau das zu bauen.</p>
 
       <div style="background: var(--neutral); border-radius: 10px; padding: 24px 28px; margin: 28px 0;">
-        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 18px;">Aus dem WhatsApp-Verlauf · 1. Mai 2026</div>
+        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 18px;">Aus dem WhatsApp-Verlauf &middot; 1. Mai 2026</div>
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <div style="font-size: 14px; line-height: 1.65; color: var(--text); padding: 12px 16px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--border);">
-            „Ja aber nicht mehr heute. Ganzen Tag schon verwendet für KI und Excel."
-            <div style="font-size: 11px; color: var(--muted); margin-top: 6px;">Vermieter · 21:17</div>
+            &bdquo;Ja aber nicht mehr heute. Ganzen Tag schon verwendet f&uuml;r KI und Excel.&ldquo;
+            <div style="font-size: 11px; color: var(--muted); margin-top: 6px;">Vermieter &middot; 21:17</div>
           </div>
           <div style="font-size: 14px; line-height: 1.65; color: var(--text); padding: 12px 16px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--border);">
-            „Ich habe die Excel ja schon vor 20 Jahren erstellt und immer fortgeschrieben. Daher freue ich mich auch gerade, dass es mit KI gleiche Ergebnisse hat."
-            <div style="font-size: 11px; color: var(--muted); margin-top: 6px;">Vermieter · 20:58</div>
+            &bdquo;Ich habe die Excel ja schon vor 20 Jahren erstellt und immer fortgeschrieben. Daher freue ich mich auch gerade, dass es mit KI gleiche Ergebnisse hat.&ldquo;
+            <div style="font-size: 11px; color: var(--muted); margin-top: 6px;">Vermieter &middot; 20:58</div>
           </div>
           <div style="font-size: 14px; line-height: 1.65; color: var(--text); padding: 12px 16px; background: var(--white); border-radius: 8px; border-left: 3px solid var(--border);">
-            „Ja klar aber auf einem guten Weg."
-            <div style="font-size: 11px; color: var(--muted); margin-top: 6px;">Vermieter · 21:44 — als Antwort auf: „Da ist noch viel Potential zur Optimierung."</div>
+            &bdquo;Ja klar aber auf einem guten Weg.&ldquo;
+            <div style="font-size: 11px; color: var(--muted); margin-top: 6px;">Vermieter &middot; 21:44 &mdash; als Antwort auf: &bdquo;Da ist noch viel Potential zur Optimierung.&ldquo;</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 01b RESEARCH -->
     <section class="block" id="research">
-      <div class="block-label">01b · Research</div>
-      <h2>Ist das überhaupt UX Research?</h2>
-      <p>Ich habe an diesem Abend zugehört, gefragt, gebaut und viel gelernt. Habe ich dabei auch geforscht?</p>
-      <p>Was ich hatte, war ein echtes Gespräch während einer echten Situation. Keine Laborsession, kein Leitfaden, kein Aufnahmegerät. WhatsApp-Nachrichten von jemandem, der gerade mittendrin war. Das ist nah an dem, was man In-context Interview nennt: ein Gespräch im echten Arbeitskontext, ungeplant, aber nicht zufällig.</p>
-      <p>Was ich nicht weiß:</p>
+      <div class="block-label">01b &middot; Research</div>
+      <h2>Ist das &uuml;berhaupt UX Research?</h2>
+      <p>Ich habe an diesem Abend zugeh&ouml;rt, gefragt, gebaut und viel gelernt. Habe ich dabei auch geforscht?</p>
+      <p>Was ich hatte, war ein echtes Gespr&auml;ch w&auml;hrend einer echten Situation. Keine Laborsession, kein Leitfaden, kein Aufnahmeger&auml;t. WhatsApp-Nachrichten von jemandem, der gerade mittendrin war. Das ist nah an dem, was man In-context Interview nennt: ein Gespr&auml;ch im echten Arbeitskontext, ungeplant, aber nicht zuf&auml;llig.</p>
+      <p>Was ich nicht wei&szlig;:</p>
       <ul class="limit-list">
-        <li>Ob dieser eine Vermieter repräsentativ ist.</li>
-        <li>Ob seine drei größten Schmerzpunkte dieselben sind wie die seiner Nachbarn, die dasselbe tun.</li>
-        <li>Ob der Review-Step wirklich das ist, was Vertrauen schafft, oder ob er nur für jemanden funktioniert, der ohnehin schon gewohnt ist, jeden Schritt selbst zu kontrollieren.</li>
+        <li>Ob dieser eine Vermieter repr&auml;sentativ ist.</li>
+        <li>Ob seine drei gr&ouml;&szlig;ten Schmerzpunkte dieselben sind wie die seiner Nachbarn, die dasselbe tun.</li>
+        <li>Ob der Review-Step wirklich das ist, was Vertrauen schafft, oder ob er nur f&uuml;r jemanden funktioniert, der ohnehin schon gewohnt ist, jeden Schritt selbst zu kontrollieren.</li>
       </ul>
-      <p>Wenn ich dieses Projekt weiterentwickeln würde, würde ich drei Dinge zuerst untersuchen:</p>
+      <p>Wenn ich dieses Projekt weiterentwickeln w&uuml;rde, w&uuml;rde ich drei Dinge zuerst untersuchen:</p>
       <ul class="limit-list">
-        <li>Wie oft passieren Fehler beim manuellen Übertragen von Zahlen aus Excel, und wann fallen sie auf?</li>
-        <li>Wie viel Vertrauen braucht jemand, bevor er eine KI-extrahierte Zahl in einem Rechtsdokument stehen lässt?</li>
-        <li>Welche Kostenpositionen sind die, bei denen jemand ohne Buchhaltungshintergrund wirklich ins Stocken gerät?</li>
+        <li>Wie oft passieren Fehler beim manuellen &Uuml;bertragen von Zahlen aus Excel, und wann fallen sie auf?</li>
+        <li>Wie viel Vertrauen braucht jemand, bevor er eine KI-extrahierte Zahl in einem Rechtsdokument stehen l&auml;sst?</li>
+        <li>Welche Kostenpositionen sind die, bei denen jemand ohne Buchhaltungshintergrund wirklich ins Stocken ger&auml;t?</li>
       </ul>
-      <p>Ich habe Entscheidungen getroffen, die sich für diesen Nutzer richtig anfühlten. Ob sie das für andere auch tun, weiß ich nicht.</p>
+      <p>Ich habe Entscheidungen getroffen, die sich f&uuml;r diesen Nutzer richtig anf&uuml;hlten. Ob sie das f&uuml;r andere auch tun, wei&szlig; ich nicht.</p>
     </section>
 
-    <!-- 02 UX -->
     <section class="block" id="ux">
-      <div class="block-label">02 · UX-Entscheidungen</div>
+      <div class="block-label">02 &middot; UX-Entscheidungen</div>
       <h2>Den Nutzer verstehen, bevor man die erste Komponente designt</h2>
-      <p>Mein Vermieter ist kein Buchhalter. Er ist jemand, der handwerkliche Arbeiten an seinen Immobilien selbst ausführt, Aufträge vergibt wo nötig, und in diesem Bereich auf jahrzehntelange Erfahrung zurückgreift, teils auf Wissen, das er von seinen Eltern übernommen hat, gemeinsam mit den Wohnungen selbst. Er denkt in Projekten, nicht in Tabellen. Sein Handwerk ist das Objekt, die Verwaltung dahinter ist Infrastruktur. Notwendig, aber nicht sein Kernbereich.</p>
+      <p>Mein Vermieter ist kein Buchhalter. Er ist jemand, der handwerkliche Arbeiten an seinen Immobilien selbst ausf&uuml;hrt, Auftr&auml;ge vergibt wo n&ouml;tig, und in diesem Bereich auf jahrzehntelange Erfahrung zur&uuml;ckgreift, teils auf Wissen, das er von seinen Eltern &uuml;bernommen hat, gemeinsam mit den Wohnungen selbst. Er denkt in Projekten, nicht in Tabellen. Sein Handwerk ist das Objekt, die Verwaltung dahinter ist Infrastruktur. Notwendig, aber nicht sein Kernbereich.</p>
       <p>Diese Persona hat drei direkte Design-Entscheidungen bestimmt.</p>
 
       <div class="decisions">
@@ -381,21 +338,21 @@
           <div class="decision-num">1</div>
           <div>
             <div class="decision-title">Multi-Step statt Single-Form</div>
-            <p class="decision-body">Ein langes Formular mit 30+ Feldern hätte diesen Nutzer sofort verloren. Der Multi-Step-Ansatz bricht die kognitive Last in überschaubare Einheiten auf: ein Schritt, eine klare Aufgabe. Das entspricht der Art, wie jemand denkt, der gewohnt ist, ein Handwerksprojekt in Phasen abzuarbeiten, nicht in Tabellenzeilen.</p>
+            <p class="decision-body">Ein langes Formular mit 30+ Feldern h&auml;tte diesen Nutzer sofort verloren. Der Multi-Step-Ansatz bricht die kognitive Last in &uuml;berschaubare Einheiten auf: ein Schritt, eine klare Aufgabe. Das entspricht der Art, wie jemand denkt, der gewohnt ist, ein Handwerksprojekt in Phasen abzuarbeiten, nicht in Tabellenzeilen.</p>
           </div>
         </div>
         <div class="decision-card">
           <div class="decision-num">2</div>
           <div>
             <div class="decision-title">Der Review-Step ist nicht optional</div>
-            <p class="decision-body">Versorgerabrechnungen kommen als Scan, Foto, Papierbeleg. KI-Extraktion auf nicht vollständig digitalen Dokumenten ist fehleranfällig. Ein falscher Betrag in einer Nebenkostenabrechnung ist rechtlich anfechtbar nach § 556 BGB. Der Review-Step gibt dem Vermieter die Kontrolle zurück.</p>
+            <p class="decision-body">Versorgerabrechnungen kommen als Scan, Foto, Papierbeleg. KI-Extraktion auf nicht vollst&auml;ndig digitalen Dokumenten ist fehleranf&auml;llig. Ein falscher Betrag in einer Nebenkostenabrechnung ist rechtlich anfechtbar nach &sect; 556 BGB. Der Review-Step gibt dem Vermieter die Kontrolle zur&uuml;ck.</p>
           </div>
         </div>
         <div class="decision-card">
           <div class="decision-num">3</div>
           <div>
-            <div class="decision-title">Der Umlageschlüssel bleibt eine manuelle Entscheidung</div>
-            <p class="decision-body">Die KI sieht das Dokument, aber nicht den Mietvertrag, nicht ob jede Wohnung einen eigenen Wasserzähler hat. Er lebt in einer kleinen Gemeinde, die Objekte im selben Dorf. Man kennt sich. Eine falsche Abrechnung beschädigt einen Ruf, der über Generationen aufgebaut wurde.</p>
+            <div class="decision-title">Der Umlageschl&uuml;ssel bleibt eine manuelle Entscheidung</div>
+            <p class="decision-body">Die KI sieht das Dokument, aber nicht den Mietvertrag, nicht ob jede Wohnung einen eigenen Wasserz&auml;hler hat. Er lebt in einer kleinen Gemeinde, die Objekte im selben Dorf. Man kennt sich. Eine falsche Abrechnung besch&auml;digt einen Ruf, der &uuml;ber Generationen aufgebaut wurde.</p>
           </div>
         </div>
       </div>
@@ -403,76 +360,68 @@
       <div style="border: 1px solid var(--coral-bg); border-radius: 8px; overflow: hidden; margin: 32px 0;">
         <div style="display: flex; align-items: flex-start; padding: 16px 20px; background: var(--coral-bg); border-left: 3px solid var(--coral);">
           <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;">Insight 1</div>
-          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Ein AI-Agent, der autonom entscheidet welcher Betrag übernommen wird, macht den Prozess nicht einfacher, er macht ihn unsichtbar. Und was unsichtbar ist, kann nicht vertraut werden.</div>
+          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Ein AI-Agent, der autonom entscheidet welcher Betrag &uuml;bernommen wird, macht den Prozess nicht einfacher, er macht ihn unsichtbar. Und was unsichtbar ist, kann nicht vertraut werden.</div>
         </div>
       </div>
     </section>
 
-    <!-- 03 DESIGN-TO-CODE -->
     <section class="block" id="design-to-code">
-      <div class="block-label">03 · Design-to-Code</div>
+      <div class="block-label">03 &middot; Design-to-Code</div>
       <h2>Warum kein Figma</h2>
-      <p>Der Ausgangspunkt war kein Design-Brief. Es war ein WhatsApp-Gespräch an einem Feiertagsabend mit einem Vermieter, der stolz war, seine 20 Jahre alte Excel-Datei mit KI überprüft zu haben, per Copy & Paste im Browser, ohne optimierten Workflow dahinter.</p>
-      <p>Ich wollte ihm noch am selben Abend zeigen, was 2026 möglich ist. Nicht erklären. Zeigen.</p>
-      <p>Ein Figma-Prototyp wäre dafür das falsche Werkzeug gewesen. Mein Vermieter kennt die Berufsbezeichnungen UX Designer und Frontend Developer vermutlich nicht, geschweige denn wie diese üblicherweise zusammenarbeiten. Ein klickbarer Dummy hätte ihn nicht überzeugt, weil er keinen für ihn direkt verwertbaren Output liefert. Kein Ergebnis, keine Zahl, keine Abrechnung. Nur Klicks ohne Konsequenz.</p>
+      <p>Der Ausgangspunkt war kein Design-Brief. Es war ein WhatsApp-Gespr&auml;ch an einem Feiertagsabend mit einem Vermieter, der stolz war, seine 20 Jahre alte Excel-Datei mit KI &uuml;berpr&uuml;ft zu haben, per Copy &amp; Paste im Browser, ohne optimierten Workflow dahinter.</p>
+      <p>Ich wollte ihm noch am selben Abend zeigen, was 2026 m&ouml;glich ist. Nicht erkl&auml;ren. Zeigen.</p>
+      <p>Ein Figma-Prototyp w&auml;re daf&uuml;r das falsche Werkzeug gewesen. Mein Vermieter kennt die Berufsbezeichnungen UX Designer und Frontend Developer vermutlich nicht, geschweige denn wie diese &uuml;blicherweise zusammenarbeiten. Ein klickbarer Dummy h&auml;tte ihn nicht &uuml;berzeugt, weil er keinen f&uuml;r ihn direkt verwertbaren Output liefert. Kein Ergebnis, keine Zahl, keine Abrechnung. Nur Klicks ohne Konsequenz.</p>
       <p>Was ich stattdessen gebaut habe, war ein funktionierender KI-Workflow in Claude: Versorgerrechnungen hochladen, Daten extrahieren lassen, Abrechnung als PDF generieren. Den Link dazu habe ich ihm noch am selben Abend per WhatsApp geschickt, eine direkt nutzbare Claude-Session, kein Mockup. Diese Dokumentation entstand danach als strukturierte Aufarbeitung des Prozesses.</p>
-
 
       <div style="border: 1px solid var(--coral-bg); border-radius: 8px; overflow: hidden; margin: 32px 0;">
         <div style="display: flex; align-items: flex-start; padding: 16px 20px; background: var(--coral-bg); border-left: 3px solid var(--coral);">
           <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;">Insight 2</div>
-          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Der Designer alleine hätte einen Screen geliefert, den der Vermieter nicht einordnen kann. Der Developer alleine hätte ein Tool gebaut, das der Vermieter nicht bedienen kann. Beides zusammen, als funktionierender Workflow, per WhatsApp-Link verschickt, ist das Argument.</div>
+          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Der Designer alleine h&auml;tte einen Screen geliefert, den der Vermieter nicht einordnen kann. Der Developer alleine h&auml;tte ein Tool gebaut, das der Vermieter nicht bedienen kann. Beides zusammen, als funktionierender Workflow, per WhatsApp-Link verschickt, ist das Argument.</div>
         </div>
       </div>
     </section>
-    </section>
 
-    <!-- 04 EINSCHRÄNKUNGEN -->
     <section class="block" id="einschraenkungen">
-      <div class="block-label">04 · Einschränkungen</div>
+      <div class="block-label">04 &middot; Einschr&auml;nkungen</div>
       <h2>Was dieser PoC bewusst nicht leistet</h2>
-      <p>Der Prototyp verzichtet auf AI Agents, die autonom Entscheidungen treffen. Das war keine technische Einschränkung, es war eine methodische Entscheidung. Der Workflow wurde bewusst am mentalen Modell des Nutzers ausgerichtet: Er kennt den Excel-Prozess. Die App optimiert genau diesen Teil, ohne seinen Referenzrahmen zu ersetzen.</p>
+      <p>Der Prototyp verzichtet auf AI Agents, die autonom Entscheidungen treffen. Das war keine technische Einschr&auml;nkung, es war eine methodische Entscheidung. Der Workflow wurde bewusst am mentalen Modell des Nutzers ausgerichtet: Er kennt den Excel-Prozess. Die App optimiert genau diesen Teil, ohne seinen Referenzrahmen zu ersetzen.</p>
       <ul class="limit-list">
-        <li>Nicht mit dem Vermieter als aktivem Tester validiert. Er war an demselben Abend mit seinem eigenen Workflow beschäftigt.</li>
-        <li>Eine Persona, ein Gespräch. Ob die Entscheidungen für andere Kleinvermieter genauso tragen, ist offen.</li>
-        <li>Der Umlageschlüssel bleibt eine manuelle Entscheidung, weil die KI den Mietvertrag nicht kennt. Das ist eine bewusste Grenze, keine technische Schwäche.</li>
+        <li>Nicht mit dem Vermieter als aktivem Tester validiert. Er war an demselben Abend mit seinem eigenen Workflow besch&auml;ftigt.</li>
+        <li>Eine Persona, ein Gespr&auml;ch. Ob die Entscheidungen f&uuml;r andere Kleinvermieter genauso tragen, ist offen.</li>
+        <li>Der Umlageschl&uuml;ssel bleibt eine manuelle Entscheidung, weil die KI den Mietvertrag nicht kennt. Das ist eine bewusste Grenze, keine technische Schw&auml;che.</li>
       </ul>
       <p>Die technischen Grenzen des PoC sind im <a href="workflow.html" style="color: var(--coral);">Workflow dokumentiert</a>. Diese hier sind methodischer Natur und bleiben auch in einer Folgeversion relevant.</p>
     </section>
 
-    <!-- 05 AUSBLICK -->
     <section class="block" id="ausblick">
-      <div class="block-label">05 · Ausblick</div>
+      <div class="block-label">05 &middot; Ausblick</div>
       <h2>Parallel arbeiten, nicht beobachten</h2>
-      <p>Ich hätte den Vermieter an seinem Arbeiten bremsen und ihn durch einen strukturierten Usability-Test führen können. Ich habe es bewusst nicht getan.</p>
-      <p>Stattdessen lief beides parallel: Er arbeitete an seinen Abrechnungen mit seinem eigenen Workflow. Ich arbeitete daneben an einer Alternative. Wir tauschten uns über WhatsApp aus: er erklärte, ich stellte Fragen, ich zeigte erste Ergebnisse, er reagierte. Das war kein Labor, das war sein natürlicher Kontext.</p>
-      <p>Diese Arbeitsweise hatte einen Nebeneffekt: Der Vermieter war ohnehin bereits dabei, KI in seinen Prozess zu integrieren, auf seine eigene Art. Wir arbeiteten parallel, tauschten uns aus, verglichen Ansätze. Er validierte seinen Workflow, ich baute einen neuen. Das war kein geplantes Outcome, es war ein Synergie-Effekt zweier Menschen die gleichzeitig dasselbe Problem angingen.</p>
-      <p>Der PoC soll ihn inspirieren. Im besten Fall bleibt er als Wendepunkt in Erinnerung: der Abend, an dem er zum ersten Mal gesehen hat, wie sein Prozess 2026 aussehen könnte.</p>
+      <p>Ich h&auml;tte den Vermieter an seinem Arbeiten bremsen und ihn durch einen strukturierten Usability-Test f&uuml;hren k&ouml;nnen. Ich habe es bewusst nicht getan.</p>
+      <p>Stattdessen lief beides parallel: Er arbeitete an seinen Abrechnungen mit seinem eigenen Workflow. Ich arbeitete daneben an einer Alternative. Wir tauschten uns &uuml;ber WhatsApp aus: er erkl&auml;rte, ich stellte Fragen, ich zeigte erste Ergebnisse, er reagierte. Das war kein Labor, das war sein nat&uuml;rlicher Kontext.</p>
+      <p>Diese Arbeitsweise hatte einen Nebeneffekt: Der Vermieter war ohnehin bereits dabei, KI in seinen Prozess zu integrieren, auf seine eigene Art. Wir arbeiteten parallel, tauschten uns aus, verglichen Ans&auml;tze. Er validierte seinen Workflow, ich baute einen neuen. Das war kein geplantes Outcome, es war ein Synergie-Effekt zweier Menschen die gleichzeitig dasselbe Problem angingen.</p>
+      <p>Der PoC soll ihn inspirieren. Im besten Fall bleibt er als Wendepunkt in Erinnerung: der Abend, an dem er zum ersten Mal gesehen hat, wie sein Prozess 2026 aussehen k&ouml;nnte.</p>
     </section>
 
-    <!-- CTA -->
     <div class="cta-block">
       <h2>Der Workflow dahinter</h2>
       <p>Wie dieser Workflow technisch funktioniert, was er leistet und wo die Grenzen liegen.</p>
-      <a href="workflow.html" class="btn">KI Workflow ansehen →</a>
+      <a href="workflow.html" class="btn">KI Workflow ansehen &rarr;</a>
     </div>
 
   </main>
 
   <footer>
-    <p>Sebastian Weber · UI Designer · Design-to-Code · Köln 2026</p>
+    <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
     <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a></p>
   </footer>
 
   <script>
-    // Progress bar
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
       const total = document.body.scrollHeight - window.innerHeight;
       document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
     });
 
-    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
