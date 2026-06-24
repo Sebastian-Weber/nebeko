@@ -359,32 +359,99 @@
     <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a> &middot; <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a></p>
   </footer>
 
-  <script>
-    function decideConsent(accepted) {
-      document.getElementById('cookie-banner').style.display = 'none';
-      if (accepted) {
-        localStorage.setItem('ga_consent', 'granted');
-        loadGA4();
-      } else {
-        localStorage.setItem('ga_consent', 'denied');
+<script>
+  function decideConsent(accepted) {
+    document.getElementById('cookie-banner').style.display = 'none';
+    posthog.capture('cookie_consent', { accepted: accepted });
+    if (accepted) {
+      localStorage.setItem('ga_consent', 'granted');
+      loadGA4();
+    } else {
+      localStorage.setItem('ga_consent', 'denied');
+    }
+  }
+  if (!localStorage.getItem('ga_consent')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+  });
+
+  // Scroll depth milestones
+  var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+  window.addEventListener('scroll', function () {
+    var total = document.body.scrollHeight - window.innerHeight;
+    if (total <= 0) return;
+    var pct = Math.round(window.scrollY / total * 100);
+    [25, 50, 75, 100].forEach(function (m) {
+      if (!scrollMilestones[m] && pct >= m) {
+        scrollMilestones[m] = true;
+        posthog.capture('scroll_depth', { depth_percent: m, page: 'nebeko-case-study' });
       }
-    }
-    if (!localStorage.getItem('ga_consent')) {
-      document.getElementById('cookie-banner').style.display = 'flex';
-    }
-
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      const total = document.body.scrollHeight - window.innerHeight;
-      document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
     });
+  }, { passive: true });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
+  // Time on page milestones
+  var pageLoadTime = Date.now();
+  [30, 60, 120].forEach(function (sec) {
+    setTimeout(function () {
+      posthog.capture('time_on_page', {
+        seconds_on_page: Math.round((Date.now() - pageLoadTime) / 1000),
+        page: 'nebeko-case-study',
+      });
+    }, sec * 1000);
+  });
 
-    document.querySelectorAll('.block').forEach(b => observer.observe(b));
-  </script>
+  // Section viewed (fires once per section when it scrolls into view)
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        posthog.capture('section_viewed', {
+          section_id: e.target.id,
+          page: 'nebeko-case-study',
+        });
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.block').forEach(b => observer.observe(b));
+
+  // CTA and nav clicks
+  document.addEventListener('DOMContentLoaded', function () {
+    var ctaBtn = document.querySelector('.cta-block .btn');
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', function () {
+        posthog.capture('case_study_cta_clicked', {
+          case_study_id: 'nebeko',
+          destination: 'workflow',
+          page: 'nebeko-case-study',
+        });
+      });
+    }
+
+    var navCta = document.querySelector('.nav-cta');
+    if (navCta) {
+      navCta.addEventListener('click', function () {
+        posthog.capture('nav_cta_clicked', {
+          destination: 'workflow',
+          page: 'nebeko-case-study',
+        });
+      });
+    }
+
+    document.querySelectorAll('a[href*="linkedin.com"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        posthog.capture('linkedin_clicked', { page: 'nebeko-case-study' });
+      });
+    });
+  });
+</script>
+
 
 </body>
 </html>
