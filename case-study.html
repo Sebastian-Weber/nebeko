@@ -409,12 +409,12 @@
   // Time on page milestones
   var pageLoadTime = Date.now();
   [30, 60, 120].forEach(function (sec) {
-    setTimeout(function () {
-      posthog.capture('time_on_page', {
-        seconds_on_page: Math.round((Date.now() - pageLoadTime) / 1000),
-        page: 'nebeko-case-study',
-      });
-    }, sec * 1000);
+  setTimeout(function () {
+    posthog.capture('time_on_page', {
+      seconds: Math.round((Date.now() - pageLoadTime) / 1000),
+      page:    'portfolio',
+    });
+  }, sec * 1000);
   });
 
   // Section viewed (fires once per section when it scrolls into view)
