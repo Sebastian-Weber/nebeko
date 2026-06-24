@@ -449,8 +449,8 @@ für eine Nebenkostenabrechnung:
   [30, 60, 120].forEach(function (sec) {
     setTimeout(function () {
       posthog.capture('time_on_page', {
-        seconds_on_page: Math.round((Date.now() - pageLoadTime) / 1000),
-        page: 'nebeko-workflow',
+        seconds: Math.round((Date.now() - pageLoadTime) / 1000),
+        page:    'portfolio',
       });
     }, sec * 1000);
   });
