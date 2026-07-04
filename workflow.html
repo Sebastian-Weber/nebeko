@@ -397,7 +397,7 @@ für eine Nebenkostenabrechnung:
 
   <footer>
     <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
-    <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a> &middot; <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a></p>
+    <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a> &middot; <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a> &middot; <a href="#" id="cookie-settings-link" style="color: var(--muted); text-decoration: none;">Cookie-Einstellungen</a></p>
   </footer>
 
 <script>
@@ -485,6 +485,14 @@ für eine Nebenkostenabrechnung:
         posthog.capture('linkedin_clicked', { page: 'nebeko-workflow' });
       });
     });
+
+    var settingsLink = document.getElementById('cookie-settings-link');
+    if (settingsLink) {
+      settingsLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('cookie-banner').style.display = 'flex';
+      });
+    }
   });
 </script>
 
