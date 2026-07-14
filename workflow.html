@@ -1,32 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- PostHog — Enhanced Tracking (consent-gated: nothing is captured, including -->
-  <!-- session recording, until the visitor accepts the cookie banner below.) -->
-<script>
-  !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Pn On init Wn Qn ki Gn Kn zn capture calculateEventProperties rs register register_once register_for_session unregister unregister_for_session os getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync ls identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty ns es createPersonProfile setInternalOrTestUser ss Hn cs opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Yn debug Ci gr getPageViewId captureTraceFeedback captureTraceMetric qn".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-
-  posthog.init('phc_ozweFkkTr9KtcQmuiTQHfjf3CiFv2hE2dKqwszmWutKv', {
-    api_host: 'https://eu.i.posthog.com',
-    defaults: '2026-05-30',
-    person_profiles: 'identified_only',
-    opt_out_capturing_by_default: true,
-    session_recording: {
-      maskAllInputs: true,
-    },
-    loaded: function (ph) {
-      if (ph.get_explicit_consent_status() === 'pending') {
-        var banner = document.getElementById('cookie-banner');
-        if (banner) banner.style.display = 'flex';
-      }
-    },
-  });
-</script>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="sw_favicon32.svg">
   <title>Nebenkostenabrechnung per Prompt | Sebastian Weber</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
@@ -54,7 +30,6 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body { font-family: 'Montserrat', system-ui, sans-serif; background: var(--paper); color: var(--text); line-height: 1.7; }
 
     #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--purple); width: 0%; transition: width 0.1s; z-index: 100; }
@@ -95,6 +70,15 @@
     .step-title { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px; line-height: 1.3; }
     .step-body { font-size: 13px; color: var(--muted); line-height: 1.65; margin: 0; }
 
+    /* ── Versorger-Rechnungen Grid ── */
+    .invoice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 24px 0; }
+    .invoice-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); transition: border-color 0.15s, box-shadow 0.15s; }
+    .invoice-card:hover { border-color: var(--purple-mid); box-shadow: 0 2px 12px rgba(123,94,167,0.1); }
+    .invoice-icon { font-size: 22px; flex-shrink: 0; }
+    .invoice-name { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+    .invoice-meta { font-size: 11px; color: var(--muted); }
+    .invoice-dl { margin-left: auto; font-size: 11px; color: var(--purple); font-weight: 600; flex-shrink: 0; }
+
     .folder-tree { background: var(--white); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
     .folder-root { font-size: 13px; font-weight: 600; color: var(--purple); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
     .folder-item { font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 10px; color: var(--text); }
@@ -112,11 +96,17 @@
 
     .callout { background: var(--purple-bg); color: var(--dark); padding: 24px 28px; border-radius: 12px; margin: 32px 0; font-style: italic; font-size: 17px; line-height: 1.6; font-weight: 300; border-left: 4px solid var(--purple); }
 
-    .result-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
-    .result-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-    .result-card-icon { font-size: 20px; margin-bottom: 8px; }
+    /* ── Ergebnis-Grid mit PDF-Links ── */
+    .result-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 24px 0; }
+    .result-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 16px 18px; text-decoration: none; color: var(--text); display: block; transition: border-color 0.15s, box-shadow 0.15s; }
+    .result-card:hover { border-color: var(--purple-mid); box-shadow: 0 2px 12px rgba(123,94,167,0.1); }
+    .result-card-icons { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+    .result-card-icon { font-size: 18px; line-height: 1; }
     .result-card-name { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
     .result-card-meta { font-size: 11px; color: var(--muted); }
+    .result-card-dl { font-size: 11px; color: var(--purple); font-weight: 600; margin-top: 8px; }
+    .result-card-center { grid-column: 1 / -1; display: flex; justify-content: center; }
+    .result-card-center .result-card { width: calc(50% - 7px); }
 
     .checklist { margin: 20px 0; }
     .check-item { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; }
@@ -132,29 +122,13 @@
     footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; max-width: 860px; margin: 0 auto; }
     footer p { font-size: 12px; color: var(--muted); margin: 0; }
 
-    /* Cookie Banner */
-    #cookie-banner {
-      position: fixed; bottom: 24px; left: 50%;
-      transform: translateX(-50%);
-      background: #0F1117; color: #fff;
-      padding: 16px 24px; border-radius: 12px;
-      display: flex; align-items: center; gap: 16px;
-      z-index: 200; font-size: 13px;
-      max-width: 560px; width: calc(100% - 48px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    }
-    #cookie-banner p { margin: 0; flex: 1; color: #ccc; line-height: 1.5; }
-    #cookie-banner a { color: #fff; }
-    .cookie-btn { padding: 8px 16px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; white-space: nowrap; font-family: inherit; }
-    .cookie-accept { background: var(--purple); color: #fff; }
-    .cookie-decline { background: transparent; color: #ccc; border: 1px solid #555 !important; }
-
     @media (max-width: 860px) {
       nav { padding: 0 20px; }
       .hero { padding: 120px 20px 60px; }
       .content { padding: 0 20px 80px; }
       .nav-links { display: none; }
       .result-grid { grid-template-columns: 1fr; }
+      .invoice-grid { grid-template-columns: 1fr; }
       footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
@@ -163,14 +137,15 @@
 
 <div id="progress"></div>
 
-<div id="cookie-banner" style="display:none;">
-  <p>Diese Seite verwendet PostHog, um anonymisierte Nutzungsstatistiken und Sitzungsaufzeichnungen zu erstellen. <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" target="_blank">Datenschutz</a></p>
-  <button class="cookie-btn cookie-decline" onclick="decideConsent(false)">Ablehnen</button>
-  <button class="cookie-btn cookie-accept" onclick="decideConsent(true)">Akzeptieren</button>
-</div>
-
 <nav>
-  <a href="https://sebastian-weber.github.io/uxui-portfolio/" class="nav-logo" style="display:flex;align-items:center;line-height:0;margin-right:8px;"><svg width="40" height="40" style="display:block;margin-top:-2px;" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"/><path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"/><path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"/><path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"/></svg></a>
+  <a href="https://sebastian-weber.github.io/uxui-portfolio/" class="nav-logo" style="display:flex;align-items:center;line-height:0;margin-right:8px;">
+    <svg width="40" height="40" style="display:block;margin-top:-2px;" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"/>
+      <path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"/>
+      <path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"/>
+      <path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"/>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><span class="nav-tag">Development</span></li>
     <li><a href="#setup">Setup</a></li>
@@ -202,6 +177,7 @@
 
 <main class="content">
 
+  <!-- ═══════════════════════════════════════════════════════ 01 SETUP -->
   <section class="block" id="setup">
     <div class="block-label">01 &middot; Setup</div>
     <h2>Einmaliges Setup: Google Drive als Datenquelle verbinden</h2>
@@ -222,6 +198,7 @@
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════════════ 02 WORKFLOW -->
   <section class="block" id="workflow">
     <div class="block-label">02 &middot; Workflow</div>
     <h2>Von der Versorgerrechnung zum fertigen PDF</h2>
@@ -268,14 +245,83 @@
       „Versorgerrechnungen rein. Prompts absetzen. Fertige Abrechnungs-PDFs raus. Der Workflow funktioniert, aber er braucht mehrere Iterationsschritte bis das Ergebnis wirklich versandfertig ist."
     </div>
 
-    <h3>Ergebnis</h3>
+    <!-- Mock-Versorgerrechnungen als Input-Beispiele -->
+    <h3>Input: Versorgerrechnungen (Mockdaten)</h3>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Diese vier Beispieldokumente wurden für den Workflow-Test generiert. Alle Firmennamen, Beträge und Bankdaten sind fiktiv.</p>
+    <div class="invoice-grid">
+      <a class="invoice-card" href="pdf/01_Stadtwerke_Gasrechnung_2024.pdf" target="_blank">
+        <span class="invoice-icon">🔥</span>
+        <div>
+          <div class="invoice-name">Stadtwerke Musterstadt AG</div>
+          <div class="invoice-meta">Gas &middot; 1.633,40 €</div>
+        </div>
+        <span class="invoice-dl">PDF ↗</span>
+      </a>
+      <a class="invoice-card" href="pdf/02_Wasserwerke_Wasserrechnung_2024.pdf" target="_blank">
+        <span class="invoice-icon">💧</span>
+        <div>
+          <div class="invoice-name">Wasserwerke Musterstadt GmbH</div>
+          <div class="invoice-meta">Wasser &amp; Abwasser &middot; 1.882,69 €</div>
+        </div>
+        <span class="invoice-dl">PDF ↗</span>
+      </a>
+      <a class="invoice-card" href="pdf/03_ABM_Muellgebuehren_2024.pdf" target="_blank">
+        <span class="invoice-icon">♻️</span>
+        <div>
+          <div class="invoice-name">Abfallbetriebe Musterstadt</div>
+          <div class="invoice-meta">Müllentsorgung &middot; 590,60 €</div>
+        </div>
+        <span class="invoice-dl">PDF ↗</span>
+      </a>
+      <a class="invoice-card" href="pdf/04_MusterVersicherung_Wohngebaeude_2024.pdf" target="_blank">
+        <span class="invoice-icon">🏠</span>
+        <div>
+          <div class="invoice-name">Muster Versicherungs-AG</div>
+          <div class="invoice-meta">Gebäudeversicherung &middot; 621,89 €</div>
+        </div>
+        <span class="invoice-dl">PDF ↗</span>
+      </a>
+    </div>
+
+    <!-- Fertige Abrechnungen als Output -->
+    <h3>Output: Fertige Nebenkostenabrechnungen</h3>
     <div class="result-grid">
-      <div class="result-card"><div class="result-card-icon">&#128196;</div><div class="result-card-name">NK_2024_Max_Mustermann.pdf</div><div class="result-card-meta">223,81 &euro; Guthaben</div></div>
-      <div class="result-card"><div class="result-card-icon">&#128196;</div><div class="result-card-name">NK_2024_Erika_Musterfrau.pdf</div><div class="result-card-meta">238,73 &euro; Guthaben</div></div>
-      <div class="result-card"><div class="result-card-icon">&#128196;</div><div class="result-card-name">NK_2024_Klaus_Schmidt.pdf</div><div class="result-card-meta">208,88 &euro; Guthaben</div></div>
+      <a class="result-card" href="pdf/NK_2024_Max_Mustermann.pdf" target="_blank">
+        <div class="result-card-icons">
+          <span class="result-card-icon">&#128196;</span>
+          <span class="result-card-icon">&#128100;</span>
+        </div>
+        <div class="result-card-name">NK_2024_Max_Mustermann.pdf</div>
+        <div class="result-card-meta">EG Links &middot; 75 m²</div>
+        <div class="result-card-meta">223,81 &euro; Guthaben</div>
+        <div class="result-card-dl">PDF ansehen ↗</div>
+      </a>
+      <a class="result-card" href="pdf/NK_2024_Erika_Musterfrau.pdf" target="_blank">
+        <div class="result-card-icons">
+          <span class="result-card-icon">&#128196;</span>
+          <span class="result-card-icon">&#128100;</span>
+        </div>
+        <div class="result-card-name">NK_2024_Erika_Musterfrau.pdf</div>
+        <div class="result-card-meta">1. OG &middot; 80 m²</div>
+        <div class="result-card-meta">238,73 &euro; Guthaben</div>
+        <div class="result-card-dl">PDF ansehen ↗</div>
+      </a>
+      <div class="result-card-center">
+        <a class="result-card" href="pdf/NK_2024_Klaus_Schmidt.pdf" target="_blank">
+          <div class="result-card-icons">
+            <span class="result-card-icon">&#128196;</span>
+            <span class="result-card-icon">&#128100;</span>
+          </div>
+          <div class="result-card-name">NK_2024_Klaus_Schmidt.pdf</div>
+          <div class="result-card-meta">2. OG &middot; 70 m²</div>
+          <div class="result-card-meta">208,89 &euro; Guthaben</div>
+          <div class="result-card-dl">PDF ansehen ↗</div>
+        </a>
+      </div>
     </div>
   </section>
 
+  <!-- ════════════════════════════════════════════════════ 03 PROMPTS -->
   <section class="block" id="prompts">
     <div class="block-label">03 &middot; Prompts</div>
     <h2>Die Prompts die den Workflow steuern</h2>
@@ -321,9 +367,10 @@ Objekt:
 - Wasser: <span class="code-yellow">84 m³</span></code>
     </div>
 
-    <p>Das erste PDF ist schnell erstellt. Ob es aussieht, wie es aussehen soll, ist eine andere Frage.</p>
+    <p>Das erste PDF ist schnell erstellt. Ob es aussieht, wie es aussehen soll, ist eine andere Frage – <a href="pdf/NK_2024_Max_Mustermann_iteration1.pdf" target="_blank" style="color: var(--purple); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--purple-light);">erstes Ergebnis ansehen ↗</a></p>
   </section>
 
+  <!-- ══════════════════════════════════════════════════ 03c ITERATION -->
   <section class="block" id="iteration">
     <div class="block-label">03c &middot; Iteration</div>
     <h2>Iteration gehört zum Prozess</h2>
@@ -344,6 +391,7 @@ Objekt:
     <p>Je präziser das Feedback, desto schneller konvergiert das Layout. In diesem Projekt waren es mehrere solcher Iterationsschritte bis das PDF das Ergebnis hatte, das man einem Mieter tatsächlich zustellen würde. Das gehört zum Prozess dazu.</p>
   </section>
 
+  <!-- ═════════════════════════════════════════════════ 04 ALTERNATIVE -->
   <section class="block" id="alternative">
     <div class="block-label">04 &middot; Alternative Methode</div>
     <h2>Ohne Google Drive: Drag &amp; Drop</h2>
@@ -362,14 +410,17 @@ für eine Nebenkostenabrechnung:
     <p style="font-size: 13px; color: var(--muted);">Danach weiter mit Prompt 1 aus Block 03: Stammdaten setzen und Abrechnung erstellen.</p>
   </section>
 
+  <!-- ══════════════════════════════════════════════════ 05 REFLEXION -->
   <section class="block" id="reflexion">
     <div class="block-label">05 &middot; Reflexion</div>
     <h2>Was dieser Workflow zeigt und was er nicht ist</h2>
     <p>Das ist kein fertiges Produkt. Es ist ein funktionierender Proof of Concept der demonstriert, dass ein vollständiger Datenfluss von der Versorgerrechnung bis zum generierten PDF möglich ist. Das finale Layout erfordert zusätzliche Iterationsschritte, wie in Block 03c dokumentiert.</p>
+
     <div style="background: #FFF8E6; border-left: 4px solid #C8962A; border-radius: 8px; padding: 14px 18px; margin: 20px 0;">
       <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;">Hinweis</div>
-      <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Alle in dieser Dokumentation verwendeten Daten sind Mockdaten. Vermieter, Mieter, Adressen, Beträge und Zählerstände sind fiktiv und dienen ausschließlich der Demonstration des Workflows.</p>
+      <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Alle in dieser Dokumentation verwendeten Daten sind Mockdaten. Vermieter, Mieter, Adressen, Beträge und Firmennamen sind vollständig fiktiv und dienen ausschließlich der Demonstration des Workflows.</p>
     </div>
+
     <p>In einem echten Einsatz würden echte Zählerstände, echte Mietverträge und eine rechtliche Prüfung hinzukommen.</p>
 
     <div class="checklist">
@@ -387,115 +438,30 @@ für eine Nebenkostenabrechnung:
 
 </main>
 
-  <div style="max-width: 720px; margin: 0 auto; padding: 0 48px 80px;">
-    <div class="cta-block">
-      <h2>Die Geschichte dahinter</h2>
-      <p>Wie dieses Projekt entstand, welche UX-Entscheidungen dahinterstecken und was Contextual Inquiry damit zu tun hat.</p>
-      <a href="case-study.html" class="btn">Case Study lesen &rarr;</a>
-    </div>
+<div style="max-width: 720px; margin: 0 auto; padding: 0 48px 80px;">
+  <div class="cta-block">
+    <h2>Die Geschichte dahinter</h2>
+    <p>Wie dieses Projekt entstand, welche UX-Entscheidungen dahinterstecken und was Contextual Inquiry damit zu tun hat.</p>
+    <a href="case-study.html" class="btn">Case Study lesen &rarr;</a>
   </div>
+</div>
 
-  <footer>
-    <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
-    <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a> &middot; <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a> &middot; <a href="#" id="cookie-settings-link" style="color: var(--muted); text-decoration: none;">Cookie-Einstellungen</a></p>
-  </footer>
+<footer>
+  <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
+  <p>
+    <a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a>
+    &middot;
+    <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a>
+  </p>
+</footer>
 
 <script>
-  function decideConsent(accepted) {
-    document.getElementById('cookie-banner').style.display = 'none';
-    if (accepted) {
-      posthog.opt_in_capturing();
-    } else {
-      posthog.opt_out_capturing();
-    }
-    // No-op if declined — capture() is silently dropped once opted out.
-    posthog.capture('cookie_consent', { accepted: accepted });
-  }
-
-  // Progress bar
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const total = document.body.scrollHeight - window.innerHeight;
     document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
   });
-
-  // Scroll depth milestones
-  var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
-  window.addEventListener('scroll', function () {
-    var total = document.body.scrollHeight - window.innerHeight;
-    if (total <= 0) return;
-    var pct = Math.round(window.scrollY / total * 100);
-    [25, 50, 75, 100].forEach(function (m) {
-      if (!scrollMilestones[m] && pct >= m) {
-        scrollMilestones[m] = true;
-        posthog.capture('scroll_depth', { depth_percent: m, page: 'nebeko-workflow' });
-      }
-    });
-  }, { passive: true });
-
-  // Time on page milestones
-  var pageLoadTime = Date.now();
-  [30, 60, 120].forEach(function (sec) {
-    setTimeout(function () {
-      posthog.capture('time_on_page', {
-        seconds: Math.round((Date.now() - pageLoadTime) / 1000),
-        page:    'portfolio',
-      });
-    }, sec * 1000);
-  });
-
-  // Section viewed (fires once per section when it scrolls into view)
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        posthog.capture('section_viewed', {
-          section_id: e.target.id,
-          page: 'nebeko-workflow',
-        });
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.block').forEach(b => observer.observe(b));
-
-  // CTA and nav clicks
-  document.addEventListener('DOMContentLoaded', function () {
-    var ctaBtn = document.querySelector('.cta-block .btn');
-    if (ctaBtn) {
-      ctaBtn.addEventListener('click', function () {
-        posthog.capture('workflow_cta_clicked', {
-          destination: 'case-study',
-          page: 'nebeko-workflow',
-        });
-      });
-    }
-
-    var navCta = document.querySelector('.nav-cta');
-    if (navCta) {
-      navCta.addEventListener('click', function () {
-        posthog.capture('nav_cta_clicked', {
-          destination: 'case-study',
-          page: 'nebeko-workflow',
-        });
-      });
-    }
-
-    document.querySelectorAll('a[href*="linkedin.com"]').forEach(function (el) {
-      el.addEventListener('click', function () {
-        posthog.capture('linkedin_clicked', { page: 'nebeko-workflow' });
-      });
-    });
-
-    var settingsLink = document.getElementById('cookie-settings-link');
-    if (settingsLink) {
-      settingsLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.getElementById('cookie-banner').style.display = 'flex';
-      });
-    }
-  });
 </script>
-
 
 </body>
 </html>
