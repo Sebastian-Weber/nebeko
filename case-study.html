@@ -312,6 +312,73 @@
       .nav-toggle { display: block; }
     }
 
+
+    /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .nav-toggle svg { display: block; }
+
+    .nav-drawer {
+      position: fixed;
+      top: 0; right: 0;
+      height: 100%;
+      width: min(78vw, 320px);
+      background: var(--paper);
+      z-index: 200;
+      padding: 20px;
+      transform: translateX(100%);
+      transition: transform 0.28s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+    }
+    .nav-drawer[data-open="true"] { transform: translateX(0); }
+
+    .nav-drawer__header { display: flex; justify-content: flex-end; margin-bottom: 24px; }
+    .nav-drawer__close { background: none; border: none; padding: 8px; cursor: pointer; color: var(--text); }
+
+    .nav-drawer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+    .nav-drawer__links li { border-bottom: 1px solid var(--border); }
+    .nav-drawer__links a,
+    .nav-drawer__links .nav-current {
+      display: flex; align-items: center; padding: 16px 4px;
+      text-decoration: none; font-size: 18px; min-height: 44px;
+    }
+    .nav-drawer__links a { color: var(--muted); font-weight: 500; }
+    .nav-drawer__links .nav-current { color: var(--text); font-weight: 700; }
+
+    .nav-drawer__lang { display: flex; gap: 6px; padding: 16px 4px; }
+    .nav-drawer__lang button {
+      font-family: inherit; background: none; border: none;
+      font-size: 16px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 4px;
+    }
+    .nav-drawer__lang button.active { color: var(--text); font-weight: 700; }
+    .nav-drawer__lang .sep { color: var(--border); }
+
+    .nav-overlay {
+      position: fixed; inset: 0;
+      background: rgba(15, 17, 23, 0.55);
+      z-index: 150;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .nav-overlay[data-open="true"] { opacity: 1; pointer-events: auto; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav-drawer, .nav-overlay { transition: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+    }
+
 </style>
 </head>
 <body>
@@ -366,6 +433,7 @@
       <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank">LinkedIn</a></li>
     </ul>
   </aside>
+
 
 
 
@@ -628,7 +696,7 @@
 </script>
 
 
-    <script>
+      <script>
   (function () {
     var toggle = document.getElementById('navToggle');
     var closeBtn = document.getElementById('navDrawerClose');
@@ -690,6 +758,7 @@
     });
   })();
   </script>
+
 
 
 </body>
