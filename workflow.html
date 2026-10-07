@@ -169,7 +169,6 @@
     .cookie-accept { background: var(--purple); color: #fff; }
     .cookie-decline { background: transparent; color: #ccc; border: 1px solid #555 !important; }
 
-  
     /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
     .nav-toggle {
       display: none;
@@ -194,6 +193,7 @@
       display: flex;
       flex-direction: column;
       box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+      overflow-y: auto;
     }
     .nav-drawer[data-open="true"] { transform: translateX(0); }
 
@@ -236,140 +236,44 @@
       .nav-toggle { display: block; }
     }
 
-  
-    /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-      color: var(--text);
+    /* ===== Main nav: active item + language switch ===== */
+    .nav-links a.nav-current { color: var(--text); font-weight: 700; }
+    .lang-switch { display: flex; align-items: center; gap: 6px; }
+    .lang-switch button { font-family: inherit; background: none; border: none; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 2px; }
+    .lang-switch button.active { color: var(--text); font-weight: 700; }
+    .lang-switch .sep { color: var(--border); }
+
+    /* ===== Subnav: sticky in-page jump points (project pages, workflow = purple) ===== */
+    .subnav {
+      position: sticky; top: 56px; z-index: 40; margin-top: 56px;
+      background: rgba(250, 250, 250, 0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: flex-end; align-items: center; gap: 24px;
+      padding: 0 48px; height: 44px;
+      overflow-x: auto; scrollbar-width: none;
     }
-    .nav-toggle svg { display: block; }
-
-    .nav-drawer {
-      position: fixed;
-      top: 0; right: 0;
-      height: 100%;
-      width: min(78vw, 320px);
-      background: var(--paper);
-      z-index: 200;
-      padding: 20px;
-      transform: translateX(100%);
-      transition: transform 0.28s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -8px 0 24px rgba(0,0,0,0.08);
+    .subnav::-webkit-scrollbar { display: none; }
+    .subnav a {
+      font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none;
+      white-space: nowrap; padding: 4px 2px; border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
     }
-    .nav-drawer[data-open="true"] { transform: translateX(0); }
-
-    .nav-drawer__header { display: flex; justify-content: flex-end; margin-bottom: 24px; }
-    .nav-drawer__close { background: none; border: none; padding: 8px; cursor: pointer; color: var(--text); }
-
-    .nav-drawer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-    .nav-drawer__links li { border-bottom: 1px solid var(--border); }
-    .nav-drawer__links a,
-    .nav-drawer__links .nav-current {
-      display: flex; align-items: center; padding: 16px 4px;
-      text-decoration: none; font-size: 18px; min-height: 44px;
+    .subnav a:hover { color: var(--text); }
+    .subnav a.active { color: var(--purple); border-bottom-color: var(--purple); }
+    .hero { padding-top: 80px; }
+    .block[id] { scroll-margin-top: 112px; }
+    .nav-drawer__section-label { display: flex; align-items: center; padding: 16px 4px; font-size: 18px; font-weight: 500; color: var(--text); min-height: 44px; }
+    .nav-drawer__links a.subnav-drawer-item { padding-left: 22px; }
+    .nav-drawer__links a.subnav-drawer-item.active { color: var(--purple); font-weight: 700; }
+    @media (max-width: 860px) {
+      .subnav { padding: 0 20px; }
+      .hero { padding-top: 60px; }
     }
-    .nav-drawer__links a { color: var(--muted); font-weight: 500; }
-    .nav-drawer__links .nav-current { color: var(--text); font-weight: 700; }
-
-    .nav-drawer__lang { display: flex; gap: 6px; padding: 16px 4px; }
-    .nav-drawer__lang button {
-      font-family: inherit; background: none; border: none;
-      font-size: 16px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 4px;
-    }
-    .nav-drawer__lang button.active { color: var(--text); font-weight: 700; }
-    .nav-drawer__lang .sep { color: var(--border); }
-
-    .nav-overlay {
-      position: fixed; inset: 0;
-      background: rgba(15, 17, 23, 0.55);
-      z-index: 150;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-    .nav-overlay[data-open="true"] { opacity: 1; pointer-events: auto; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .nav-drawer, .nav-overlay { transition: none; }
-    }
-
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
+      .subnav { display: none; }
+      .hero { padding-top: 120px; }
+      .block[id] { scroll-margin-top: 72px; }
     }
-
-
-    /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-      color: var(--text);
-    }
-    .nav-toggle svg { display: block; }
-
-    .nav-drawer {
-      position: fixed;
-      top: 0; right: 0;
-      height: 100%;
-      width: min(78vw, 320px);
-      background: var(--paper);
-      z-index: 200;
-      padding: 20px;
-      transform: translateX(100%);
-      transition: transform 0.28s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -8px 0 24px rgba(0,0,0,0.08);
-    }
-    .nav-drawer[data-open="true"] { transform: translateX(0); }
-
-    .nav-drawer__header { display: flex; justify-content: flex-end; margin-bottom: 24px; }
-    .nav-drawer__close { background: none; border: none; padding: 8px; cursor: pointer; color: var(--text); }
-
-    .nav-drawer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-    .nav-drawer__links li { border-bottom: 1px solid var(--border); }
-    .nav-drawer__links a,
-    .nav-drawer__links .nav-current {
-      display: flex; align-items: center; padding: 16px 4px;
-      text-decoration: none; font-size: 18px; min-height: 44px;
-    }
-    .nav-drawer__links a { color: var(--muted); font-weight: 500; }
-    .nav-drawer__links .nav-current { color: var(--text); font-weight: 700; }
-
-    .nav-drawer__lang { display: flex; gap: 6px; padding: 16px 4px; }
-    .nav-drawer__lang button {
-      font-family: inherit; background: none; border: none;
-      font-size: 16px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 4px;
-    }
-    .nav-drawer__lang button.active { color: var(--text); font-weight: 700; }
-    .nav-drawer__lang .sep { color: var(--border); }
-
-    .nav-overlay {
-      position: fixed; inset: 0;
-      background: rgba(15, 17, 23, 0.55);
-      z-index: 150;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-    .nav-overlay[data-open="true"] { opacity: 1; pointer-events: auto; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .nav-drawer, .nav-overlay { transition: none; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-    }
-
 </style>
 </head>
 <body>
@@ -377,72 +281,84 @@
 <div id="progress"></div>
 
 <div id="cookie-banner" style="display:none;">
-  <p>Diese Seite verwendet PostHog, um anonymisierte Nutzungsstatistiken und Sitzungsaufzeichnungen zu erstellen. <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" target="_blank">Datenschutz</a></p>
-  <button class="cookie-btn cookie-decline" onclick="decideConsent(false)">Ablehnen</button>
-  <button class="cookie-btn cookie-accept" onclick="decideConsent(true)">Akzeptieren</button>
+  <p data-en="b0">Diese Seite verwendet PostHog, um anonymisierte Nutzungsstatistiken und Sitzungsaufzeichnungen zu erstellen. <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" target="_blank">Datenschutz</a></p>
+  <button class="cookie-btn cookie-decline" onclick="decideConsent(false)" data-en="b1">Ablehnen</button>
+  <button class="cookie-btn cookie-accept" onclick="decideConsent(true)" data-en="b2">Akzeptieren</button>
 </div>
 
-
-<nav>
+  <nav>
     <a href="https://sebastian-weber.github.io/uxui-portfolio/index.html" class="logo" aria-label="Sebastian Weber - Home" style="display:flex;align-items:center;line-height:0;margin-right:8px;"><svg width="40" height="40" style="display:block;margin-top:-2px;" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"></path><path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"></path><path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"></path><path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"></path></svg></a>
     <ul class="nav-links">
-      <li><span class="nav-current" data-i18n="nav-portfolio" aria-current="page">Portfolio</span></li>
+      <li><a href="https://sebastian-weber.github.io/uxui-portfolio/index.html" class="nav-current" data-i18n="nav-portfolio">Portfolio</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/about.html" class="nav-flex-item" data-i18n="nav-about">About</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" class="nav-flex-item" data-i18n="nav-imprint">Imprint</a></li>
       <li>
         <span class="lang-switch">
           <button type="button" data-lang="de">DE</button>
           <span class="sep">|</span>
-          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="en">EN</button>
         </span>
       </li>
-      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank">LinkedIn</a></li>
+      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank" rel="noopener">LinkedIn</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Menü öffnen">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu" data-i18n-aria="nav-open">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </nav>
+
+  <div class="subnav" id="subnav" role="navigation" aria-label="Sections on this page" data-i18n-aria="sub-aria">
+    <a href="#setup" data-i18n="sub-setup">Setup</a>
+    <a href="#workflow" data-i18n="sub-workflow">Workflow</a>
+    <a href="#prompts" data-i18n="sub-prompts">Prompts</a>
+    <a href="#iteration" data-i18n="sub-iteration">Iteration</a>
+    <a href="#alternative" data-i18n="sub-alternative">Alternative</a>
+    <a href="#reflexion" data-i18n="sub-reflection">Reflection</a>
+  </div>
 
   <div class="nav-overlay" id="navOverlay" data-open="false"></div>
 
   <aside class="nav-drawer" id="navDrawer" data-open="false" aria-hidden="true">
     <div class="nav-drawer__header">
-      <button class="nav-drawer__close" id="navDrawerClose" aria-label="Menü schließen">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <button class="nav-drawer__close" id="navDrawerClose" aria-label="Close menu" data-i18n-aria="nav-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
     <ul class="nav-drawer__links">
-      <li><span class="nav-current" data-i18n="nav-portfolio" aria-current="page">Portfolio</span></li>
+      <li><a href="https://sebastian-weber.github.io/uxui-portfolio/index.html" class="nav-current" data-i18n="nav-portfolio">Portfolio</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/about.html" data-i18n="nav-about">About</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" data-i18n="nav-imprint">Imprint</a></li>
       <li>
         <div class="nav-drawer__lang">
           <button type="button" data-lang="de">DE</button>
           <span class="sep">|</span>
-          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="en">EN</button>
         </div>
       </li>
-      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank">LinkedIn</a></li>
+      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li class="nav-drawer__section-label" data-i18n="sub-label">On this page</li>
+      <li><a href="#setup" class="subnav-drawer-item" data-i18n="sub-setup">Setup</a></li>
+      <li><a href="#workflow" class="subnav-drawer-item" data-i18n="sub-workflow">Workflow</a></li>
+      <li><a href="#prompts" class="subnav-drawer-item" data-i18n="sub-prompts">Prompts</a></li>
+      <li><a href="#iteration" class="subnav-drawer-item" data-i18n="sub-iteration">Iteration</a></li>
+      <li><a href="#alternative" class="subnav-drawer-item" data-i18n="sub-alternative">Alternative</a></li>
+      <li><a href="#reflexion" class="subnav-drawer-item" data-i18n="sub-reflection">Reflection</a></li>
     </ul>
   </aside>
 
-
-
-
 <section class="hero">
-  <div class="hero-label">Workflow-Dokumentation</div>
-  <h1>Nebenkostenabrechnung<br>per Prompt</h1>
-  <p class="hero-sub">Versorgerrechnungen rein. Prompt absetzen. Fertige PDFs raus. So funktioniert der Workflow im Detail.</p>
+  <div class="hero-label" data-en="b3">Workflow-Dokumentation</div>
+  <h1 data-en="b4">Nebenkostenabrechnung<br>per Prompt</h1>
+  <p class="hero-sub" data-en="b5">Versorgerrechnungen rein. Prompt absetzen. Fertige PDFs raus. So funktioniert der Workflow im Detail.</p>
   <div class="meta-row">
-    <div class="meta-item">
+    <div class="meta-item" data-en="b6">
       <span class="meta-label">Kategorie</span>
       <span class="meta-value">Development &middot; AI Workflow</span>
     </div>
-    <div class="meta-item">
+    <div class="meta-item" data-en="b7">
       <span class="meta-label">Tools</span>
       <span class="meta-value">Claude MCP &middot; Google Drive &middot; claude.ai</span>
     </div>
-    <div class="meta-item">
+    <div class="meta-item" data-en="b8">
       <span class="meta-label">Output</span>
       <span class="meta-value">Vollautomatische PDF-Generierung per Prompt</span>
     </div>
@@ -453,81 +369,81 @@
 
   <!-- ═══════════════════════════════════════════════════════ 01 SETUP -->
   <section class="block" id="setup">
-    <div class="block-label">01 &middot; Setup</div>
-    <h2>Einmaliges Setup: Google Drive als Datenquelle verbinden</h2>
-    <p>Der erste Schritt ist Claude Schreibzugriff auf Google Drive zu erteilen. In claude.ai unter Konnektoren Google Drive verbinden und Schreibrechte autorisieren. Ab diesem Moment kann Claude selbstständig Dateien lesen, verarbeiten und neue Dateien erstellen.</p>
+    <div class="block-label" data-en="b9">01 &middot; Setup</div>
+    <h2 data-en="b10">Einmaliges Setup: Google Drive als Datenquelle verbinden</h2>
+    <p data-en="b11">Der erste Schritt ist Claude Schreibzugriff auf Google Drive zu erteilen. In claude.ai unter Konnektoren Google Drive verbinden und Schreibrechte autorisieren. Ab diesem Moment kann Claude selbstständig Dateien lesen, verarbeiten und neue Dateien erstellen.</p>
 
     <div class="folder-tree">
       <div class="folder-root">&#128193; Nebenkostenabrechnung/</div>
-      <div class="folder-item"><span class="folder-icon">&#128193;</span><span>Stammdaten Mieter</span><span class="folder-desc">CSV mit Mieterdaten, Flächen, Vorauszahlungen</span></div>
-      <div class="folder-item"><span class="folder-icon">&#128193;</span><span>Abrechnungen Versorger</span><span class="folder-desc">PDFs aller Versorger</span></div>
-      <div class="folder-item"><span class="folder-icon">&#128193;</span><span>Erstellte Nebenkostenabrechnungen</span><span class="folder-desc">Output: fertige PDFs pro Mieter</span></div>
+      <div class="folder-item" data-en="b13"><span class="folder-icon">&#128193;</span><span>Stammdaten Mieter</span><span class="folder-desc">CSV mit Mieterdaten, Flächen, Vorauszahlungen</span></div>
+      <div class="folder-item" data-en="b14"><span class="folder-icon">&#128193;</span><span>Abrechnungen Versorger</span><span class="folder-desc">PDFs aller Versorger</span></div>
+      <div class="folder-item" data-en="b15"><span class="folder-icon">&#128193;</span><span>Erstellte Nebenkostenabrechnungen</span><span class="folder-desc">Output: fertige PDFs pro Mieter</span></div>
     </div>
 
-    <p>Die Ordnerstruktur ist bewusst einfach gehalten. Drei Ordner, drei Funktionen: Eingabe der Stammdaten, Eingabe der Versorgerrechnungen, Ausgabe der fertigen Abrechnungen. Claude navigiert diese Struktur selbstständig sobald ein Prompt abgesetzt wird.</p>
+    <p data-en="b16">Die Ordnerstruktur ist bewusst einfach gehalten. Drei Ordner, drei Funktionen: Eingabe der Stammdaten, Eingabe der Versorgerrechnungen, Ausgabe der fertigen Abrechnungen. Claude navigiert diese Struktur selbstständig sobald ein Prompt abgesetzt wird.</p>
 
     <div style="background: #FFF8E6; border-left: 4px solid #C8962A; border-radius: 8px; padding: 14px 18px; margin: 20px 0;">
-      <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;">Datenschutzhinweis</div>
-      <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Mieterdaten sind personenbezogene Daten gemäß DSGVO. Bevor echte Mieter-, Verbrauchs- oder Zahlungsdaten in einen KI-Dienst eingegeben werden, sollte die Datenschutzkonformität des jeweiligen Anbieters geprüft und gegebenenfalls rechtlicher Rat eingeholt werden.</p>
+      <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;" data-en="b17">Datenschutzhinweis</div>
+      <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;" data-en="b18">Mieterdaten sind personenbezogene Daten gemäß DSGVO. Bevor echte Mieter-, Verbrauchs- oder Zahlungsdaten in einen KI-Dienst eingegeben werden, sollte die Datenschutzkonformität des jeweiligen Anbieters geprüft und gegebenenfalls rechtlicher Rat eingeholt werden.</p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════ 02 WORKFLOW -->
   <section class="block" id="workflow">
-    <div class="block-label">02 &middot; Workflow</div>
-    <h2>Von der Versorgerrechnung zum fertigen PDF</h2>
+    <div class="block-label" data-en="b19">02 &middot; Workflow</div>
+    <h2 data-en="b20">Von der Versorgerrechnung zum fertigen PDF</h2>
 
     <div class="steps">
       <div class="step">
         <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
         <div class="step-content">
-          <div class="step-title">Versorgerrechnungen in Drive ablegen</div>
-          <p class="step-body">PDFs der Jahresrechnungen aller Versorger in den Ordner „Abrechnungen Versorger" hochladen. Keine spezielle Formatierung nötig. Claude liest das Rohdokument.</p>
+          <div class="step-title" data-en="b21">Versorgerrechnungen in Drive ablegen</div>
+          <p class="step-body" data-en="b22">PDFs der Jahresrechnungen aller Versorger in den Ordner „Abrechnungen Versorger" hochladen. Keine spezielle Formatierung nötig. Claude liest das Rohdokument.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
         <div class="step-content">
-          <div class="step-title">Prompt absetzen</div>
-          <p class="step-body">Der Workflow startet mit einem Kontext-Prompt: Stammdaten, Objekt, Abrechnungszeitraum. Danach folgen Kostenpositionen und pro Mieter ein PDF-Auftrag. Die genauen Prompts sind in Block 03 dokumentiert.</p>
+          <div class="step-title" data-en="b23">Prompt absetzen</div>
+          <p class="step-body" data-en="b24">Der Workflow startet mit einem Kontext-Prompt: Stammdaten, Objekt, Abrechnungszeitraum. Danach folgen Kostenpositionen und pro Mieter ein PDF-Auftrag. Die genauen Prompts sind in Block 03 dokumentiert.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
         <div class="step-content">
-          <div class="step-title">Claude liest und extrahiert</div>
-          <p class="step-body">Claude öffnet alle Versorger-PDFs, extrahiert Beträge, Zeiträume und Kostenpositionen. Parallel werden Stammdaten und Mieterflächen aus der CSV geladen.</p>
+          <div class="step-title" data-en="b25">Claude liest und extrahiert</div>
+          <p class="step-body" data-en="b26">Claude öffnet alle Versorger-PDFs, extrahiert Beträge, Zeiträume und Kostenpositionen. Parallel werden Stammdaten und Mieterflächen aus der CSV geladen.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
         <div class="step-content">
-          <div class="step-title">Berechnung pro Mieter</div>
-          <p class="step-body">Kostenanteil nach Wohnfläche und Verbrauch berechnet. Vorauszahlungen gegengerechnet. Nachzahlung oder Guthaben ermittelt. Alle Pflichtangaben nach &sect; 556 BGB eingebaut.</p>
+          <div class="step-title" data-en="b27">Berechnung pro Mieter</div>
+          <p class="step-body" data-en="b28">Kostenanteil nach Wohnfläche und Verbrauch berechnet. Vorauszahlungen gegengerechnet. Nachzahlung oder Guthaben ermittelt. Alle Pflichtangaben nach &sect; 556 BGB eingebaut.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
         <div class="step-content">
-          <div class="step-title">PDFs generiert und zurück in Drive hochgeladen</div>
-          <p class="step-body">Fertige Abrechnungen landen automatisch im Ordner „Erstellte Nebenkostenabrechnungen". Benannt nach Schema: NK_2024_[Nachname].pdf.</p>
+          <div class="step-title" data-en="b29">PDFs generiert und zurück in Drive hochgeladen</div>
+          <p class="step-body" data-en="b30">Fertige Abrechnungen landen automatisch im Ordner „Erstellte Nebenkostenabrechnungen". Benannt nach Schema: NK_2024_[Nachname].pdf.</p>
         </div>
       </div>
     </div>
 
-    <div class="callout">
+    <div class="callout" data-en="b31">
       „Versorgerrechnungen rein. Prompts absetzen. Fertige Abrechnungs-PDFs raus. Der Workflow funktioniert, aber er braucht mehrere Iterationsschritte bis das Ergebnis wirklich versandfertig ist."
     </div>
 
     <!-- Mock-Versorgerrechnungen als Input-Beispiele -->
-    <h3>Input: Versorgerrechnungen (Mockdaten)</h3>
-    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">Diese vier Beispieldokumente wurden für den Workflow-Test generiert. Alle Firmennamen, Beträge und Bankdaten sind fiktiv.</p>
+    <h3 data-en="b32">Input: Versorgerrechnungen (Mockdaten)</h3>
+    <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;" data-en="b33">Diese vier Beispieldokumente wurden für den Workflow-Test generiert. Alle Firmennamen, Beträge und Bankdaten sind fiktiv.</p>
     <div class="invoice-grid">
       <a class="invoice-card" href="pdf/01_Stadtwerke_Gasrechnung_2024.pdf" target="_blank">
         <span class="invoice-icon">🔥</span>
         <div>
           <div class="invoice-name">Stadtwerke Musterstadt AG</div>
-          <div class="invoice-meta">Gas &middot; 1.633,40 €</div>
+          <div class="invoice-meta" data-en="b35">Gas &middot; 1.633,40 €</div>
         </div>
         <span class="invoice-dl">PDF ↗</span>
       </a>
@@ -535,7 +451,7 @@
         <span class="invoice-icon">💧</span>
         <div>
           <div class="invoice-name">Wasserwerke Musterstadt GmbH</div>
-          <div class="invoice-meta">Wasser &amp; Abwasser &middot; 1.882,69 €</div>
+          <div class="invoice-meta" data-en="b38">Wasser &amp; Abwasser &middot; 1.882,69 €</div>
         </div>
         <span class="invoice-dl">PDF ↗</span>
       </a>
@@ -543,7 +459,7 @@
         <span class="invoice-icon">♻️</span>
         <div>
           <div class="invoice-name">Abfallbetriebe Musterstadt</div>
-          <div class="invoice-meta">Müllentsorgung &middot; 590,60 €</div>
+          <div class="invoice-meta" data-en="b41">Müllentsorgung &middot; 590,60 €</div>
         </div>
         <span class="invoice-dl">PDF ↗</span>
       </a>
@@ -551,7 +467,7 @@
         <span class="invoice-icon">🏠</span>
         <div>
           <div class="invoice-name">Muster Versicherungs-AG</div>
-          <div class="invoice-meta">Gebäudeversicherung &middot; 621,89 €</div>
+          <div class="invoice-meta" data-en="b44">Gebäudeversicherung &middot; 621,89 €</div>
         </div>
         <span class="invoice-dl">PDF ↗</span>
       </a>
@@ -561,13 +477,13 @@
 
   <!-- ════════════════════════════════════════════════════ 03 PROMPTS -->
   <section class="block" id="prompts">
-    <div class="block-label">03 &middot; Prompts</div>
-    <h2>Die Prompts die den Workflow steuern</h2>
-    <p>Der gesamte Workflow wird über fünf wiederverwendbare Prompts gesteuert. Einmal eingerichtet, kann er jedes Jahr mit denselben Prompts wiederholt werden.</p>
+    <div class="block-label" data-en="b46">03 &middot; Prompts</div>
+    <h2 data-en="b47">Die Prompts die den Workflow steuern</h2>
+    <p data-en="b48">Der gesamte Workflow wird über fünf wiederverwendbare Prompts gesteuert. Einmal eingerichtet, kann er jedes Jahr mit denselben Prompts wiederholt werden.</p>
 
     <div class="code-block">
-      <div class="code-label">Prompt 1: Kontext &amp; Stammdaten</div>
-      <code><span class="code-purple">Ich möchte Nebenkostenabrechnungen erstellen.</span>
+      <div class="code-label" data-en="b49">Prompt 1: Kontext &amp; Stammdaten</div>
+      <code data-en="b50"><span class="code-purple">Ich möchte Nebenkostenabrechnungen erstellen.</span>
 Erstelle für jeden Mieter eine rechtssichere PDF-Abrechnung
 gemäß <span class="code-yellow">§ 556 BGB</span> mit vollständiger Kostenaufstellung,
 Verbrauchsnachweis und Abschlussrechnung.
@@ -584,8 +500,8 @@ Objekt:
     </div>
 
     <div class="code-block">
-      <div class="code-label">Prompt 2: Kostenpositionen</div>
-      <code><span class="code-purple">Hier sind die Gesamtkosten für das Objekt 2025:</span>
+      <div class="code-label" data-en="b51">Prompt 2: Kostenpositionen</div>
+      <code data-en="b52"><span class="code-purple">Hier sind die Gesamtkosten für das Objekt 2025:</span>
 
 - Energieversorger Gas: <span class="code-yellow">2.847,32 €</span> / Verbrauch
 - Wasserwerk: <span class="code-yellow">1.091,12 €</span> / Verbrauch
@@ -594,8 +510,8 @@ Objekt:
     </div>
 
     <div class="code-block">
-      <div class="code-label">Prompt 3: Abrechnung erstellen</div>
-      <code><span class="code-purple">Erstelle die Nebenkostenabrechnung als PDF für:</span>
+      <div class="code-label" data-en="b53">Prompt 3: Abrechnung erstellen</div>
+      <code data-en="b54"><span class="code-purple">Erstelle die Nebenkostenabrechnung als PDF für:</span>
 
 - Name: <span class="code-green">Max Mustermann</span>
 - Wohnfläche: <span class="code-yellow">75 m²</span>
@@ -610,30 +526,30 @@ Objekt:
 
   <!-- ══════════════════════════════════════════════════ 03c ITERATION -->
   <section class="block" id="iteration">
-    <div class="block-label">03c &middot; Iteration</div>
-    <h2>Iteration gehört zum Prozess</h2>
+    <div class="block-label" data-en="b55">03c &middot; Iteration</div>
+    <h2 data-en="b56">Iteration gehört zum Prozess</h2>
       
-    <p>Das erste PDF ist schnell erstellt. Ob es aussieht, wie es aussehen soll, ist eine andere Frage.</p>
+    <p data-en="b57">Das erste PDF ist schnell erstellt. Ob es aussieht, wie es aussehen soll, ist eine andere Frage.</p>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 24px 0;">
       <figure style="margin: 0;">
         <a href="pdf/NK_2024_Max_Mustermann_iteration1.pdf" target="_blank">
-          <img src="img/nk_iteration1_seite_1.png" alt="Erste Iteration – Seite 1" style="width: 100%; border: 1.5px solid var(--border); border-radius: 8px; display: block;">
+          <img src="img/nk_iteration1_seite_1.png" alt="Erste Iteration – Seite 1" data-en-alt="alt-p1" style="width: 100%; border: 1.5px solid var(--border); border-radius: 8px; display: block;">
         </a>
-        <figcaption style="font-size: 11px; color: var(--muted); margin-top: 6px; text-align: center;">Seite 1 – <a href="pdf/NK_2024_Max_Mustermann_iteration1.pdf" target="_blank" style="color: var(--purple); text-decoration: none;">PDF ansehen ↗</a></figcaption>
+        <figcaption style="font-size: 11px; color: var(--muted); margin-top: 6px; text-align: center;" data-en="b58">Seite 1 – <a href="pdf/NK_2024_Max_Mustermann_iteration1.pdf" target="_blank" style="color: var(--purple); text-decoration: none;">PDF ansehen ↗</a></figcaption>
       </figure>
       <figure style="margin: 0;">
         <a href="pdf/NK_2024_Max_Mustermann_iteration1.pdf" target="_blank">
-          <img src="img/nk_iteration1_seite_2.png" alt="Erste Iteration – Seite 2" style="width: 100%; border: 1.5px solid var(--border); border-radius: 8px; display: block;">
+          <img src="img/nk_iteration1_seite_2.png" alt="Erste Iteration – Seite 2" data-en-alt="alt-p2" style="width: 100%; border: 1.5px solid var(--border); border-radius: 8px; display: block;">
         </a>
-        <figcaption style="font-size: 11px; color: var(--muted); margin-top: 6px; text-align: center;">Seite 2</figcaption>
+        <figcaption style="font-size: 11px; color: var(--muted); margin-top: 6px; text-align: center;" data-en="b59">Seite 2</figcaption>
       </figure>
     </div>
 
-    <p>Das ist keine Schwäche des Workflows, sondern der Realität geschuldet: KI generiert beim ersten Versuch ein funktionierendes Dokument, aber kein layouttreues. Redundante Angaben, inkonsistente Abstände, Felder die doppelt erscheinen oder Informationen die an der falschen Stelle landen: all das ist beim ersten Durchlauf normal.</p>
-    <p>In der Praxis bedeutet das: Nach dem ersten PDF-Output folgt ein Redigier-Schritt. Man schaut sich das Ergebnis an, identifiziert was nicht stimmt, und gibt Claude präzises Feedback per Prompt.</p>
+    <p data-en="b60">Das ist keine Schwäche des Workflows, sondern der Realität geschuldet: KI generiert beim ersten Versuch ein funktionierendes Dokument, aber kein layouttreues. Redundante Angaben, inkonsistente Abstände, Felder die doppelt erscheinen oder Informationen die an der falschen Stelle landen: all das ist beim ersten Durchlauf normal.</p>
+    <p data-en="b61">In der Praxis bedeutet das: Nach dem ersten PDF-Output folgt ein Redigier-Schritt. Man schaut sich das Ergebnis an, identifiziert was nicht stimmt, und gibt Claude präzises Feedback per Prompt.</p>
     <div class="code-block">
-      <div class="code-label">Prompt: Layout korrigieren</div>
-      <code><span class="code-purple">Das Layout hat folgende Probleme:</span>
+      <div class="code-label" data-en="b62">Prompt: Layout korrigieren</div>
+      <code data-en="b63"><span class="code-purple">Das Layout hat folgende Probleme:</span>
 - Die Vermieteradresse erscheint doppelt
 - Der Abrechnungszeitraum fehlt in der Kopfzeile
 - Die Kostenaufstellung hat zu wenig Abstand
@@ -643,9 +559,9 @@ Objekt:
 
 <span class="code-purple">Bitte das PDF mit diesen Korrekturen neu erstellen.</span></code>
     </div>
-    <p>Je präziser das Feedback, desto schneller konvergiert das Layout. In diesem Projekt waren es mehrere solcher Iterationsschritte bis das PDF das Ergebnis hatte, das man einem Mieter tatsächlich zustellen würde. Das gehört zum Prozess dazu.</p>
+    <p data-en="b64">Je präziser das Feedback, desto schneller konvergiert das Layout. In diesem Projekt waren es mehrere solcher Iterationsschritte bis das PDF das Ergebnis hatte, das man einem Mieter tatsächlich zustellen würde. Das gehört zum Prozess dazu.</p>
 
-    <h3>Ergebnis: Fertige Nebenkostenabrechnungen</h3>
+    <h3 data-en="b65">Ergebnis: Fertige Nebenkostenabrechnungen</h3>
     <div class="result-grid">
       <a class="result-card" href="pdf/NK_2024_Max_Mustermann.pdf" target="_blank">
         <div class="result-card-icons">
@@ -653,9 +569,9 @@ Objekt:
           <span class="result-card-icon">&#128100;</span>
         </div>
         <div class="result-card-name">NK_2024_Max_Mustermann.pdf</div>
-        <div class="result-card-meta">EG Links &middot; 75 m²</div>
-        <div class="result-card-meta">223,81 &euro; Guthaben</div>
-        <div class="result-card-dl">PDF ansehen ↗</div>
+        <div class="result-card-meta" data-en="b68">EG Links &middot; 75 m²</div>
+        <div class="result-card-meta" data-en="b69">223,81 &euro; Guthaben</div>
+        <div class="result-card-dl" data-en="b70">PDF ansehen ↗</div>
       </a>
       <a class="result-card" href="pdf/NK_2024_Erika_Musterfrau.pdf" target="_blank">
         <div class="result-card-icons">
@@ -663,9 +579,9 @@ Objekt:
           <span class="result-card-icon">&#128100;</span>
         </div>
         <div class="result-card-name">NK_2024_Erika_Musterfrau.pdf</div>
-        <div class="result-card-meta">1. OG &middot; 80 m²</div>
-        <div class="result-card-meta">238,73 &euro; Guthaben</div>
-        <div class="result-card-dl">PDF ansehen ↗</div>
+        <div class="result-card-meta" data-en="b73">1. OG &middot; 80 m²</div>
+        <div class="result-card-meta" data-en="b74">238,73 &euro; Guthaben</div>
+        <div class="result-card-dl" data-en="b75">PDF ansehen ↗</div>
       </a>
       <div class="result-card-center">
         <a class="result-card" href="pdf/NK_2024_Klaus_Schmidt.pdf" target="_blank">
@@ -674,9 +590,9 @@ Objekt:
             <span class="result-card-icon">&#128100;</span>
           </div>
           <div class="result-card-name">NK_2024_Klaus_Schmidt.pdf</div>
-          <div class="result-card-meta">2. OG &middot; 70 m²</div>
-          <div class="result-card-meta">208,89 &euro; Guthaben</div>
-          <div class="result-card-dl">PDF ansehen ↗</div>
+          <div class="result-card-meta" data-en="b78">2. OG &middot; 70 m²</div>
+          <div class="result-card-meta" data-en="b79">208,89 &euro; Guthaben</div>
+          <div class="result-card-dl" data-en="b80">PDF ansehen ↗</div>
         </a>
       </div>
     </div>
@@ -684,13 +600,13 @@ Objekt:
 
   <!-- ═════════════════════════════════════════════════ 04 ALTERNATIVE -->
   <section class="block" id="alternative">
-    <div class="block-label">04 &middot; Alternative Methode</div>
-    <h2>Ohne Google Drive: Drag &amp; Drop</h2>
-    <p>Wer Google Drive nicht einrichten möchte, kann Versorgerrechnungen auch direkt per Drag &amp; Drop in das Claude Chat-Fenster ziehen. Claude extrahiert dann selbstständig alle relevanten Daten aus dem Dokument und fährt mit dem Workflow fort.</p>
-    <p>Diese Methode eignet sich besonders wenn die Versorgerrechnungen als Foto oder Scan vorliegen oder wenn der Workflow einmalig und ohne Drive-Anbindung genutzt werden soll.</p>
+    <div class="block-label" data-en="b81">04 &middot; Alternative Methode</div>
+    <h2 data-en="b82">Ohne Google Drive: Drag &amp; Drop</h2>
+    <p data-en="b83">Wer Google Drive nicht einrichten möchte, kann Versorgerrechnungen auch direkt per Drag &amp; Drop in das Claude Chat-Fenster ziehen. Claude extrahiert dann selbstständig alle relevanten Daten aus dem Dokument und fährt mit dem Workflow fort.</p>
+    <p data-en="b84">Diese Methode eignet sich besonders wenn die Versorgerrechnungen als Foto oder Scan vorliegen oder wenn der Workflow einmalig und ohne Drive-Anbindung genutzt werden soll.</p>
     <div class="code-block">
-      <div class="code-label">Prompt: Drag &amp; Drop Variante</div>
-      <code><span class="code-purple">Ich habe dir diese Versorgerrechnung hochgeladen.</span>
+      <div class="code-label" data-en="b85">Prompt: Drag &amp; Drop Variante</div>
+      <code data-en="b86"><span class="code-purple">Ich habe dir diese Versorgerrechnung hochgeladen.</span>
 Extrahiere daraus alle relevanten Daten
 für eine Nebenkostenabrechnung:
 - Versorger und Abrechnungszeitraum
@@ -698,51 +614,51 @@ für eine Nebenkostenabrechnung:
 - Gesamtbetrag
 - Empfohlener Umlageschlüssel</code>
     </div>
-    <p style="font-size: 13px; color: var(--muted);">Danach weiter mit Prompt 1 aus Block 03: Stammdaten setzen und Abrechnung erstellen.</p>
+    <p style="font-size: 13px; color: var(--muted);" data-en="b87">Danach weiter mit Prompt 1 aus Block 03: Stammdaten setzen und Abrechnung erstellen.</p>
   </section>
 
   <!-- ══════════════════════════════════════════════════ 05 REFLEXION -->
   <section class="block" id="reflexion">
-    <div class="block-label">05 &middot; Reflexion</div>
-    <h2>Was dieser Workflow zeigt und was er nicht ist</h2>
-    <p>Das ist kein fertiges Produkt. Es ist ein funktionierender Proof of Concept der demonstriert, dass ein vollständiger Datenfluss von der Versorgerrechnung bis zum generierten PDF möglich ist. Das finale Layout erfordert zusätzliche Iterationsschritte, wie in Block 03c dokumentiert.</p>
+    <div class="block-label" data-en="b88">05 &middot; Reflexion</div>
+    <h2 data-en="b89">Was dieser Workflow zeigt und was er nicht ist</h2>
+    <p data-en="b90">Das ist kein fertiges Produkt. Es ist ein funktionierender Proof of Concept der demonstriert, dass ein vollständiger Datenfluss von der Versorgerrechnung bis zum generierten PDF möglich ist. Das finale Layout erfordert zusätzliche Iterationsschritte, wie in Block 03c dokumentiert.</p>
 
     <div style="background: #FFF8E6; border-left: 4px solid #C8962A; border-radius: 8px; padding: 14px 18px; margin: 20px 0;">
-      <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;">Hinweis</div>
-      <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;">Alle in dieser Dokumentation verwendeten Daten sind Mockdaten. Vermieter, Mieter, Adressen, Beträge und Firmennamen sind vollständig fiktiv und dienen ausschließlich der Demonstration des Workflows.</p>
+      <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #C8962A; margin-bottom: 6px;" data-en="b91">Hinweis</div>
+      <p style="font-size: 13px; color: var(--text); margin: 0; line-height: 1.65;" data-en="b92">Alle in dieser Dokumentation verwendeten Daten sind Mockdaten. Vermieter, Mieter, Adressen, Beträge und Firmennamen sind vollständig fiktiv und dienen ausschließlich der Demonstration des Workflows.</p>
     </div>
 
-    <p>In einem echten Einsatz würden echte Zählerstände, echte Mietverträge und eine rechtliche Prüfung hinzukommen.</p>
+    <p data-en="b93">In einem echten Einsatz würden echte Zählerstände, echte Mietverträge und eine rechtliche Prüfung hinzukommen.</p>
 
     <div class="checklist">
-      <div class="check-item"><span class="check-yes">&#10003;</span><span>Vollständiger end-to-end Datenfluss funktioniert</span></div>
-      <div class="check-item"><span class="check-yes">&#10003;</span><span>Claude liest PDFs aus Google Drive ohne manuelle Extraktion</span></div>
-      <div class="check-item"><span class="check-yes">&#10003;</span><span>Berechnung und PDF-Generierung in einem Schritt</span></div>
-      <div class="check-item"><span class="check-yes">&#10003;</span><span>Output direkt zurück in Drive hochgeladen</span></div>
-      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Echte Nutzerdaten noch nicht integriert</span></div>
-      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Kein automatischer Trigger, bewusste Entscheidung, siehe unten</span></div>
-      <div class="check-item" style="color: var(--muted)"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Rechtliche Prüfung durch Fachanwalt ausstehend</span></div>
+      <div class="check-item" data-en="b94"><span class="check-yes">&#10003;</span><span>Vollständiger end-to-end Datenfluss funktioniert</span></div>
+      <div class="check-item" data-en="b95"><span class="check-yes">&#10003;</span><span>Claude liest PDFs aus Google Drive ohne manuelle Extraktion</span></div>
+      <div class="check-item" data-en="b96"><span class="check-yes">&#10003;</span><span>Berechnung und PDF-Generierung in einem Schritt</span></div>
+      <div class="check-item" data-en="b97"><span class="check-yes">&#10003;</span><span>Output direkt zurück in Drive hochgeladen</span></div>
+      <div class="check-item" style="color: var(--muted)" data-en="b98"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Echte Nutzerdaten noch nicht integriert</span></div>
+      <div class="check-item" style="color: var(--muted)" data-en="b99"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Kein automatischer Trigger, bewusste Entscheidung, siehe unten</span></div>
+      <div class="check-item" style="color: var(--muted)" data-en="b100"><span style="color: var(--muted); font-weight:700;">&#9675;</span><span>Rechtliche Prüfung durch Fachanwalt ausstehend</span></div>
     </div>
 
-    <p>Der fehlende automatische Trigger ist keine technische Lücke. Es ist eine bewusste Entscheidung: Ein Agent, der ohne Prüfschritt Nebenkostenabrechnungen generiert und versendet, nimmt dem Vermieter genau die Kontrolle weg, die ihm Vertrauen gibt. &sect; 556 BGB kennt keine Fehlertoleranz. Das mentale Modell des Nutzers auch nicht. Automatisierung ist das richtige Werkzeug wenn Vertrauen bereits etabliert ist. Nicht um es herzustellen.</p>
+    <p data-en="b101">Der fehlende automatische Trigger ist keine technische Lücke. Es ist eine bewusste Entscheidung: Ein Agent, der ohne Prüfschritt Nebenkostenabrechnungen generiert und versendet, nimmt dem Vermieter genau die Kontrolle weg, die ihm Vertrauen gibt. &sect; 556 BGB kennt keine Fehlertoleranz. Das mentale Modell des Nutzers auch nicht. Automatisierung ist das richtige Werkzeug wenn Vertrauen bereits etabliert ist. Nicht um es herzustellen.</p>
   </section>
 
 </main>
 
 <div style="max-width: 720px; margin: 0 auto; padding: 0 48px 80px;">
   <div class="cta-block">
-    <h2>Die Geschichte dahinter</h2>
-    <p>Wie dieses Projekt entstand, welche UX-Entscheidungen dahinterstecken und was Contextual Inquiry damit zu tun hat.</p>
-    <a href="case-study.html" class="btn">Case Study lesen &rarr;</a>
+    <h2 data-en="b102">Die Geschichte dahinter</h2>
+    <p data-en="b103">Wie dieses Projekt entstand, welche UX-Entscheidungen dahinterstecken und was Contextual Inquiry damit zu tun hat.</p>
+    <a href="case-study.html" class="btn" data-en="b104">Case Study lesen &rarr;</a>
   </div>
 </div>
 
 <footer>
-  <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
+  <p data-en="b105">Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
   <p>
     <a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a>
     &middot;
-    <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a> &middot; <a href="#" id="cookie-settings-link" style="color: var(--muted); text-decoration: none;">Cookie-Einstellungen</a>
+    <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;" data-en="f-imprint">Impressum &amp; Datenschutz</a> &middot; <a href="#" id="cookie-settings-link" style="color: var(--muted); text-decoration: none;" data-en="f-cookie">Cookie-Einstellungen</a>
   </p>
 </footer>
 
@@ -835,7 +751,174 @@ für eine Nebenkostenabrechnung:
   });
 </script>
 
-      <script>
+<script>
+  /* ===== i18n (Navigation): EN im Markup, DE im Dictionary, gemeinsamer Key sw-lang ===== */
+  (function () {
+    var LANG_KEY = 'sw-lang';
+    var DE = {
+      "nav-portfolio": "Portfolio",
+      "nav-about": "Über mich",
+      "nav-imprint": "Impressum",
+      "nav-open": "Menü öffnen",
+      "nav-close": "Menü schließen",
+      "sub-aria": "Abschnitte auf dieser Seite",
+      "sub-label": "Auf dieser Seite",
+      "sub-setup": "Setup",
+      "sub-workflow": "Workflow",
+      "sub-prompts": "Prompts",
+      "sub-iteration": "Iteration",
+      "sub-alternative": "Alternative",
+      "sub-reflection": "Reflexion"
+    };
+    /* Fließtext: DE im Markup (Originalsprache), EN im Dictionary */
+    var EN = {
+      "b105": "Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; Cologne 2026",
+      "b104": "Read the case study &rarr;",
+      "b103": "How this project came about, which UX decisions are behind it, and what contextual inquiry has to do with it.",
+      "b102": "The story behind it",
+      "b101": "The missing automatic trigger is not a technical gap. It is a deliberate decision: an agent that generates and sends utility cost statements without a review step takes away exactly the control that gives the landlord confidence. &sect; 556 BGB has no tolerance for errors. Neither does the user&rsquo;s mental model. Automation is the right tool once trust is established. Not to create it.",
+      "b100": "<span style=\"color: var(--muted); font-weight:700;\">&#9675;</span><span>Legal review by a specialist lawyer pending</span>",
+      "b99": "<span style=\"color: var(--muted); font-weight:700;\">&#9675;</span><span>No automatic trigger, a deliberate decision, see below</span>",
+      "b98": "<span style=\"color: var(--muted); font-weight:700;\">&#9675;</span><span>Real user data not yet integrated</span>",
+      "b97": "<span class=\"check-yes\">&#10003;</span><span>Output uploaded directly back to Drive</span>",
+      "b96": "<span class=\"check-yes\">&#10003;</span><span>Calculation and PDF generation in one step</span>",
+      "b95": "<span class=\"check-yes\">&#10003;</span><span>Claude reads PDFs from Google Drive without manual extraction</span>",
+      "b94": "<span class=\"check-yes\">&#10003;</span><span>Complete end-to-end data flow works</span>",
+      "b93": "A real deployment would add real meter readings, real leases and a legal review.",
+      "b92": "All data used in this documentation is mock data. Landlord, tenants, addresses, amounts and company names are entirely fictitious and serve solely to demonstrate the workflow.",
+      "b91": "Note",
+      "b90": "This is not a finished product. It is a working proof of concept demonstrating that a complete data flow from utility bill to generated PDF is possible. The final layout requires additional iterations, as documented in block 03c.",
+      "b89": "What this workflow shows and what it is not",
+      "b88": "05 &middot; Reflection",
+      "b87": "Then continue with prompt 1 from block 03: set the master data and create the statement.",
+      "b86": "<span class=\"code-purple\">I have uploaded this utility bill for you.</span>\nExtract all data relevant\nfor a utility cost statement:\n- Provider and billing period\n- All cost items with amounts\n- Total amount\n- Recommended allocation key",
+      "b85": "Prompt: Drag &amp; drop variant",
+      "b84": "This method is particularly suitable if the utility bills are available as photos or scans, or if the workflow is to be used once without a Drive connection.",
+      "b83": "If you don&rsquo;t want to set up Google Drive, you can also drag &amp; drop utility bills directly into the Claude chat window. Claude then extracts all relevant data from the document on its own and continues with the workflow.",
+      "b82": "Without Google Drive: drag &amp; drop",
+      "b81": "04 &middot; Alternative method",
+      "b80": "View PDF ↗",
+      "b79": "&euro;208.89 credit",
+      "b78": "2nd floor &middot; 70 m²",
+      "b75": "View PDF ↗",
+      "b74": "&euro;238.73 credit",
+      "b73": "1st floor &middot; 80 m²",
+      "b70": "View PDF ↗",
+      "b69": "&euro;223.81 credit",
+      "b68": "Ground floor left &middot; 75 m²",
+      "b65": "Result: finished utility cost statements",
+      "b64": "The more precise the feedback, the faster the layout converges. In this project, it took several such iterations until the PDF reached a state you would actually send to a tenant. That is part of the process.",
+      "b63": "<span class=\"code-purple\">The layout has the following problems:</span>\n- The landlord&rsquo;s address appears twice\n- The billing period is missing from the header\n- The cost breakdown has too little spacing\n  from the summary\n- The additional payment should be visually\n  highlighted\n\n<span class=\"code-purple\">Please recreate the PDF with these corrections.</span>",
+      "b62": "Prompt: Correct the layout",
+      "b61": "In practice, this means the first PDF output is followed by an editing step. You review the result, identify what is wrong, and give Claude precise feedback by prompt.",
+      "b60": "This is not a weakness of the workflow, it is simply reality: on the first attempt, AI generates a working document, but not one that is true to the layout. Redundant information, inconsistent spacing, fields that appear twice or information in the wrong place: all of this is normal on the first run.",
+      "b59": "Page 2",
+      "b58": "Page 1 &middot; <a href=\"pdf/NK_2024_Max_Mustermann_iteration1.pdf\" target=\"_blank\" style=\"color: var(--purple); text-decoration: none;\">View PDF ↗</a>",
+      "b57": "The first PDF is created quickly. Whether it looks the way it should is another question.",
+      "b56": "Iteration is part of the process",
+      "b55": "03c &middot; Iteration",
+      "b54": "<span class=\"code-purple\">Create the utility cost statement as a PDF for:</span>\n\n- Name: <span class=\"code-green\">Max Mustermann</span>\n- Floor area: <span class=\"code-yellow\">75 m²</span>\n- Occupants: 3\n- Advance payment: <span class=\"code-yellow\">&euro;150</span> / month\n- Heating: <span class=\"code-yellow\">11,200 kWh</span>\n- Water: <span class=\"code-yellow\">84 m³</span>",
+      "b53": "Prompt 3: Create statement",
+      "b52": "<span class=\"code-purple\">Here are the total costs for the property in 2025:</span>\n\n- Gas supplier: <span class=\"code-yellow\">&euro;2,847.32</span> / consumption\n- Water utility: <span class=\"code-yellow\">&euro;1,091.12</span> / consumption\n- Waste disposal: <span class=\"code-yellow\">&euro;659.52</span> / floor area\n- Building insurance: <span class=\"code-yellow\">&euro;1,535.17</span> / floor area",
+      "b51": "Prompt 2: Cost items",
+      "b50": "<span class=\"code-purple\">I want to create utility cost statements.</span>\nFor each tenant, create a legally compliant PDF statement\nunder <span class=\"code-yellow\">&sect; 556 BGB</span> with a complete cost breakdown,\nproof of consumption and final settlement.\n\nLandlord master data:\n- Name: <span class=\"code-green\">[Name]</span>\n- Address: <span class=\"code-green\">[Street, postcode, city]</span>\n- IBAN: <span class=\"code-green\">[IBAN]</span>\n\nProperty:\n- Address: <span class=\"code-green\">[Street, postcode, city]</span>\n- Total floor area: <span class=\"code-green\">[xxx]</span> m²\n- Billing period: 01/01/2025-12/31/2025",
+      "b49": "Prompt 1: Context &amp; master data",
+      "b48": "The entire workflow is controlled by five reusable prompts. Once set up, it can be repeated every year with the same prompts.",
+      "b47": "The prompts that control the workflow",
+      "b46": "03 &middot; Prompts",
+      "b44": "Building insurance &middot; &euro;621.89",
+      "b41": "Waste disposal &middot; &euro;590.60",
+      "b38": "Water &amp; wastewater &middot; &euro;1,882.69",
+      "b35": "Gas &middot; &euro;1,633.40",
+      "b33": "These four sample documents were generated for the workflow test. All company names, amounts and bank details are fictitious.",
+      "b32": "Input: utility bills (mock data)",
+      "b31": "\n      &ldquo;Utility bills in. Send the prompts. Finished statement PDFs out. The workflow works, but it takes several iterations until the result is truly ready to send.&rdquo;\n    ",
+      "b30": "Finished statements are saved automatically to the &ldquo;Erstellte Nebenkostenabrechnungen&rdquo; (generated statements) folder, named according to the pattern NK_2024_[Last name].pdf.",
+      "b29": "PDFs generated and uploaded back to Drive",
+      "b28": "Cost share calculated by floor area and consumption. Advance payments offset. Additional payment or credit determined. All mandatory information under &sect; 556 BGB (German Civil Code) included.",
+      "b27": "Calculation per tenant",
+      "b26": "Claude opens all utility PDFs and extracts amounts, periods and cost items. In parallel, master data and tenant floor areas are loaded from the CSV.",
+      "b25": "Claude reads and extracts",
+      "b24": "The workflow starts with a context prompt: master data, property, billing period. This is followed by the cost items and one PDF request per tenant. The exact prompts are documented in block 03.",
+      "b23": "Send the prompt",
+      "b22": "Upload the annual bills from all utility providers as PDFs to the &ldquo;Abrechnungen Versorger&rdquo; (utility bills) folder. No special formatting needed. Claude reads the raw document.",
+      "b21": "Store utility bills in Drive",
+      "b20": "From utility bill to finished PDF",
+      "b19": "02 &middot; Workflow",
+      "b18": "Tenant data is personal data under the GDPR. Before real tenant, consumption or payment data is entered into an AI service, the provider&rsquo;s data protection compliance should be checked and legal advice obtained if necessary.",
+      "b17": "Data protection notice",
+      "b16": "The folder structure is deliberately simple. Three folders, three functions: input of master data, input of utility bills, output of finished statements. Claude navigates this structure on its own as soon as a prompt is sent.",
+      "b15": "<span class=\"folder-icon\">&#128193;</span><span>Generated utility cost statements</span><span class=\"folder-desc\">Output: finished PDFs per tenant</span>",
+      "b14": "<span class=\"folder-icon\">&#128193;</span><span>Utility bills</span><span class=\"folder-desc\">PDFs from all utility providers</span>",
+      "b13": "<span class=\"folder-icon\">&#128193;</span><span>Tenant master data</span><span class=\"folder-desc\">CSV with tenant data, floor areas, advance payments</span>",
+      "b11": "The first step is to give Claude write access to Google Drive. In claude.ai, connect Google Drive under Connectors and authorize write permissions. From then on, Claude can read and process files and create new ones on its own.",
+      "b10": "One-time setup: connect Google Drive as the data source",
+      "b9": "01 &middot; Setup",
+      "b8": "\n      <span class=\"meta-label\">Output</span>\n      <span class=\"meta-value\">Fully automated PDF generation by prompt</span>\n    ",
+      "b7": "\n      <span class=\"meta-label\">Tools</span>\n      <span class=\"meta-value\">Claude MCP &middot; Google Drive &middot; claude.ai</span>\n    ",
+      "b6": "\n      <span class=\"meta-label\">Category</span>\n      <span class=\"meta-value\">Development &middot; AI Workflow</span>\n    ",
+      "b5": "Utility bills in. Send a prompt. Finished PDFs out. This is how the workflow works in detail.",
+      "b4": "Utility cost statements<br>by prompt",
+      "b3": "Workflow documentation",
+      "b2": "Accept",
+      "b1": "Decline",
+      "b0": "This site uses PostHog to create anonymized usage statistics and session recordings. <a href=\"https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html\" target=\"_blank\">Privacy policy</a>",
+      "f-imprint": "Imprint &amp; Privacy",
+      "f-cookie": "Cookie settings",
+      "alt-p1": "First iteration, page 1",
+      "alt-p2": "First iteration, page 2",
+      "__title": "Utility cost statements by prompt | Sebastian Weber"
+};
+    var htmlCache = new Map();
+    var altCache = new Map();
+    var titleDE = document.title;
+    var textCache = new Map();
+    var attrCache = new Map();
+    var currentLang = 'en';
+    try { currentLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
+
+    function apply() {
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        if (!textCache.has(el)) textCache.set(el, el.textContent);
+        var de = DE[el.getAttribute('data-i18n')];
+        el.textContent = (currentLang === 'de' && de !== undefined) ? de : textCache.get(el);
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+        if (!attrCache.has(el)) attrCache.set(el, el.getAttribute('aria-label'));
+        var de = DE[el.getAttribute('data-i18n-aria')];
+        el.setAttribute('aria-label', (currentLang === 'de' && de !== undefined) ? de : attrCache.get(el));
+      });
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        if (!htmlCache.has(el)) htmlCache.set(el, el.innerHTML);
+        var en = EN[el.getAttribute('data-en')];
+        el.innerHTML = (currentLang === 'en' && en !== undefined) ? en : htmlCache.get(el);
+      });
+      document.querySelectorAll('[data-en-alt]').forEach(function (el) {
+        if (!altCache.has(el)) altCache.set(el, el.getAttribute('alt'));
+        var en = EN[el.getAttribute('data-en-alt')];
+        el.setAttribute('alt', (currentLang === 'en' && en !== undefined) ? en : altCache.get(el));
+      });
+      document.documentElement.lang = currentLang;
+      document.title = currentLang === 'en' ? EN['__title'] : titleDE;
+      document.querySelectorAll('[data-lang]').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === currentLang);
+      });
+    }
+
+    window.switchLang = function (lang) {
+      if (lang !== 'en' && lang !== 'de') return;
+      currentLang = lang;
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+      apply();
+    };
+
+    document.querySelectorAll('[data-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { window.switchLang(b.getAttribute('data-lang')); });
+    });
+    apply();
+  })();
+
+  /* ===== Mobile Drawer ===== */
   (function () {
     var toggle = document.getElementById('navToggle');
     var closeBtn = document.getElementById('navDrawerClose');
@@ -882,23 +965,33 @@ für eine Nebenkostenabrechnung:
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
 
-    /* Sprach-Buttons im Drawer an die bestehende switchLang() koppeln */
-    var drawerLangButtons = document.querySelectorAll('.nav-drawer__lang [data-lang]');
-    drawerLangButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var lang = btn.getAttribute('data-lang');
-        if (typeof window.switchLang === 'function') {
-          window.switchLang(lang);
-        }
-        document.querySelectorAll('[data-lang]').forEach(function (b) {
-          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-        });
+    /* Tap auf einen Sprungpunkt schließt den Drawer */
+    document.querySelectorAll('.subnav-drawer-item').forEach(function (a) {
+      a.addEventListener('click', function () {
+        lastFocused = null;
+        closeDrawer();
       });
     });
   })();
-  </script>
 
-
+  /* ===== Subnav: aktiven Abschnitt markieren ===== */
+  (function () {
+    var ids = ['setup', 'workflow', 'prompts', 'iteration', 'alternative', 'reflexion'];
+    var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    var links = document.querySelectorAll('.subnav a, .subnav-drawer-item');
+    function update() {
+      var offset = window.innerWidth <= 640 ? 80 : 120;
+      var current = null;
+      sections.forEach(function (sec) { if (sec.getBoundingClientRect().top - offset <= 0) current = sec.id; });
+      links.forEach(function (a) {
+        a.classList.toggle('active', current !== null && a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
 
 </body>
 </html>
