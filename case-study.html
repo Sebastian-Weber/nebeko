@@ -178,140 +178,6 @@
       .nav-links { display: none; }
       footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
     }
-  
-    /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-      color: var(--text);
-    }
-    .nav-toggle svg { display: block; }
-
-    .nav-drawer {
-      position: fixed;
-      top: 0; right: 0;
-      height: 100%;
-      width: min(78vw, 320px);
-      background: var(--paper);
-      z-index: 200;
-      padding: 20px;
-      transform: translateX(100%);
-      transition: transform 0.28s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -8px 0 24px rgba(0,0,0,0.08);
-    }
-    .nav-drawer[data-open="true"] { transform: translateX(0); }
-
-    .nav-drawer__header { display: flex; justify-content: flex-end; margin-bottom: 24px; }
-    .nav-drawer__close { background: none; border: none; padding: 8px; cursor: pointer; color: var(--text); }
-
-    .nav-drawer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-    .nav-drawer__links li { border-bottom: 1px solid var(--border); }
-    .nav-drawer__links a,
-    .nav-drawer__links .nav-current {
-      display: flex; align-items: center; padding: 16px 4px;
-      text-decoration: none; font-size: 18px; min-height: 44px;
-    }
-    .nav-drawer__links a { color: var(--muted); font-weight: 500; }
-    .nav-drawer__links .nav-current { color: var(--text); font-weight: 700; }
-
-    .nav-drawer__lang { display: flex; gap: 6px; padding: 16px 4px; }
-    .nav-drawer__lang button {
-      font-family: inherit; background: none; border: none;
-      font-size: 16px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 4px;
-    }
-    .nav-drawer__lang button.active { color: var(--text); font-weight: 700; }
-    .nav-drawer__lang .sep { color: var(--border); }
-
-    .nav-overlay {
-      position: fixed; inset: 0;
-      background: rgba(15, 17, 23, 0.55);
-      z-index: 150;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-    .nav-overlay[data-open="true"] { opacity: 1; pointer-events: auto; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .nav-drawer, .nav-overlay { transition: none; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-    }
-
-  
-    /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-      color: var(--text);
-    }
-    .nav-toggle svg { display: block; }
-
-    .nav-drawer {
-      position: fixed;
-      top: 0; right: 0;
-      height: 100%;
-      width: min(78vw, 320px);
-      background: var(--paper);
-      z-index: 200;
-      padding: 20px;
-      transform: translateX(100%);
-      transition: transform 0.28s ease;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -8px 0 24px rgba(0,0,0,0.08);
-    }
-    .nav-drawer[data-open="true"] { transform: translateX(0); }
-
-    .nav-drawer__header { display: flex; justify-content: flex-end; margin-bottom: 24px; }
-    .nav-drawer__close { background: none; border: none; padding: 8px; cursor: pointer; color: var(--text); }
-
-    .nav-drawer__links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-    .nav-drawer__links li { border-bottom: 1px solid var(--border); }
-    .nav-drawer__links a,
-    .nav-drawer__links .nav-current {
-      display: flex; align-items: center; padding: 16px 4px;
-      text-decoration: none; font-size: 18px; min-height: 44px;
-    }
-    .nav-drawer__links a { color: var(--muted); font-weight: 500; }
-    .nav-drawer__links .nav-current { color: var(--text); font-weight: 700; }
-
-    .nav-drawer__lang { display: flex; gap: 6px; padding: 16px 4px; }
-    .nav-drawer__lang button {
-      font-family: inherit; background: none; border: none;
-      font-size: 16px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 4px;
-    }
-    .nav-drawer__lang button.active { color: var(--text); font-weight: 700; }
-    .nav-drawer__lang .sep { color: var(--border); }
-
-    .nav-overlay {
-      position: fixed; inset: 0;
-      background: rgba(15, 17, 23, 0.55);
-      z-index: 150;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.28s ease;
-    }
-    .nav-overlay[data-open="true"] { opacity: 1; pointer-events: auto; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .nav-drawer, .nav-overlay { transition: none; }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-    }
-
 
     /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
     .nav-toggle {
@@ -379,6 +245,51 @@
       .nav-toggle { display: block; }
     }
 
+    /* ===== Main nav: active item + language switch ===== */
+    .nav-links { align-items: center; }
+    .nav-links a.nav-current { color: var(--text); font-weight: 700; }
+    .lang-switch { display: flex; align-items: center; gap: 6px; }
+    .lang-switch button { font-family: inherit; background: none; border: none; font-size: 13px; font-weight: 500; color: var(--muted); cursor: pointer; padding: 2px; }
+    .lang-switch button.active { color: var(--text); font-weight: 700; }
+    .lang-switch .sep { color: var(--border); }
+    .nav-drawer { overflow-y: auto; }
+
+    /* ===== Subnav: sticky in-page jump points (project pages) ===== */
+    .subnav {
+      position: sticky; top: 56px; z-index: 40; margin-top: 56px;
+      background: rgba(250, 250, 250, 0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: flex-end; align-items: center; gap: 24px;
+      padding: 0 48px; height: 44px;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .subnav::-webkit-scrollbar { display: none; }
+    .subnav a {
+      font-size: 12px; font-weight: 600; color: var(--muted); text-decoration: none;
+      white-space: nowrap; padding: 4px 2px; border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
+    }
+    .subnav a:hover { color: var(--text); }
+    .subnav a.active { color: var(--coral); border-bottom-color: var(--coral); }
+    .hero { padding-top: 80px; }
+    .block[id] { scroll-margin-top: 112px; }
+    .nav-drawer__section-label { display: flex; align-items: center; padding: 16px 4px; font-size: 18px; font-weight: 500; color: var(--text); min-height: 44px; }
+    .nav-drawer__links a.subnav-drawer-item { padding-left: 22px; }
+    .nav-drawer__links a.subnav-drawer-item.active { color: var(--coral); font-weight: 700; }
+    @media (max-width: 860px) {
+      .subnav { padding: 0 20px; }
+      .hero { padding-top: 60px; }
+    }
+    @media (max-width: 640px) {
+      .subnav { display: none; }
+      .hero { padding-top: 120px; }
+      .block[id] { scroll-margin-top: 72px; }
+    }
+
+    /* WhatsApp-Screenshot */
+    .chat-figure { margin: 28px 0; }
+    .chat-figure img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); }
+    .chat-figure figcaption { font-size: 11px; color: var(--muted); margin-top: 8px; }
 </style>
 </head>
 <body>
@@ -386,71 +297,84 @@
   <div id="progress"></div>
 
   <div id="cookie-banner" style="display:none;">
-    <p>Diese Seite verwendet PostHog, um anonymisierte Nutzungsstatistiken und Sitzungsaufzeichnungen zu erstellen. <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" target="_blank">Datenschutz</a></p>
-    <button class="cookie-btn cookie-decline" onclick="decideConsent(false)">Ablehnen</button>
-    <button class="cookie-btn cookie-accept" onclick="decideConsent(true)">Akzeptieren</button>
+    <p data-en="b0">Diese Seite verwendet PostHog, um anonymisierte Nutzungsstatistiken und Sitzungsaufzeichnungen zu erstellen. <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" target="_blank">Datenschutz</a></p>
+    <button class="cookie-btn cookie-decline" onclick="decideConsent(false)" data-en="b1">Ablehnen</button>
+    <button class="cookie-btn cookie-accept" onclick="decideConsent(true)" data-en="b2">Akzeptieren</button>
   </div>
 
   <nav>
     <a href="https://sebastian-weber.github.io/uxui-portfolio/index.html" class="logo" aria-label="Sebastian Weber - Home" style="display:flex;align-items:center;line-height:0;margin-right:8px;"><svg width="40" height="40" style="display:block;margin-top:-2px;" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M0 19.0413V20.7092L15.9986 26.8336V25.3991L11.7131 23.7928V23.7848L10.3368 23.2366L1.51283 19.9819L10.3384 16.7504V16.7576L11.7146 16.2587L16.0001 14.6524V13.1113L0 19.0413Z" fill="#0F1117"></path><path d="M16.0001 24.0696V22.4023L0 16.2773V17.7113L4.2859 19.317V19.3279L5.66227 19.8759L14.4871 23.1294L5.66227 26.3619V26.3546L4.2859 26.8534L0 28.4591V29.9996L16.0001 24.0696Z" fill="#0F1117"></path><path d="M20.3237 26.8333H22.1382L28.8006 11H27.2401L25.4927 15.242H25.4809L24.8844 16.6032L21.3438 25.3361L17.826 16.6032H17.8339L17.2911 15.242L15.5436 11H13.8672L20.3237 26.8333Z" fill="#0F1117"></path><path d="M23.5229 26.8333H25.3374L31.9998 11H30.4394L28.6919 15.2418H28.6801L28.0837 16.603L24.543 25.3354L21.0252 16.603H21.0331L20.4903 15.2418L18.7429 11H17.0664L23.5229 26.8333Z" fill="#0F1117"></path></svg></a>
     <ul class="nav-links">
-      <li><span class="nav-current" data-i18n="nav-portfolio" aria-current="page">Portfolio</span></li>
+      <li><a href="https://sebastian-weber.github.io/uxui-portfolio/index.html" class="nav-current" data-i18n="nav-portfolio">Portfolio</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/about.html" class="nav-flex-item" data-i18n="nav-about">About</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" class="nav-flex-item" data-i18n="nav-imprint">Imprint</a></li>
       <li>
         <span class="lang-switch">
           <button type="button" data-lang="de">DE</button>
           <span class="sep">|</span>
-          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="en">EN</button>
         </span>
       </li>
-      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank">LinkedIn</a></li>
+      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank" rel="noopener">LinkedIn</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Menü öffnen">
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu" data-i18n-aria="nav-open">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6H21M3 12H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </nav>
+
+  <div class="subnav" id="subnav" role="navigation" aria-label="Sections on this page" data-i18n-aria="sub-aria">
+    <a href="#problem" data-i18n="sub-problem">Problem</a>
+    <a href="#research" data-i18n="sub-research">Research</a>
+    <a href="#ux" data-i18n="sub-ux">UX decisions</a>
+    <a href="#design-to-code" data-i18n="sub-d2c">Design-to-Code</a>
+    <a href="#einschraenkungen" data-i18n="sub-limits">Limitations</a>
+    <a href="#ausblick" data-i18n="sub-outlook">Outlook</a>
+  </div>
 
   <div class="nav-overlay" id="navOverlay" data-open="false"></div>
 
   <aside class="nav-drawer" id="navDrawer" data-open="false" aria-hidden="true">
     <div class="nav-drawer__header">
-      <button class="nav-drawer__close" id="navDrawerClose" aria-label="Menü schließen">
+      <button class="nav-drawer__close" id="navDrawerClose" aria-label="Close menu" data-i18n-aria="nav-close">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
     <ul class="nav-drawer__links">
-      <li><span class="nav-current" data-i18n="nav-portfolio" aria-current="page">Portfolio</span></li>
+      <li><a href="https://sebastian-weber.github.io/uxui-portfolio/index.html" class="nav-current" data-i18n="nav-portfolio">Portfolio</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/about.html" data-i18n="nav-about">About</a></li>
       <li><a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" data-i18n="nav-imprint">Imprint</a></li>
       <li>
         <div class="nav-drawer__lang">
           <button type="button" data-lang="de">DE</button>
           <span class="sep">|</span>
-          <button type="button" data-lang="en" class="active">EN</button>
+          <button type="button" data-lang="en">EN</button>
         </div>
       </li>
-      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank">LinkedIn</a></li>
+      <li><a href="https://linkedin.com/in/sebastian-weber1708" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li class="nav-drawer__section-label" data-i18n="sub-label">On this page</li>
+      <li><a href="#problem" class="subnav-drawer-item" data-i18n="sub-problem">Problem</a></li>
+      <li><a href="#research" class="subnav-drawer-item" data-i18n="sub-research">Research</a></li>
+      <li><a href="#ux" class="subnav-drawer-item" data-i18n="sub-ux">UX decisions</a></li>
+      <li><a href="#design-to-code" class="subnav-drawer-item" data-i18n="sub-d2c">Design-to-Code</a></li>
+      <li><a href="#einschraenkungen" class="subnav-drawer-item" data-i18n="sub-limits">Limitations</a></li>
+      <li><a href="#ausblick" class="subnav-drawer-item" data-i18n="sub-outlook">Outlook</a></li>
     </ul>
   </aside>
 
-
-
-
   <section class="hero">
-    <div class="hero-label">Case Study</div>
-    <h1>Den ganzen Tag der Arbeit f&uuml;r KI und Excel</h1>
-    <p class="hero-sub">Mein Vermieter. Ein Feiertag. Sein 20 Jahre alter Excel-Workflow.</p>
+    <div class="hero-label" data-en="b3">Case Study</div>
+    <h1 data-en="b4">Den ganzen Tag der Arbeit f&uuml;r KI und Excel</h1>
+    <p class="hero-sub" data-en="b5">Mein Vermieter. Ein Feiertag. Sein 20 Jahre alter Excel-Workflow.</p>
     <div class="meta-row">
-      <div class="meta-item">
+      <div class="meta-item" data-en="b6">
         <span class="meta-label">Rolle</span>
         <span class="meta-value">UX Research &middot; Design-to-Code &middot; AI Integration</span>
       </div>
-      <div class="meta-item">
+      <div class="meta-item" data-en="b7">
         <span class="meta-label">Kontext</span>
         <span class="meta-value">Eigeninitiative &middot; In-context Interview</span>
       </div>
-      <div class="meta-item">
+      <div class="meta-item" data-en="b8">
         <span class="meta-label">Output</span>
         <span class="meta-value">Funktionierender KI-Workflow &middot; Claude Chat &middot; Dokumentierte Web-App</span>
       </div>
@@ -460,131 +384,131 @@
   <main class="content">
 
     <section class="block" id="problem">
-      <div class="block-label">01 &middot; Problem</div>
-      <h2>&bdquo;Feiertagsarbeit&ldquo;</h2>
-      <p>Der 1. Mai. ist ein Feiertag, zumindest auf dem Papier.</p>
-      <p>Mein Vermieter verbrachte ihn damit, seine Nebenkostenabrechnungen zu erstellen. Den ganzen Tag mit seiner Excel-Vorlage, die er vor etwa 20 Jahren selbst gebaut hatte und seitdem jedes Jahr fortschreibt. Vielleicht war er an diesem Abend nicht der einzige &mdash; Kleinvermieter und Feiertage, eine stille Tradition? Dieses Jahr aber arbeitete er zum ersten Mal auch mit KI, als Kontrollinstanz. Er kopierte Seiten seiner Excel-Datei einzeln in einen KI-Chat, lie&szlig; die Werte pr&uuml;fen, verglich die Ergebnisse. Manuell. Schritt f&uuml;r Schritt.</p>
-      <p>Am Abend schrieb er mir, dass er den ersten Teil meiner Abrechnung fertig habe. Wie hoch sie am Ende sein w&uuml;rde, wusste ich noch nicht.</p>
-      <p>Was folgte, war ein l&auml;ngerer Austausch. Ich erfuhr wie sein Prozess aussah, wo er hakte, was er entdeckt hatte. Er war nicht frustriert, er war stolz. Stolz darauf, dass seine eigene Berechnungslogik mit der KI &uuml;bereinstimmte. Dass seine Vorlage von vor 20 Jahren noch korrekt rechnete.</p>
-      <p><em>&bdquo;Ganzen Tag schon verwendet f&uuml;r KI und Excel.&ldquo;</em></p>
-      <p>Ich h&ouml;rte ihm zu. Und gleichzeitig sah ich sofort: hier liegt enorm viel ungenutztes Potenzial. Nicht weil er etwas falsch machte, sondern weil der Weg unn&ouml;tig lang war. Die Versorgerrechnungen lagen als PDFs vor. Die Stammdaten existierten. Die Berechnungslogik funktionierte. Was fehlte, war ein Workflow der das alles zusammenf&uuml;hrt, ohne stundenlangen Feiertag-Einsatz.</p>
-      <p>Noch am selben Abend fing ich an, genau das zu bauen.</p>
+      <div class="block-label" data-en="b9">01 &middot; Problem</div>
+      <h2 data-en="b10">&bdquo;Feiertagsarbeit&ldquo;</h2>
+      <p data-en="b11">Der 1. Mai. ist ein Feiertag, zumindest auf dem Papier.</p>
+      <p data-en="b12">Mein Vermieter verbrachte ihn damit, seine Nebenkostenabrechnungen zu erstellen. Den ganzen Tag mit seiner Excel-Vorlage, die er vor etwa 20 Jahren selbst gebaut hatte und seitdem jedes Jahr fortschreibt. Vielleicht war er an diesem Abend nicht der einzige &mdash; Kleinvermieter und Feiertage, eine stille Tradition? Dieses Jahr aber arbeitete er zum ersten Mal auch mit KI, als Kontrollinstanz. Er kopierte Seiten seiner Excel-Datei einzeln in einen KI-Chat, lie&szlig; die Werte pr&uuml;fen, verglich die Ergebnisse. Manuell. Schritt f&uuml;r Schritt.</p>
+      <p data-en="b13">Am Abend schrieb er mir, dass er den ersten Teil meiner Abrechnung fertig habe. Wie hoch sie am Ende sein w&uuml;rde, wusste ich noch nicht.</p>
+      <p data-en="b14">Was folgte, war ein l&auml;ngerer Austausch. Ich erfuhr wie sein Prozess aussah, wo er hakte, was er entdeckt hatte. Er war nicht frustriert, er war stolz. Stolz darauf, dass seine eigene Berechnungslogik mit der KI &uuml;bereinstimmte. Dass seine Vorlage von vor 20 Jahren noch korrekt rechnete.</p>
+      <p data-en="b15"><em>&bdquo;Ganzen Tag schon verwendet f&uuml;r KI und Excel.&ldquo;</em></p>
+      <p data-en="b16">Ich h&ouml;rte ihm zu. Und gleichzeitig sah ich sofort: hier liegt enorm viel ungenutztes Potenzial. Nicht weil er etwas falsch machte, sondern weil der Weg unn&ouml;tig lang war. Die Versorgerrechnungen lagen als PDFs vor. Die Stammdaten existierten. Die Berechnungslogik funktionierte. Was fehlte, war ein Workflow der das alles zusammenf&uuml;hrt, ohne stundenlangen Feiertag-Einsatz.</p>
+      <p data-en="b17">Noch am selben Abend fing ich an, genau das zu bauen.</p>
 
-      <figure style="margin: 28px 0;">
+      <figure class="chat-figure">
         <img src="img/whatsapp-chat.png"
-             alt="WhatsApp-Verlauf vom 1. Mai 2026. Vermieter, 20:58: „Ich habe die Excel ja schon vor 20 Jahren erstellt und immer fortgeschrieben. Daher freue ich mich auch gerade, dass es mit KI gleiche Ergebnisse hat.“ 21:17: „Ja aber nicht mehr heute. Ganzen Tag schon verwendet für KI und Excel.“ 21:44, als Antwort auf „Da ist noch viel Potential zur Optimierung.“: „Ja klar aber auf einem guten Weg.“"
-             loading="lazy"
-             style="display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border);">
-        <figcaption style="font-size: 11px; color: var(--muted); margin-top: 8px;">Aus dem WhatsApp-Verlauf &middot; 1. Mai 2026</figcaption>
+             alt="WhatsApp-Verlauf vom 1. Mai 2026. Vermieter, 20:58: &bdquo;Ich habe die Excel ja schon vor 20 Jahren erstellt und immer fortgeschrieben. Daher freue ich mich auch gerade, dass es mit KI gleiche Ergebnisse hat.&ldquo; 21:17: &bdquo;Ja aber nicht mehr heute. Ganzen Tag schon verwendet f&uuml;r KI und Excel.&ldquo; 21:44, als Antwort auf &bdquo;Da ist noch viel Potential zur Optimierung.&ldquo;: &bdquo;Ja klar aber auf einem guten Weg.&ldquo;"
+             data-en-alt="img-alt"
+             loading="lazy">
+        <figcaption data-en="b18">Aus dem WhatsApp-Verlauf &middot; 1. Mai 2026</figcaption>
       </figure>
     </section>
 
     <section class="block" id="research">
-      <div class="block-label">01b &middot; Research</div>
-      <h2>Ist das &uuml;berhaupt UX Research?</h2>
-      <p>Ich habe an diesem Abend zugeh&ouml;rt, gefragt, gebaut und viel gelernt. Habe ich dabei auch geforscht?</p>
-      <p>Was ich hatte, war ein echtes Gespr&auml;ch w&auml;hrend einer echten Situation. Keine Laborsession, kein Leitfaden, kein Aufnahmeger&auml;t. WhatsApp-Nachrichten von jemandem, der gerade mittendrin war. Das ist nah an dem, was man In-context Interview nennt: ein Gespr&auml;ch im echten Arbeitskontext, ungeplant, aber nicht zuf&auml;llig.</p>
-      <p>Was ich nicht wei&szlig;:</p>
+      <div class="block-label" data-en="b19">01b &middot; Research</div>
+      <h2 data-en="b20">Ist das &uuml;berhaupt UX Research?</h2>
+      <p data-en="b21">Ich habe an diesem Abend zugeh&ouml;rt, gefragt, gebaut und viel gelernt. Habe ich dabei auch geforscht?</p>
+      <p data-en="b22">Was ich hatte, war ein echtes Gespr&auml;ch w&auml;hrend einer echten Situation. Keine Laborsession, kein Leitfaden, kein Aufnahmeger&auml;t. WhatsApp-Nachrichten von jemandem, der gerade mittendrin war. Das ist nah an dem, was man In-context Interview nennt: ein Gespr&auml;ch im echten Arbeitskontext, ungeplant, aber nicht zuf&auml;llig.</p>
+      <p data-en="b23">Was ich nicht wei&szlig;:</p>
       <ul class="limit-list">
-        <li>Ob dieser eine Vermieter repr&auml;sentativ ist.</li>
-        <li>Ob seine drei gr&ouml;&szlig;ten Schmerzpunkte dieselben sind wie die seiner Nachbarn, die dasselbe tun.</li>
-        <li>Ob der Review-Step wirklich das ist, was Vertrauen schafft, oder ob er nur f&uuml;r jemanden funktioniert, der ohnehin schon gewohnt ist, jeden Schritt selbst zu kontrollieren.</li>
+        <li data-en="b24">Ob dieser eine Vermieter repr&auml;sentativ ist.</li>
+        <li data-en="b25">Ob seine drei gr&ouml;&szlig;ten Schmerzpunkte dieselben sind wie die seiner Nachbarn, die dasselbe tun.</li>
+        <li data-en="b26">Ob der Review-Step wirklich das ist, was Vertrauen schafft, oder ob er nur f&uuml;r jemanden funktioniert, der ohnehin schon gewohnt ist, jeden Schritt selbst zu kontrollieren.</li>
       </ul>
-      <p>Wenn ich dieses Projekt weiterentwickeln w&uuml;rde, w&uuml;rde ich drei Dinge zuerst untersuchen:</p>
+      <p data-en="b27">Wenn ich dieses Projekt weiterentwickeln w&uuml;rde, w&uuml;rde ich drei Dinge zuerst untersuchen:</p>
       <ul class="limit-list">
-        <li>Wie oft passieren Fehler beim manuellen &Uuml;bertragen von Zahlen aus Excel, und wann fallen sie auf?</li>
-        <li>Wie viel Vertrauen braucht jemand, bevor er eine KI-extrahierte Zahl in einem Rechtsdokument stehen l&auml;sst?</li>
-        <li>Welche Kostenpositionen sind die, bei denen jemand ohne Buchhaltungshintergrund wirklich ins Stocken ger&auml;t?</li>
+        <li data-en="b28">Wie oft passieren Fehler beim manuellen &Uuml;bertragen von Zahlen aus Excel, und wann fallen sie auf?</li>
+        <li data-en="b29">Wie viel Vertrauen braucht jemand, bevor er eine KI-extrahierte Zahl in einem Rechtsdokument stehen l&auml;sst?</li>
+        <li data-en="b30">Welche Kostenpositionen sind die, bei denen jemand ohne Buchhaltungshintergrund wirklich ins Stocken ger&auml;t?</li>
       </ul>
-      <p>Ich habe Entscheidungen getroffen, die sich f&uuml;r diesen Nutzer richtig anf&uuml;hlten. Ob sie das f&uuml;r andere auch tun, wei&szlig; ich nicht.</p>
+      <p data-en="b31">Ich habe Entscheidungen getroffen, die sich f&uuml;r diesen Nutzer richtig anf&uuml;hlten. Ob sie das f&uuml;r andere auch tun, wei&szlig; ich nicht.</p>
     </section>
 
     <section class="block" id="ux">
-      <div class="block-label">02 &middot; UX-Entscheidungen</div>
-      <h2>Den Nutzer verstehen, bevor man die erste Komponente designt</h2>
-      <p>Mein Vermieter ist kein Buchhalter. Er ist jemand, der handwerkliche Arbeiten an seinen Immobilien selbst ausf&uuml;hrt, Auftr&auml;ge vergibt wo n&ouml;tig, und in diesem Bereich auf jahrzehntelange Erfahrung zur&uuml;ckgreift, teils auf Wissen, das er von seinen Eltern &uuml;bernommen hat, gemeinsam mit den Wohnungen selbst. Er denkt in Projekten, nicht in Tabellen. Sein Handwerk ist das Objekt, die Verwaltung dahinter ist Infrastruktur. Notwendig, aber nicht sein Kernbereich.</p>
-      <p>Diese Persona hat drei direkte Design-Entscheidungen bestimmt.</p>
+      <div class="block-label" data-en="b32">02 &middot; UX-Entscheidungen</div>
+      <h2 data-en="b33">Den Nutzer verstehen, bevor man die erste Komponente designt</h2>
+      <p data-en="b34">Mein Vermieter ist kein Buchhalter. Er ist jemand, der handwerkliche Arbeiten an seinen Immobilien selbst ausf&uuml;hrt, Auftr&auml;ge vergibt wo n&ouml;tig, und in diesem Bereich auf jahrzehntelange Erfahrung zur&uuml;ckgreift, teils auf Wissen, das er von seinen Eltern &uuml;bernommen hat, gemeinsam mit den Wohnungen selbst. Er denkt in Projekten, nicht in Tabellen. Sein Handwerk ist das Objekt, die Verwaltung dahinter ist Infrastruktur. Notwendig, aber nicht sein Kernbereich.</p>
+      <p data-en="b35">Diese Persona hat drei direkte Design-Entscheidungen bestimmt.</p>
 
       <div class="decisions">
         <div class="decision-card">
           <div class="decision-num">1</div>
           <div>
-            <div class="decision-title">Multi-Step statt Single-Form</div>
-            <p class="decision-body">Ein langes Formular mit 30+ Feldern h&auml;tte diesen Nutzer sofort verloren. Der Multi-Step-Ansatz bricht die kognitive Last in &uuml;berschaubare Einheiten auf: ein Schritt, eine klare Aufgabe. Das entspricht der Art, wie jemand denkt, der gewohnt ist, ein Handwerksprojekt in Phasen abzuarbeiten, nicht in Tabellenzeilen.</p>
+            <div class="decision-title" data-en="b36">Multi-Step statt Single-Form</div>
+            <p class="decision-body" data-en="b37">Ein langes Formular mit 30+ Feldern h&auml;tte diesen Nutzer sofort verloren. Der Multi-Step-Ansatz bricht die kognitive Last in &uuml;berschaubare Einheiten auf: ein Schritt, eine klare Aufgabe. Das entspricht der Art, wie jemand denkt, der gewohnt ist, ein Handwerksprojekt in Phasen abzuarbeiten, nicht in Tabellenzeilen.</p>
           </div>
         </div>
         <div class="decision-card">
           <div class="decision-num">2</div>
           <div>
-            <div class="decision-title">Der Review-Step ist nicht optional</div>
-            <p class="decision-body">Versorgerabrechnungen kommen als Scan, Foto, Papierbeleg. KI-Extraktion auf nicht vollst&auml;ndig digitalen Dokumenten ist fehleranf&auml;llig. Ein falscher Betrag in einer Nebenkostenabrechnung ist rechtlich anfechtbar nach &sect; 556 BGB. Der Review-Step gibt dem Vermieter die Kontrolle zur&uuml;ck.</p>
+            <div class="decision-title" data-en="b38">Der Review-Step ist nicht optional</div>
+            <p class="decision-body" data-en="b39">Versorgerabrechnungen kommen als Scan, Foto, Papierbeleg. KI-Extraktion auf nicht vollst&auml;ndig digitalen Dokumenten ist fehleranf&auml;llig. Ein falscher Betrag in einer Nebenkostenabrechnung ist rechtlich anfechtbar nach &sect; 556 BGB. Der Review-Step gibt dem Vermieter die Kontrolle zur&uuml;ck.</p>
           </div>
         </div>
         <div class="decision-card">
           <div class="decision-num">3</div>
           <div>
-            <div class="decision-title">Der Umlageschl&uuml;ssel bleibt eine manuelle Entscheidung</div>
-            <p class="decision-body">Die KI sieht das Dokument, aber nicht den Mietvertrag, nicht ob jede Wohnung einen eigenen Wasserz&auml;hler hat. Er lebt in einer kleinen Gemeinde, die Objekte im selben Dorf. Man kennt sich. Eine falsche Abrechnung besch&auml;digt einen Ruf, der &uuml;ber Generationen aufgebaut wurde.</p>
+            <div class="decision-title" data-en="b40">Der Umlageschl&uuml;ssel bleibt eine manuelle Entscheidung</div>
+            <p class="decision-body" data-en="b41">Die KI sieht das Dokument, aber nicht den Mietvertrag, nicht ob jede Wohnung einen eigenen Wasserz&auml;hler hat. Er lebt in einer kleinen Gemeinde, die Objekte im selben Dorf. Man kennt sich. Eine falsche Abrechnung besch&auml;digt einen Ruf, der &uuml;ber Generationen aufgebaut wurde.</p>
           </div>
         </div>
       </div>
 
       <div style="border: 1px solid var(--coral-bg); border-radius: 8px; overflow: hidden; margin: 32px 0;">
         <div style="display: flex; align-items: flex-start; padding: 16px 20px; background: var(--coral-bg); border-left: 3px solid var(--coral);">
-          <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;">Insight 1</div>
-          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Ein AI-Agent, der autonom entscheidet welcher Betrag &uuml;bernommen wird, macht den Prozess nicht einfacher, er macht ihn unsichtbar. Und was unsichtbar ist, kann nicht vertraut werden.</div>
+          <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;" data-en="b42">Insight 1</div>
+          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;" data-en="b43">Ein AI-Agent, der autonom entscheidet welcher Betrag &uuml;bernommen wird, macht den Prozess nicht einfacher, er macht ihn unsichtbar. Und was unsichtbar ist, kann nicht vertraut werden.</div>
         </div>
       </div>
     </section>
 
     <section class="block" id="design-to-code">
-      <div class="block-label">03 &middot; Design-to-Code</div>
-      <h2>Warum kein Figma</h2>
-      <p>Der Ausgangspunkt war kein Design-Brief. Es war ein WhatsApp-Gespr&auml;ch an einem Feiertagsabend mit einem Vermieter, der stolz war, seine 20 Jahre alte Excel-Datei mit KI &uuml;berpr&uuml;ft zu haben, per Copy &amp; Paste im Browser, ohne optimierten Workflow dahinter.</p>
-      <p>Ich wollte ihm noch am selben Abend zeigen, was 2026 m&ouml;glich ist. Nicht erkl&auml;ren. Zeigen.</p>
-      <p>Ein Figma-Prototyp w&auml;re daf&uuml;r das falsche Werkzeug gewesen. Mein Vermieter kennt die Berufsbezeichnungen UX Designer und Frontend Developer vermutlich nicht, geschweige denn wie diese &uuml;blicherweise zusammenarbeiten. Ein klickbarer Dummy h&auml;tte ihn nicht &uuml;berzeugt, weil er keinen f&uuml;r ihn direkt verwertbaren Output liefert. Kein Ergebnis, keine Zahl, keine Abrechnung. Nur Klicks ohne Konsequenz.</p>
-      <p>Was ich stattdessen gebaut habe, war ein funktionierender KI-Workflow in Claude: Versorgerrechnungen hochladen, Daten extrahieren lassen, Abrechnung als PDF generieren. Den Link dazu habe ich ihm noch am selben Abend per WhatsApp geschickt, eine direkt nutzbare Claude-Session, kein Mockup. Diese Dokumentation entstand danach als strukturierte Aufarbeitung des Prozesses.</p>
+      <div class="block-label" data-en="b44">03 &middot; Design-to-Code</div>
+      <h2 data-en="b45">Warum kein Figma</h2>
+      <p data-en="b46">Der Ausgangspunkt war kein Design-Brief. Es war ein WhatsApp-Gespr&auml;ch an einem Feiertagsabend mit einem Vermieter, der stolz war, seine 20 Jahre alte Excel-Datei mit KI &uuml;berpr&uuml;ft zu haben, per Copy &amp; Paste im Browser, ohne optimierten Workflow dahinter.</p>
+      <p data-en="b47">Ich wollte ihm noch am selben Abend zeigen, was 2026 m&ouml;glich ist. Nicht erkl&auml;ren. Zeigen.</p>
+      <p data-en="b48">Ein Figma-Prototyp w&auml;re daf&uuml;r das falsche Werkzeug gewesen. Mein Vermieter kennt die Berufsbezeichnungen UX Designer und Frontend Developer vermutlich nicht, geschweige denn wie diese &uuml;blicherweise zusammenarbeiten. Ein klickbarer Dummy h&auml;tte ihn nicht &uuml;berzeugt, weil er keinen f&uuml;r ihn direkt verwertbaren Output liefert. Kein Ergebnis, keine Zahl, keine Abrechnung. Nur Klicks ohne Konsequenz.</p>
+      <p data-en="b49">Was ich stattdessen gebaut habe, war ein funktionierender KI-Workflow in Claude: Versorgerrechnungen hochladen, Daten extrahieren lassen, Abrechnung als PDF generieren. Den Link dazu habe ich ihm noch am selben Abend per WhatsApp geschickt, eine direkt nutzbare Claude-Session, kein Mockup. Diese Dokumentation entstand danach als strukturierte Aufarbeitung des Prozesses.</p>
 
       <div style="border: 1px solid var(--coral-bg); border-radius: 8px; overflow: hidden; margin: 32px 0;">
         <div style="display: flex; align-items: flex-start; padding: 16px 20px; background: var(--coral-bg); border-left: 3px solid var(--coral);">
-          <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;">Insight 2</div>
-          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;">Der Designer alleine h&auml;tte einen Screen geliefert, den der Vermieter nicht einordnen kann. Der Developer alleine h&auml;tte ein Tool gebaut, das der Vermieter nicht bedienen kann. Beides zusammen, als funktionierender Workflow, per WhatsApp-Link verschickt, ist das Argument.</div>
+          <div style="min-width: 90px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--coral); padding-top: 2px;" data-en="b50">Insight 2</div>
+          <div style="font-size: 15px; color: var(--dark); line-height: 1.6;" data-en="b51">Der Designer alleine h&auml;tte einen Screen geliefert, den der Vermieter nicht einordnen kann. Der Developer alleine h&auml;tte ein Tool gebaut, das der Vermieter nicht bedienen kann. Beides zusammen, als funktionierender Workflow, per WhatsApp-Link verschickt, ist das Argument.</div>
         </div>
       </div>
     </section>
 
     <section class="block" id="einschraenkungen">
-      <div class="block-label">04 &middot; Einschr&auml;nkungen</div>
-      <h2>Was dieser PoC bewusst nicht leistet</h2>
-      <p>Der Prototyp verzichtet auf AI Agents, die autonom Entscheidungen treffen. Das war keine technische Einschr&auml;nkung, es war eine methodische Entscheidung. Der Workflow wurde bewusst am mentalen Modell des Nutzers ausgerichtet: Er kennt den Excel-Prozess. Die App optimiert genau diesen Teil, ohne seinen Referenzrahmen zu ersetzen.</p>
+      <div class="block-label" data-en="b52">04 &middot; Einschr&auml;nkungen</div>
+      <h2 data-en="b53">Was dieser PoC bewusst nicht leistet</h2>
+      <p data-en="b54">Der Prototyp verzichtet auf AI Agents, die autonom Entscheidungen treffen. Das war keine technische Einschr&auml;nkung, es war eine methodische Entscheidung. Der Workflow wurde bewusst am mentalen Modell des Nutzers ausgerichtet: Er kennt den Excel-Prozess. Die App optimiert genau diesen Teil, ohne seinen Referenzrahmen zu ersetzen.</p>
       <ul class="limit-list">
-        <li>Nicht mit dem Vermieter als aktivem Tester validiert. Er war an demselben Abend mit seinem eigenen Workflow besch&auml;ftigt.</li>
-        <li>Eine Persona, ein Gespr&auml;ch. Ob die Entscheidungen f&uuml;r andere Kleinvermieter genauso tragen, ist offen.</li>
-        <li>Der Umlageschl&uuml;ssel bleibt eine manuelle Entscheidung, weil die KI den Mietvertrag nicht kennt. Das ist eine bewusste Grenze, keine technische Schw&auml;che.</li>
+        <li data-en="b55">Nicht mit dem Vermieter als aktivem Tester validiert. Er war an demselben Abend mit seinem eigenen Workflow besch&auml;ftigt.</li>
+        <li data-en="b56">Eine Persona, ein Gespr&auml;ch. Ob die Entscheidungen f&uuml;r andere Kleinvermieter genauso tragen, ist offen.</li>
+        <li data-en="b57">Der Umlageschl&uuml;ssel bleibt eine manuelle Entscheidung, weil die KI den Mietvertrag nicht kennt. Das ist eine bewusste Grenze, keine technische Schw&auml;che.</li>
       </ul>
-      <p>Die technischen Grenzen des PoC sind im <a href="workflow.html" style="color: var(--coral);">Workflow dokumentiert</a>. Diese hier sind methodischer Natur und bleiben auch in einer Folgeversion relevant.</p>
+      <p data-en="b58">Die technischen Grenzen des PoC sind im <a href="workflow.html" style="color: var(--coral);">Workflow dokumentiert</a>. Diese hier sind methodischer Natur und bleiben auch in einer Folgeversion relevant.</p>
     </section>
 
     <section class="block" id="ausblick">
-      <div class="block-label">05 &middot; Ausblick</div>
-      <h2>Parallel arbeiten, nicht beobachten</h2>
-      <p>Ich h&auml;tte den Vermieter an seinem Arbeiten bremsen und ihn durch einen strukturierten Usability-Test f&uuml;hren k&ouml;nnen. Ich habe es bewusst nicht getan.</p>
-      <p>Stattdessen lief beides parallel: Er arbeitete an seinen Abrechnungen mit seinem eigenen Workflow. Ich arbeitete daneben an einer Alternative. Wir tauschten uns &uuml;ber WhatsApp aus: er erkl&auml;rte, ich stellte Fragen, ich zeigte erste Ergebnisse, er reagierte. Das war kein Labor, das war sein nat&uuml;rlicher Kontext.</p>
-      <p>Diese Arbeitsweise hatte einen Nebeneffekt: Der Vermieter war ohnehin bereits dabei, KI in seinen Prozess zu integrieren, auf seine eigene Art. Wir arbeiteten parallel, tauschten uns aus, verglichen Ans&auml;tze. Er validierte seinen Workflow, ich baute einen neuen. Das war kein geplantes Outcome, es war ein Synergie-Effekt zweier Menschen die gleichzeitig dasselbe Problem angingen.</p>
-      <p>Der PoC soll ihn inspirieren. Im besten Fall bleibt er als Wendepunkt in Erinnerung: der Abend, an dem er zum ersten Mal gesehen hat, wie sein Prozess 2026 aussehen k&ouml;nnte.</p>
+      <div class="block-label" data-en="b59">05 &middot; Ausblick</div>
+      <h2 data-en="b60">Parallel arbeiten, nicht beobachten</h2>
+      <p data-en="b61">Ich h&auml;tte den Vermieter an seinem Arbeiten bremsen und ihn durch einen strukturierten Usability-Test f&uuml;hren k&ouml;nnen. Ich habe es bewusst nicht getan.</p>
+      <p data-en="b62">Stattdessen lief beides parallel: Er arbeitete an seinen Abrechnungen mit seinem eigenen Workflow. Ich arbeitete daneben an einer Alternative. Wir tauschten uns &uuml;ber WhatsApp aus: er erkl&auml;rte, ich stellte Fragen, ich zeigte erste Ergebnisse, er reagierte. Das war kein Labor, das war sein nat&uuml;rlicher Kontext.</p>
+      <p data-en="b63">Diese Arbeitsweise hatte einen Nebeneffekt: Der Vermieter war ohnehin bereits dabei, KI in seinen Prozess zu integrieren, auf seine eigene Art. Wir arbeiteten parallel, tauschten uns aus, verglichen Ans&auml;tze. Er validierte seinen Workflow, ich baute einen neuen. Das war kein geplantes Outcome, es war ein Synergie-Effekt zweier Menschen die gleichzeitig dasselbe Problem angingen.</p>
+      <p data-en="b64">Der PoC soll ihn inspirieren. Im besten Fall bleibt er als Wendepunkt in Erinnerung: der Abend, an dem er zum ersten Mal gesehen hat, wie sein Prozess 2026 aussehen k&ouml;nnte.</p>
     </section>
 
     <div class="cta-block">
-      <h2>Der Workflow dahinter</h2>
-      <p>Wie dieser Workflow technisch funktioniert, was er leistet und wo die Grenzen liegen.</p>
-      <a href="workflow.html" class="btn">KI Workflow ansehen &rarr;</a>
+      <h2 data-en="b65">Der Workflow dahinter</h2>
+      <p data-en="b66">Wie dieser Workflow technisch funktioniert, was er leistet und wo die Grenzen liegen.</p>
+      <a href="workflow.html" class="btn" data-en="b67">KI Workflow ansehen &rarr;</a>
     </div>
 
   </main>
 
   <footer>
-    <p>Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
-    <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a> &middot; <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;">Impressum &amp; Datenschutz</a> &middot; <a href="#" id="cookie-settings-link" style="color: var(--muted); text-decoration: none;">Cookie-Einstellungen</a></p>
+    <p data-en="b68">Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; K&ouml;ln 2026</p>
+    <p><a href="https://linkedin.com/in/sebastian-weber1708" style="color: var(--muted); text-decoration: none;">LinkedIn</a> &middot; <a href="https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html" style="color: var(--muted); text-decoration: none;" data-en="f-imprint">Impressum &amp; Datenschutz</a> &middot; <a href="#" id="cookie-settings-link" style="color: var(--muted); text-decoration: none;" data-en="f-cookie">Cookie-Einstellungen</a></p>
   </footer>
 
 <script>
@@ -685,8 +609,151 @@
   });
 </script>
 
+<script>
+  /* ===== i18n (Navigation): EN im Markup, DE im Dictionary, gemeinsamer Key sw-lang ===== */
+  (function () {
+    var LANG_KEY = 'sw-lang';
+    var DE = {
+      "nav-portfolio": "Portfolio",
+      "nav-about": "Über mich",
+      "nav-imprint": "Impressum",
+      "nav-open": "Menü öffnen",
+      "nav-close": "Menü schließen",
+      "sub-aria": "Abschnitte auf dieser Seite",
+      "sub-label": "Auf dieser Seite",
+      "sub-problem": "Problem",
+      "sub-research": "Research",
+      "sub-ux": "UX-Entscheidungen",
+      "sub-d2c": "Design-to-Code",
+      "sub-limits": "Einschränkungen",
+      "sub-outlook": "Ausblick"
+    };
+    /* Fließtext: DE im Markup (Originalsprache), EN im Dictionary */
+    var EN = {
+      "b68": "Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; Cologne 2026",
+      "b67": "View AI workflow &rarr;",
+      "b66": "How this workflow works technically, what it does, and where its limits are.",
+      "b65": "The workflow behind it",
+      "b64": "The PoC is meant to inspire him. At best, he will remember it as a turning point: the evening he first saw what his process could look like in 2026.",
+      "b63": "This way of working had a side effect: my landlord was already integrating AI into his process, in his own way. We worked in parallel, exchanged ideas, compared approaches. He validated his workflow, I built a new one. It wasn&rsquo;t a planned outcome, it was the synergy of two people tackling the same problem at the same time.",
+      "b62": "Instead, both ran in parallel: he worked on his statements with his own workflow. Alongside him, I worked on an alternative. We talked via WhatsApp: he explained, I asked questions, I showed first results, he reacted. It wasn&rsquo;t a lab, it was his natural context.",
+      "b61": "I could have stopped my landlord in his work and guided him through a structured usability test. I deliberately didn&rsquo;t.",
+      "b60": "Working in parallel, not observing",
+      "b59": "05 &middot; Outlook",
+      "b58": "The technical limitations of the PoC are <a href=\"workflow.html\" style=\"color: var(--coral);\">documented in the workflow</a>. The ones listed here are methodological and remain relevant in a follow-up version.",
+      "b57": "The allocation key remains a manual decision because the AI doesn&rsquo;t know the lease. That is a deliberate boundary, not a technical weakness.",
+      "b56": "One persona, one conversation. Whether the decisions hold for other small landlords remains open.",
+      "b55": "Not validated with the landlord as an active tester. He was busy with his own workflow that same evening.",
+      "b54": "The prototype does without AI agents that make decisions autonomously. That wasn&rsquo;t a technical limitation, it was a methodological decision. The workflow was deliberately aligned with the user&rsquo;s mental model: he knows the Excel process. The app optimizes exactly that part without replacing his frame of reference.",
+      "b53": "What this PoC deliberately does not do",
+      "b52": "04 &middot; Limitations",
+      "b51": "The designer alone would have delivered a screen the landlord couldn&rsquo;t place. The developer alone would have built a tool the landlord couldn&rsquo;t operate. Both together, as a working workflow sent via a WhatsApp link, is the argument.",
+      "b50": "Insight 2",
+      "b49": "What I built instead was a working AI workflow in Claude: upload utility bills, have the data extracted, generate the statement as a PDF. I sent him the link via WhatsApp that same evening, a ready-to-use Claude session, not a mockup. This documentation was written afterwards as a structured review of the process.",
+      "b48": "A Figma prototype would have been the wrong tool for that. My landlord probably doesn&rsquo;t know the job titles UX designer and frontend developer, let alone how they usually work together. A clickable dummy wouldn&rsquo;t have convinced him, because it delivers no output he can use directly. No result, no number, no statement. Just clicks without consequence.",
+      "b47": "I wanted to show him that same evening what is possible in 2026. Not explain. Show.",
+      "b46": "The starting point wasn&rsquo;t a design brief. It was a WhatsApp conversation on a holiday evening with a landlord who was proud to have checked his 20-year-old Excel file with AI, via copy &amp; paste in the browser, with no optimized workflow behind it.",
+      "b45": "Why not Figma",
+      "b44": "03 &middot; Design-to-Code",
+      "b43": "An AI agent that autonomously decides which amount to accept doesn&rsquo;t make the process simpler, it makes it invisible. And what is invisible cannot be trusted.",
+      "b42": "Insight 1",
+      "b41": "The AI sees the document, but not the lease, and not whether each apartment has its own water meter. He lives in a small community, with the properties in the same village. Everyone knows each other. An incorrect statement damages a reputation built over generations.",
+      "b40": "The allocation key remains a manual decision",
+      "b39": "Utility bills arrive as scans, photos, paper receipts. AI extraction from documents that are not fully digital is error-prone. An incorrect amount in a utility cost statement can be legally contested under &sect; 556 BGB (German Civil Code). The review step gives control back to the landlord.",
+      "b38": "The review step is not optional",
+      "b37": "A long form with 30+ fields would have lost this user immediately. The multi-step approach breaks the cognitive load into manageable units: one step, one clear task. That matches how someone thinks who is used to working through a renovation project in phases, not in spreadsheet rows.",
+      "b36": "Multi-step instead of a single form",
+      "b35": "This persona shaped three direct design decisions.",
+      "b34": "My landlord is not an accountant. He does the manual work on his properties himself, hires contractors where needed, and draws on decades of experience in this field, partly on knowledge he inherited from his parents along with the apartments themselves. He thinks in projects, not spreadsheets. His craft is the building; the administration behind it is infrastructure. Necessary, but not his core area.",
+      "b33": "Understand the user before designing the first component",
+      "b32": "02 &middot; UX decisions",
+      "b31": "I made decisions that felt right for this user. Whether they do for others, I don&rsquo;t know.",
+      "b30": "Which cost items make someone without an accounting background really get stuck?",
+      "b29": "How much trust does someone need before leaving an AI-extracted number in a legal document?",
+      "b28": "How often do errors occur when manually transferring numbers from Excel, and when are they noticed?",
+      "b27": "If I were to develop this project further, I would investigate three things first:",
+      "b26": "Whether the review step really is what builds trust, or whether it only works for someone who is already used to checking every step himself.",
+      "b25": "Whether his three biggest pain points are the same as those of his neighbors who do the same thing.",
+      "b24": "Whether this one landlord is representative.",
+      "b23": "What I don&rsquo;t know:",
+      "b22": "What I had was a real conversation during a real situation. No lab session, no interview guide, no recorder. WhatsApp messages from someone who was right in the middle of it. That comes close to what is called an in-context interview: a conversation in the actual work context, unplanned but not random.",
+      "b21": "That evening I listened, asked, built, and learned a lot. But was I also doing research?",
+      "b20": "Is this even UX research?",
+      "b19": "01b &middot; Research",
+      "b18": "From the WhatsApp chat &middot; May 1, 2026 (in German)",
+      "b17": "That same evening, I started building exactly that.",
+      "b16": "I listened. And at the same time I saw right away: there was a lot of untapped potential here. Not because he was doing anything wrong, but because the path was unnecessarily long. The utility bills were available as PDFs. The master data existed. The calculation logic worked. What was missing was a workflow that brought it all together, without spending an entire holiday on it.",
+      "b15": "<em>&ldquo;Spent the whole day on AI and Excel already.&rdquo;</em>",
+      "b14": "What followed was a longer exchange. I learned what his process looked like, where it got stuck, and what he had discovered. He wasn&rsquo;t frustrated, he was proud. Proud that his own calculation logic matched the AI. That his template from 20 years ago still calculated correctly.",
+      "b13": "In the evening he texted me that he had finished the first part of my statement. I didn&rsquo;t know yet what the final amount would be.",
+      "b12": "My landlord spent it preparing his utility cost statements. All day, with an Excel template he built himself about 20 years ago and has carried forward every year since. Maybe he wasn&rsquo;t the only one that evening. Small landlords and public holidays, a quiet tradition? This year, though, he worked with AI for the first time, as a second check. He copied the sheets of his Excel file into an AI chat one by one, had the values checked, and compared the results. Manually. Step by step.",
+      "b11": "May 1st is a public holiday in Germany, at least on paper.",
+      "b10": "&ldquo;Holiday work&rdquo;",
+      "b9": "01 &middot; Problem",
+      "b8": "\n        <span class=\"meta-label\">Output</span>\n        <span class=\"meta-value\">Working AI workflow &middot; Claude chat &middot; Documented web app</span>\n      ",
+      "b7": "\n        <span class=\"meta-label\">Context</span>\n        <span class=\"meta-value\">Self-initiated &middot; In-context interview</span>\n      ",
+      "b6": "\n        <span class=\"meta-label\">Role</span>\n        <span class=\"meta-value\">UX Research &middot; Design-to-Code &middot; AI Integration</span>\n      ",
+      "b5": "My landlord. A public holiday. His 20-year-old Excel workflow.",
+      "b4": "A whole day spent on AI and Excel",
+      "b3": "Case Study",
+      "b2": "Accept",
+      "b1": "Decline",
+      "b0": "This site uses PostHog to create anonymized usage statistics and session recordings. <a href=\"https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html\" target=\"_blank\">Privacy policy</a>",
+      "f-imprint": "Imprint &amp; Privacy",
+      "f-cookie": "Cookie settings",
+      "img-alt": "WhatsApp chat from May 1, 2026 (in German). Landlord, 8:58 pm: “I created the Excel file 20 years ago and have kept updating it ever since. That’s why I’m glad it gives the same results with AI.” 9:17 pm: “But not today anymore. Spent the whole day on AI and Excel already.” 9:44 pm, replying to “There’s still a lot of potential for optimization.”: “Sure, but on a good path.”",
+      "__title": "Case Study: Utility cost statements with AI | Sebastian Weber"
+};
+    var htmlCache = new Map();
+    var altCache = new Map();
+    var titleDE = document.title;
+    var textCache = new Map();
+    var attrCache = new Map();
+    var currentLang = 'en';
+    try { currentLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
 
-      <script>
+    function apply() {
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        if (!textCache.has(el)) textCache.set(el, el.textContent);
+        var de = DE[el.getAttribute('data-i18n')];
+        el.textContent = (currentLang === 'de' && de !== undefined) ? de : textCache.get(el);
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+        if (!attrCache.has(el)) attrCache.set(el, el.getAttribute('aria-label'));
+        var de = DE[el.getAttribute('data-i18n-aria')];
+        el.setAttribute('aria-label', (currentLang === 'de' && de !== undefined) ? de : attrCache.get(el));
+      });
+      document.querySelectorAll('[data-en]').forEach(function (el) {
+        if (!htmlCache.has(el)) htmlCache.set(el, el.innerHTML);
+        var en = EN[el.getAttribute('data-en')];
+        el.innerHTML = (currentLang === 'en' && en !== undefined) ? en : htmlCache.get(el);
+      });
+      document.querySelectorAll('[data-en-alt]').forEach(function (el) {
+        if (!altCache.has(el)) altCache.set(el, el.getAttribute('alt'));
+        var en = EN[el.getAttribute('data-en-alt')];
+        el.setAttribute('alt', (currentLang === 'en' && en !== undefined) ? en : altCache.get(el));
+      });
+      document.documentElement.lang = currentLang;
+      document.title = currentLang === 'en' ? EN['__title'] : titleDE;
+      document.querySelectorAll('[data-lang]').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-lang') === currentLang);
+      });
+    }
+
+    window.switchLang = function (lang) {
+      if (lang !== 'en' && lang !== 'de') return;
+      currentLang = lang;
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+      apply();
+    };
+
+    document.querySelectorAll('[data-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { window.switchLang(b.getAttribute('data-lang')); });
+    });
+    apply();
+  })();
+
+  /* ===== Mobile Drawer ===== */
   (function () {
     var toggle = document.getElementById('navToggle');
     var closeBtn = document.getElementById('navDrawerClose');
@@ -733,23 +800,33 @@
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
 
-    /* Sprach-Buttons im Drawer an die bestehende switchLang() koppeln */
-    var drawerLangButtons = document.querySelectorAll('.nav-drawer__lang [data-lang]');
-    drawerLangButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var lang = btn.getAttribute('data-lang');
-        if (typeof window.switchLang === 'function') {
-          window.switchLang(lang);
-        }
-        document.querySelectorAll('[data-lang]').forEach(function (b) {
-          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
-        });
+    /* Tap auf einen Sprungpunkt schließt den Drawer */
+    document.querySelectorAll('.subnav-drawer-item').forEach(function (a) {
+      a.addEventListener('click', function () {
+        lastFocused = null;
+        closeDrawer();
       });
     });
   })();
+
+  /* ===== Subnav: aktiven Abschnitt markieren ===== */
+  (function () {
+    var ids = ['problem', 'research', 'ux', 'design-to-code', 'einschraenkungen', 'ausblick'];
+    var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    var links = document.querySelectorAll('.subnav a, .subnav-drawer-item');
+    function update() {
+      var offset = window.innerWidth <= 640 ? 80 : 120;
+      var current = null;
+      sections.forEach(function (sec) { if (sec.getBoundingClientRect().top - offset <= 0) current = sec.id; });
+      links.forEach(function (a) {
+        a.classList.toggle('active', current !== null && a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
   </script>
-
-
 
 </body>
 </html>
