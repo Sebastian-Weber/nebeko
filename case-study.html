@@ -325,6 +325,7 @@
   <div class="subnav" id="subnav" role="navigation" aria-label="Sections on this page" data-i18n-aria="sub-aria">
     <a href="#problem" data-i18n="sub-problem">Problem</a>
     <a href="#research" data-i18n="sub-research">Research</a>
+    <a href="#mieterseite" data-i18n="sub-tenant">Tenant side</a>
     <a href="#ux" data-i18n="sub-ux">UX decisions</a>
     <a href="#design-to-code" data-i18n="sub-d2c">Design-to-Code</a>
     <a href="#einschraenkungen" data-i18n="sub-limits">Limitations</a>
@@ -354,6 +355,7 @@
       <li class="nav-drawer__section-label" data-i18n="sub-label">On this page</li>
       <li><a href="#problem" class="subnav-drawer-item" data-i18n="sub-problem">Problem</a></li>
       <li><a href="#research" class="subnav-drawer-item" data-i18n="sub-research">Research</a></li>
+      <li><a href="#mieterseite" class="subnav-drawer-item" data-i18n="sub-tenant">Tenant side</a></li>
       <li><a href="#ux" class="subnav-drawer-item" data-i18n="sub-ux">UX decisions</a></li>
       <li><a href="#design-to-code" class="subnav-drawer-item" data-i18n="sub-d2c">Design-to-Code</a></li>
       <li><a href="#einschraenkungen" class="subnav-drawer-item" data-i18n="sub-limits">Limitations</a></li>
@@ -421,6 +423,36 @@
         <li data-en="b30">Welche Kostenpositionen sind die, bei denen jemand ohne Buchhaltungshintergrund wirklich ins Stocken ger&auml;t?</li>
       </ul>
       <p data-en="b31">Ich habe Entscheidungen getroffen, die sich f&uuml;r diesen Nutzer richtig anf&uuml;hlten. Ob sie das f&uuml;r andere auch tun, wei&szlig; ich nicht.</p>
+    </section>
+
+    <section class="block" id="mieterseite">
+      <div class="block-label" data-en="m1">01c &middot; Die andere Seite</div>
+      <h2 data-en="m2">Die andere Seite der Abrechnung</h2>
+      <p data-en="m3">Meine Arbeit betrachtet die Nebenkostenabrechnung aus Sicht eines Vermieters. <a href="https://www.linkedin.com/in/susannemeyer/" target="_blank" rel="noopener" style="color: var(--coral);">Susanne Meyer</a> hat im selben Zeitraum die Mieterseite untersucht: F&uuml;r ihr Product-Management-Capstone <a href="https://xssusanne.github.io/UtilyMeCaseStudy/" target="_blank" rel="noopener" style="color: var(--coral);">UtilyMe</a> hat sie 15 Mieter befragt. Beim Lesen ihrer Ergebnisse sind mir Parallelen aufgefallen.</p>
+      <div style="margin: 24px 0;">
+        <div style="padding: 16px 0; border-bottom: 1px solid var(--border-light);">
+          <div class="decision-title" data-en="m4t">Nachvollziehbarkeit</div>
+          <p class="decision-body" style="margin-bottom: 6px;" data-en="m4m"><strong style="color: var(--text);">Ihre Umfrage:</strong> 87&nbsp;% wollen die zugrunde liegende Berechnung sehen.</p>
+          <p class="decision-body" data-en="m4v"><strong style="color: var(--text);">Mein Vermieter:</strong> &bdquo;Ganzen Tag schon verwendet f&uuml;r KI und Excel.&ldquo;</p>
+        </div>
+        <div style="padding: 16px 0; border-bottom: 1px solid var(--border-light);">
+          <div class="decision-title" data-en="m5t">KI als zweite Meinung</div>
+          <p class="decision-body" style="margin-bottom: 6px;" data-en="m5m"><strong style="color: var(--text);">Ihre Umfrage:</strong> Ein Drittel bevorzugt eine Pr&uuml;fung durch einen Menschen.</p>
+          <p class="decision-body" data-en="m5v"><strong style="color: var(--text);">Mein Vermieter:</strong> &bdquo;Parallel f&uuml;ttern ich [die KI] und vergleiche dann.&ldquo;</p>
+        </div>
+        <div style="padding: 16px 0; border-bottom: 1px solid var(--border-light);">
+          <div class="decision-title" data-en="m6t">Vertrauen in Bekanntes</div>
+          <p class="decision-body" style="margin-bottom: 6px;" data-en="m6m"><strong style="color: var(--text);">Ihre Umfrage:</strong> F&uuml;r 60&nbsp;% ist der Mieterbund der erste Anlaufpunkt.</p>
+          <p class="decision-body" data-en="m6v"><strong style="color: var(--text);">Mein Vermieter:</strong> &bdquo;Ich habe die Excel ja schon vor 20 Jahren erstellt und immer fortgeschrieben.&ldquo;</p>
+        </div>
+        <div style="padding: 16px 0; border-bottom: 1px solid var(--border-light);">
+          <div class="decision-title" data-en="m7t">Fehler finden oder Richtigkeit best&auml;tigen</div>
+          <p class="decision-body" style="margin-bottom: 6px;" data-en="m7m"><strong style="color: var(--text);">Ihre Umfrage:</strong> &bdquo;Wir finden Fehler&ldquo; &uuml;berzeugt deutlich mehr als &bdquo;Wir finden Geld&ldquo; (73&nbsp;% zu 20&nbsp;%).</p>
+          <p class="decision-body" data-en="m7v"><strong style="color: var(--text);">Mein Vermieter:</strong> &bdquo;Daher freue ich mich auch gerade, dass es mit KI gleiche Ergebnisse hat.&ldquo;</p>
+        </div>
+      </div>
+      <p data-en="m8">Meine Lesart: Auf beiden Seiten entsteht Vertrauen durch Kontrolle, nicht durch Versprechen. Mieter wollen die Rechnung nachvollziehen, der Vermieter gleicht die KI mit seiner eigenen Berechnung ab. Der Unterschied liegt in der Richtung: Mieter suchen einen Fehler-Detektor, der Vermieter einen Validator. Ein Produkt f&uuml;r beide br&auml;uchte vermutlich zwei getrennte Flows.</p>
+      <p class="decision-body" style="font-style: italic;" data-en="m9">Ihre Zahlen beruhen auf 15 Befragten, meine Beobachtungen auf einem Vermieter. Die Gegen&uuml;berstellung zeigt Parallelen, keine belastbaren Zusammenh&auml;nge.</p>
     </section>
 
     <section class="block" id="ux">
@@ -593,7 +625,7 @@
       });
     }
 
-    document.querySelectorAll('a[href*="linkedin.com"]').forEach(function (el) {
+    document.querySelectorAll('a[href*="linkedin.com/in/sebastian-weber1708"]').forEach(function (el) {
       el.addEventListener('click', function () {
         posthog.capture('linkedin_clicked', { page: 'nebeko-case-study' });
       });
@@ -623,6 +655,7 @@
       "sub-label": "Auf dieser Seite",
       "sub-problem": "Problem",
       "sub-research": "Research",
+      "sub-tenant": "Mieterseite",
       "sub-ux": "UX-Entscheidungen",
       "sub-d2c": "Design-to-Code",
       "sub-limits": "Einschränkungen",
@@ -630,6 +663,23 @@
     };
     /* Fließtext: DE im Markup (Originalsprache), EN im Dictionary */
     var EN = {
+      "m1": "01c &middot; The other side",
+      "m2": "The other side of the statement",
+      "m3": "My work looks at the utility cost statement from a landlord&rsquo;s perspective. In the same period, <a href=\"https://www.linkedin.com/in/susannemeyer/\" target=\"_blank\" rel=\"noopener\" style=\"color: var(--coral);\">Susanne Meyer</a> researched the tenant side: for her product management capstone <a href=\"https://xssusanne.github.io/UtilyMeCaseStudy/\" target=\"_blank\" rel=\"noopener\" style=\"color: var(--coral);\">UtilyMe</a> she surveyed 15 tenants. Reading her results, I noticed parallels.",
+      "m4t": "Comprehensibility",
+      "m4m": "<strong style=\"color: var(--text);\">Her survey:</strong> 87&nbsp;% want to see the underlying calculation.",
+      "m4v": "<strong style=\"color: var(--text);\">My landlord:</strong> &ldquo;Spent the whole day on AI and Excel already.&rdquo;",
+      "m5t": "AI as a second opinion",
+      "m5m": "<strong style=\"color: var(--text);\">Her survey:</strong> One third prefer a review by a human.",
+      "m5v": "<strong style=\"color: var(--text);\">My landlord:</strong> &ldquo;I feed [the AI] in parallel and then compare.&rdquo;",
+      "m6t": "Trust in the familiar",
+      "m6m": "<strong style=\"color: var(--text);\">Her survey:</strong> For 60&nbsp;%, the tenants&rsquo; association (Mieterbund) is the first point of contact.",
+      "m6v": "<strong style=\"color: var(--text);\">My landlord:</strong> &ldquo;I created the Excel file 20 years ago and have kept updating it ever since.&rdquo;",
+      "m7t": "Finding errors or confirming correctness",
+      "m7m": "<strong style=\"color: var(--text);\">Her survey:</strong> &ldquo;We find errors&rdquo; convinces far more than &ldquo;We find money&rdquo; (73&nbsp;% vs. 20&nbsp;%).",
+      "m7v": "<strong style=\"color: var(--text);\">My landlord:</strong> &ldquo;That&rsquo;s why I&rsquo;m glad it gives the same results with AI.&rdquo;",
+      "m8": "My reading: on both sides, trust comes from control, not from promises. Tenants want to be able to follow the calculation, the landlord checks the AI against his own calculation. The difference lies in the direction: tenants look for an error detector, the landlord for a validator. A product for both would probably need two separate flows.",
+      "m9": "Her figures are based on 15 respondents, my observations on one landlord. The comparison shows parallels, not robust correlations.",
       "b68": "Sebastian Weber &middot; UI Designer &middot; Design-to-Code &middot; Cologne 2026",
       "b67": "View AI workflow &rarr;",
       "b66": "How this workflow works technically, what it does, and where its limits are.",
@@ -811,7 +861,7 @@
 
   /* ===== Subnav: aktiven Abschnitt markieren ===== */
   (function () {
-    var ids = ['problem', 'research', 'ux', 'design-to-code', 'einschraenkungen', 'ausblick'];
+    var ids = ['problem', 'research', 'mieterseite', 'ux', 'design-to-code', 'einschraenkungen', 'ausblick'];
     var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
     var links = document.querySelectorAll('.subnav a, .subnav-drawer-item');
     function update() {
