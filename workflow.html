@@ -139,23 +139,6 @@
       footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
     }
 
-    /* Cookie Banner */
-    #cookie-banner {
-      position: fixed; bottom: 24px; left: 50%;
-      transform: translateX(-50%);
-      background: #0F1117; color: #fff;
-      padding: 16px 24px; border-radius: 12px;
-      display: flex; align-items: center; gap: 16px;
-      z-index: 200; font-size: 13px;
-      max-width: 560px; width: calc(100% - 48px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    }
-    #cookie-banner p { margin: 0; flex: 1; color: #ccc; line-height: 1.5; }
-    #cookie-banner a { color: #fff; }
-    .cookie-btn { padding: 8px 16px; border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; white-space: nowrap; font-family: inherit; }
-    .cookie-accept { background: var(--purple); color: #fff; }
-    .cookie-decline { background: transparent; color: #ccc; border: 1px solid #555 !important; }
-
     /* ===== Mobile Navbar: Hamburger + Off-Canvas Drawer ===== */
     .nav-toggle {
       display: none;
@@ -657,15 +640,6 @@ für eine Nebenkostenabrechnung:
 </footer>
 
 <script>
-  function decideConsent(accepted) {
-    document.getElementById('cookie-banner').style.display = 'none';
-    if (accepted) {
-      posthog.opt_in_capturing();
-    } else {
-      posthog.opt_out_capturing();
-    }
-    posthog.capture('cookie_consent', { accepted: accepted });
-  }
 
   // Progress bar
   window.addEventListener('scroll', () => {
@@ -735,13 +709,6 @@ für eine Nebenkostenabrechnung:
       });
     });
 
-    var settingsLink = document.getElementById('cookie-settings-link');
-    if (settingsLink) {
-      settingsLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.getElementById('cookie-banner').style.display = 'flex';
-      });
-    }
   });
 </script>
 
@@ -854,9 +821,6 @@ für eine Nebenkostenabrechnung:
       "b5": "Utility bills in. Send a prompt. Finished PDFs out. This is how the workflow works in detail.",
       "b4": "Utility cost statements<br>by prompt",
       "b3": "Workflow documentation",
-      "b2": "Accept",
-      "b1": "Decline",
-      "b0": "This site uses PostHog to create anonymized usage statistics and session recordings. <a href=\"https://sebastian-weber.github.io/uxui-portfolio/datenschutz.html\" target=\"_blank\">Privacy policy</a>",
       "f-imprint": "Imprint &amp; Privacy",
       "f-cookie": "Cookie settings",
       "alt-p1": "First iteration, page 1",
